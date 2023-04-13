@@ -4,6 +4,7 @@ import kiosk.prompt.*;
 public class AppConfig {
     private static Controller controller;
     private static OrderPrompt orderPrompt;
+    private static ManagePrompt managePrompt;
 
     public static Controller controller(){
         if(controller == null){
@@ -17,5 +18,12 @@ public class AppConfig {
             orderPrompt = new OrderPrompt();
         }
         return orderPrompt;
+    }
+
+    public static ManagePrompt managePrompt(){
+        if(managePrompt == null){
+            managePrompt = new ManagePrompt();
+        }
+        return managePrompt;
     }
 }
