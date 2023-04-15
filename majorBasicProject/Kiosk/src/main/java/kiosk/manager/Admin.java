@@ -1,37 +1,50 @@
 package kiosk.manager;
+import java.util.Arrays;
 
+/*
+* Singleton Pattern 적용 : 클래스 객체 하나만 생성할 수 있도록 .
+* */
 public class Admin {
-    String error="error";
-    public String checkCommand(String command){
-        String[] commandElements=command.split("\\s+");
-        if(!isMainCommand(commandElements[0]))
+
+    // Singleton Pattern
+    private static Admin onlyOneAdmin = null;
+    private Admin(){}
+
+    public static Admin getAdmin(){
+        if (onlyOneAdmin==null)
+            onlyOneAdmin = new Admin();
+        return onlyOneAdmin;
+    }
+    // Singleton Pattern end
+
+    private static String error="error";
+    public static  String checkCommand(String command) {
+        String[] commandElements = command.trim().split("\\s+");
+        if (!isMainCommand(commandElements[0]))
             return error;
 
-        String mainCommand=commandElements[0];
-        String commandOption=commandElements[1];
-        String[] subCommands=Arrays.copyofRange(commandElements,2,commandElements.length);
+        String mainCommand = commandElements[0];
+        String commandOption = commandElements[1];
+        String[] subCommands = Arrays.copyOfRange(commandElements, 2, commandElements.length);
 
 
-        switch(mainCommand){
-            case menu:
+        switch (mainCommand) {
+            case "menu":
                 return menuCheckCommand(commandOption);
-
-            case stock:
+            case "stock":
                 return stockCheckCommand(commandOption);
-
-            case exit:
-                if(commandElements.length==1)
+            case "exit":
+                if (commandElements.length == 1)
                     return "exit";
                 else
                     return error;
+            default:
+                return error;
         }
-
-
-
-
     }
 
-    public String menuCheckCommand(String command) {
+
+    private static String menuCheckCommand(String command) {
         String result;
         if (menuCheckAddCommand(command))
             result = "menu -a";
@@ -45,66 +58,65 @@ public class Admin {
         return result;
     }
 
-    public String stockCheckCommand(String command){
+    private static String stockCheckCommand(String command){
         String result;
         if (stockCheckAddCommand(command))
-            result = "menu -a";
+            result = "stock -a";
         else if (stockCheckModifyCommand(command))
-            result = "menu -m";
+            result = "stock -m";
         else if (stockCheckDeleteCommand(command))
-            result = "menu -d";
+            result = "stock -d";
         else
             return error;
 
         return result;
     }
 
-    public boolean menuCheckAddCommand(String command){
+    private static boolean menuCheckAddCommand(String command){
         return command.equals("-a");
     }
 
-    public boolean menuCheckModifyCommand(String command){
+    private static boolean menuCheckModifyCommand(String command){
         return command.equals("-m");
     }
-    public boolean menuCheckDeleteCommand(String command){
+    private static boolean menuCheckDeleteCommand(String command){
         return command.equals("-d");
     }
-    public boolean stockCheckAddCommand(String command){
+    private static boolean stockCheckAddCommand(String command){
         return command.equals("-a");
     }
-    public boolean stockCheckDeleteCommand(String command){
+    private static boolean stockCheckDeleteCommand(String command){
         return command.equals("-d");
     }
-    public boolean stockCheckModifyCommand(String command){
+    private static boolean stockCheckModifyCommand(String command){
         return command.equals("-m");
     }
 
 
-    public boolean checkOptionForm(String option){
+    private static boolean checkOptionForm(String option){
         String lower=option.toLowerCase();
         return lower.equals("ice")||lower.equals("hot");
     }
 
-    public boolean checkPriceForm(String price){
+//    private static boolean checkPriceForm(String price){
+//
+//    }
+//    private static boolean checkAmountForm(String amount){
+//
+//    }
+//    private static boolean checkIngredientDuplication(String[] command){
+//
+//    }
 
-    }
-    public boolean checkAmountForm(String amount){
-
-    }
-    public boolean checkIngredientDuplication(String[] command){
-
-    }
-
-    public boolean isMainCommand(String mainCommand){
+    private static boolean isMainCommand(String mainCommand){
         return mainCommand.equals("menu")||mainCommand.equals("stock")||mainCommand.equals("exit");
     }
 
-    public String exitCheckCommand(String command){
+    private static String exitCheckCommand(String command){
         if(command.equals("exit"))
             return "exit";
         else
             return error;
     }
-
 }
 
