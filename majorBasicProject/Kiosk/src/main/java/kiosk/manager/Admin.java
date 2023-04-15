@@ -195,7 +195,7 @@ public class Admin {
 
         if(amountElements.length!=2)
             return false;
-        if (!Pattern.matches("[0-9a-zA-Zㄱ-ㅎ가-힣]+\\([0-9a-zA-Zㄱ-ㅎ가-힣]\\)", ingredient))
+        if (!Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", ingredient))
             return false;
         if(!checkIntegerForm(quantity))
             return false;
@@ -231,5 +231,100 @@ public class Admin {
     public static boolean exitCheckCommand(String command){//검사완료
         return command.equals("exit");
     }
+
+
+
+
+    /*
+    * Added BY CMS : 4번항목 데이터 요소에 대한 의미규칙과 문법규칙을 나누어 작성.
+     */
+
+    //TEST 필요
+    public static boolean isRecipieSyntaxValid(String str)
+    {
+        String[] splittedIngredients;
+        String ingredient;
+        String quantity;
+
+        splittedIngredients = str.trim().split(":");
+        ingredient = splittedIngredients[0];
+        quantity = splittedIngredients[1];
+
+        boolean isIngredientSyntaxValid = Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", ingredient);
+        boolean isQuanitySyntaxValid = Pattern.matches("^[0-9]{1,10}", quantity);
+
+        return (isIngredientSyntaxValid && isQuanitySyntaxValid);
+    }
+
+    public static boolean isRecipieSemanticsValid(String str)
+    {
+        String[] splittedIngredients;
+        String ingredient;
+        String quantity;
+
+        splittedIngredients = str.trim().split(":");
+        ingredient = splittedIngredients[0];
+        quantity = splittedIngredients[1];
+
+        float quantityToNumber = Float.parseFloat(quantity);
+        boolean isQuantityRangeValid = (1 <= quantityToNumber && quantityToNumber <= Integer.MAX_VALUE * 1.0);
+
+        return (isQuantityRangeValid);
+    }
+
+    public static boolean isMenuPriceSyntaxValid(String strInteger)
+    {
+        return (Pattern.matches("^[0-9]{1,10}", strInteger));
+    }
+
+    public static boolean isMenuPriceSemanticsValid(String strInteger)
+    {
+        return (Integer.parseInt(strInteger) >= 0 && Integer.parseInt(strInteger) <= Integer.MAX_VALUE);
+    }
+
+    public static boolean isMenuOptionSyntaxValid(String commandOption){
+        String lower=commandOption.toLowerCase();
+        return lower.equals("ice")||lower.equals("hot")||lower.equals("-");
+    }
+
+
+
+    public static boolean isStockSyntaxValid(String str)
+    {
+        String[] splittedIngredients;
+        String ingredient;
+        String quantity;
+
+        splittedIngredients = str.trim().split(":");
+        ingredient = splittedIngredients[0];
+        quantity = splittedIngredients[1];
+
+        boolean isIngredientSyntaxValid = Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", ingredient);
+        boolean isQuanitySyntaxValid = Pattern.matches("^[0-9]{1,10}", quantity);
+
+        return (isIngredientSyntaxValid && isQuanitySyntaxValid);
+    }
+
+    public static boolean isStockSemanticsValid(String str)
+    {
+        String[] splittedIngredients;
+        String ingredient;
+        String quantity;
+
+        splittedIngredients = str.trim().split(":");
+        ingredient = splittedIngredients[0];
+        quantity = splittedIngredients[1];
+
+        float quantityToNumber = Float.parseFloat(quantity);
+        boolean isQuantityRangeValid = (0 <= quantityToNumber && quantityToNumber <= Integer.MAX_VALUE * 1.0);
+
+        return (isQuantityRangeValid);
+    }
+
+    public static boolean isAdminSyntaxValid(String str)
+    {
+        return str.equals("admin:admin");
+    }
+
 }
 
