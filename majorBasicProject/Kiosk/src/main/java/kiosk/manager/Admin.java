@@ -1,12 +1,14 @@
 package kiosk.manager;
 import java.util.Arrays;
 
+import java.util.regex.*;
+
 /*
 * Singleton Pattern 적용 : 클래스 객체 하나만 생성할 수 있도록 .
 * */
 public class Admin {
 
-    // Singleton Pattern
+    // Singleton Pattern START
     private static Admin onlyOneAdmin = null;
     private Admin(){}
 
@@ -15,7 +17,7 @@ public class Admin {
             onlyOneAdmin = new Admin();
         return onlyOneAdmin;
     }
-    // Singleton Pattern end
+    // Singleton Pattern END
 
     private static String error="error";
     private static String[] unitTable={"ml","L","g","Kg","개"};              //민수 : 이건 왜 넣은거에요?
@@ -67,7 +69,9 @@ public class Admin {
             문자열을 입력 받아 자연수 형태인이면 true를 리턴
         -public static boolean checkPriceForm(String strPrice)
             가격 문자열을 입력 받아 자연수 형태이면 true를 리턴
+
         -public static boolean checkAmountForm(String strAmount)
+        ####### 이거 기획서 수정해야되는데, ("원두(g):20") 식으로 수정할거에요. 이건 제가 고쳐놓을게요.###########
             재고 문자열을 입력 받아("원두:20:g") 재고 입력 규칙에 맞으면 true를 리턴
         -public static boolean checkAmounts(String[] subcommands)
             재고 문자열 배열을 입력 받아 재고 입력 규칙을 모두 판단하고 재고 이름에 중복이 없으면 true리턴
@@ -82,7 +86,7 @@ public class Admin {
         if(!isMainCommand(commandElements[0]))
             return error;
 
-        if(commandElements.length==1&&exitCheckCommand(commandElements[0]))
+        if(commandElements.length==1 && exitCheckCommand(commandElements[0]))
             return "exit";
 
         String mainCommand=commandElements[0];
@@ -93,7 +97,7 @@ public class Admin {
         switch(mainCommand){
             case "menu":
                 if(menuCheckDeleteCommand(commandOption)) {
-                    return commandElements.length==3 ? "menu -d" : error;
+                    return commandElements.length==4 ? "menu -d" : error;       //commandElements.length==3=>4로 수정(cmd, subCmd, menu, menuOption)
                 }
                 else{
                     menuOption=commandElements[3]; menuPrice=commandElements[4];
@@ -123,6 +127,7 @@ public class Admin {
         else
             return error;
 
+        //문법형식 체크 + 의미규칙 체크?
         if(!(checkPriceForm(menuPrice)&&checkMenuOptionForm(menuOption)&&checkAmounts(subcommands)))
             return error;
         return result;
@@ -166,7 +171,7 @@ public class Admin {
 
     public static boolean checkMenuOptionForm(String commandOption){//검사완료
         String lower=commandOption.toLowerCase();
-        return lower.equals("ice")||lower.equals("hot");
+        return lower.equals("ice")||lower.equals("hot")||lower.equals("-");         // 관리쪽에서는 ("-", "HOT", "ICE")를 받아서 -를 받도록 수정함.
     }
 
     public static boolean checkIntegerForm(String strInteger){//이름은 IntegerForm이지만 자연수만 맞는 걸로 판단
@@ -176,7 +181,7 @@ public class Admin {
         } catch(NumberFormatException e){
             return false;
         }
-        return integer<=0;
+        return integer<=0;              //return integer>0?
     }
     public static boolean checkPriceForm(String strPrice){//검사완료
         return checkIntegerForm(strPrice);
@@ -185,16 +190,22 @@ public class Admin {
 
     public static boolean checkAmountForm(String strAmount){//검사완료
         String[] amountElements=strAmount.split(":");
-        if(amountElements.length!=3)
+        String ingredient = amountElements[0];
+        String quantity = amountElements[1];
+
+        if(amountElements.length!=2)
             return false;
-        String amount=amountElements[1], unit=amountElements[2];
-        if(!checkIntegerForm(amount))
+        if (!Pattern.matches("[0-9a-zA-Zㄱ-ㅎ가-힣]+\\([0-9a-zA-Zㄱ-ㅎ가-힣]\\)", ingredient))
             return false;
-       for(String u : unitTable){
-            if(u.equals(unit))
-                return true;
-       }
-       return false;
+        if(!checkIntegerForm(quantity))
+            return false;
+        else
+            return true;
+//        String amount=amountElements[0], unit=amountElements[1];
+//       for(String u : unitTable){           //저희 unittable이 있었나요?
+//            if(u.equals(unit))
+//                return true;
+//       }
     }
 
     public static boolean checkAmounts(String[] subcommands){//재고 중복 체크와 형식체크를 동시에 진행함.
@@ -220,6 +231,5 @@ public class Admin {
     public static boolean exitCheckCommand(String command){//검사완료
         return command.equals("exit");
     }
-
 }
 
