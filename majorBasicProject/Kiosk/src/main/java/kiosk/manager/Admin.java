@@ -323,8 +323,11 @@ public class Admin {
 
     public static boolean isAdminSyntaxValid(String str)
     {
-        return str.equals("admin:admin");
+        return (str.equals("admin:admin"));
     }
 
+    public static boolean isMenuNameSynaxValid(String str){
+        return (Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*", str));
+    }
 }
 

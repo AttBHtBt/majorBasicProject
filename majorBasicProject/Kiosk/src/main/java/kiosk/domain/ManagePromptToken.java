@@ -53,7 +53,7 @@ public class ManagePromptToken {
     }
 
     //재료(단위):사용수량 -> String 재료(단위), float 사용수량
-    protected class Item{
+    public class Item{
 
         protected String originalString;
         protected String item;
