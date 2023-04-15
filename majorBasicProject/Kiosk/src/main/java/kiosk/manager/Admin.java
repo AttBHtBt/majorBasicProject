@@ -18,12 +18,10 @@ public class Admin {
     // Singleton Pattern end
 
     private static String error="error";
-    private static String[] unitTable={"ml","L","g","Kg","개"};
+    private static String[] unitTable={"ml","L","g","Kg","개"};              //민수 : 이건 왜 넣은거에요?
 
-    public static  String checkCommand(String command) {
-        String[] commandElements = command.trim().split("\\s+");
-        if (!isMainCommand(commandElements[0]))
-    /*
+
+        /*
         사실 쓰실 때는 checkCommand만 쓰시면 됩니다.
         1.
         앞에 menu가 들어가면 menu명령어 입력규칙을 판단하는데 쓰이는 함수이고
@@ -43,43 +41,43 @@ public class Admin {
 
     /*
         함수설명
-        --public String checkCommand(String command)
+        --public static String checkCommand(String command)
             명령어 전체를 입력 받아 맞으면 해당 명령어 문자열을, 틀리면 에러 메세지를 리턴
-        -public String menuCheckCommand(String commandOption,String menuOption, String menuPrice, String[] subcommands )
+        -public static String menuCheckCommand(String commandOption,String menuOption, String menuPrice, String[] subcommands )
             주 명령어, 메뉴옵션(HOT,ICE), 메뉴가격, 재고정보배열을 입력받아 메뉴 명령어가 맞으면 해당 명령어를, 틀리면 에러 메세지를 리턴
             -m과 -a옵션에서만 사용가능함
-        -public String stockCheckCommand(String commandOption, String[] subCommands)
+        -public static String stockCheckCommand(String commandOption, String[] subCommands)
             주 명령어, 재고정보배열을 입력받아 재고 명령어가 맞으면 해당 명령어를, 틀리면 에러메세지를 리턴
             -m과 -a옵션에서만 사용가능함
-        -public boolean menuCheckAddCommand(String commandOption)
+        -public static boolean menuCheckAddCommand(String commandOption)
             메뉴 명령어 옵션을 입력받아(-a,-m,-d)등 -a라면 true를 리턴
-        -public boolean menuCheckModifyCommand(String commandOption)
+        -public static boolean menuCheckModifyCommand(String commandOption)
             메뉴 명령어 옵션을 입력받아(-a,-m,-d)등 -m라면 true를 리턴
-        -public boolean menuCheckDeleteCommand(String commandOption)
+        -public static boolean menuCheckDeleteCommand(String commandOption)
             메뉴 명령어 옵션을 입력받아(-a,-m,-d)등 -d라면 true를 리턴
-        -public boolean stockCheckAddCommand(String commandOption)
+        -public static boolean stockCheckAddCommand(String commandOption)
             재고 명령어 옵션을 입력받아(-a,-m,-d)등 -a라면 true를 리턴
-        -public boolean stockCheckDeleteCommand(String commandOption)
+        -public static boolean stockCheckDeleteCommand(String commandOption)
             재고 명령어 옵션을 입력받아(-a,-m,-d)등 -m라면 true를 리턴
-        -public boolean stockCheckModifyCommand(String commandOption)
+        -public static boolean stockCheckModifyCommand(String commandOption)
             재고 명령어 옵션을 입력받아(-a,-m,-d)등 -d라면 true를 리턴
-        -public boolean checkMenuOptionForm(String commandOption)
+        -public static boolean checkMenuOptionForm(String commandOption)
             메뉴 명령어 옵션을 입력받아(-a,-m,-d)등 -a, -m, -d중 하나라면 true를 리턴
-        -public boolean checkIntegerForm(String strInteger)
+        -public static boolean checkIntegerForm(String strInteger)
             문자열을 입력 받아 자연수 형태인이면 true를 리턴
-        -public boolean checkPriceForm(String strPrice)
+        -public static boolean checkPriceForm(String strPrice)
             가격 문자열을 입력 받아 자연수 형태이면 true를 리턴
-        -public boolean checkAmountForm(String strAmount)
+        -public static boolean checkAmountForm(String strAmount)
             재고 문자열을 입력 받아("원두:20:g") 재고 입력 규칙에 맞으면 true를 리턴
-        -public boolean checkAmounts(String[] subcommands)
+        -public static boolean checkAmounts(String[] subcommands)
             재고 문자열 배열을 입력 받아 재고 입력 규칙을 모두 판단하고 재고 이름에 중복이 없으면 true리턴
-        -public boolean isMainCommand(String mainCommand)
+        -public static boolean isMainCommand(String mainCommand)
             메인 명령어(menu, stock, exit) 문자열을 입력 받아 "menu", "stock", "exit"중 하나라면 true리턴
-        -public String exitCheckCommand(String command)
+        -public static String exitCheckCommand(String command)
             문자열을 입력받아 "exit"이면 true를 리턴
      */
 
-    public String checkCommand(String command){//검사완료
+    public static String checkCommand(String command){//검사완료
         String[] commandElements=command.trim().split("\\s+");
         if(!isMainCommand(commandElements[0]))
             return error;
@@ -116,7 +114,7 @@ public class Admin {
     }
 
 
-    public String menuCheckCommand(String commandOption,String menuOption, String menuPrice, String[] subcommands ) {
+    public static String menuCheckCommand(String commandOption,String menuOption, String menuPrice, String[] subcommands ) {
         String result;
         if (menuCheckAddCommand(commandOption))
             result = "menu -a";
@@ -131,7 +129,7 @@ public class Admin {
     }//검사완료
 
 
-    public String stockCheckCommand(String commandOption, String[] subCommands){//검사완료
+    public static String stockCheckCommand(String commandOption, String[] subCommands){//검사완료
         String result;
         if (stockCheckAddCommand(commandOption))
             result = "stock -a";
@@ -145,33 +143,33 @@ public class Admin {
         return result;
     }
 
-    public boolean menuCheckAddCommand(String commandOption){//검사완료
+    public static boolean menuCheckAddCommand(String commandOption){//검사완료
         return commandOption.equals("-a");
     }
 
-    public boolean menuCheckModifyCommand(String commandOption){//검사완료
+    public static boolean menuCheckModifyCommand(String commandOption){//검사완료
         return commandOption.equals("-m");
     }
-    public boolean menuCheckDeleteCommand(String commandOption){//검사완료
+    public static boolean menuCheckDeleteCommand(String commandOption){//검사완료
         return commandOption.equals("-d");
     }
-    public boolean stockCheckAddCommand(String commandOption){//검사완료
+    public static boolean stockCheckAddCommand(String commandOption){//검사완료
         return commandOption.equals("-a");
     }
-    public boolean stockCheckDeleteCommand(String commandOption){//검사완료
+    public static boolean stockCheckDeleteCommand(String commandOption){//검사완료
         return commandOption.equals("-d");
     }
-    public boolean stockCheckModifyCommand(String commandOption){//검사완료
+    public static boolean stockCheckModifyCommand(String commandOption){//검사완료
         return commandOption.equals("-m");
     }
 
 
-    public boolean checkMenuOptionForm(String commandOption){//검사완료
+    public static boolean checkMenuOptionForm(String commandOption){//검사완료
         String lower=commandOption.toLowerCase();
         return lower.equals("ice")||lower.equals("hot");
     }
 
-    public boolean checkIntegerForm(String strInteger){//이름은 IntegerForm이지만 자연수만 맞는 걸로 판단
+    public static boolean checkIntegerForm(String strInteger){//이름은 IntegerForm이지만 자연수만 맞는 걸로 판단
         int integer;                                   //검사완료
         try{
             integer=Integer.parseInt(strInteger);
@@ -180,12 +178,12 @@ public class Admin {
         }
         return integer<=0;
     }
-    public boolean checkPriceForm(String strPrice){//검사완료
+    public static boolean checkPriceForm(String strPrice){//검사완료
         return checkIntegerForm(strPrice);
     }
 
 
-    public boolean checkAmountForm(String strAmount){//검사완료
+    public static boolean checkAmountForm(String strAmount){//검사완료
         String[] amountElements=strAmount.split(":");
         if(amountElements.length!=3)
             return false;
@@ -199,7 +197,7 @@ public class Admin {
        return false;
     }
 
-    public boolean checkAmounts(String[] subcommands){//재고 중복 체크와 형식체크를 동시에 진행함.
+    public static boolean checkAmounts(String[] subcommands){//재고 중복 체크와 형식체크를 동시에 진행함.
         int n= subcommands.length;
         String checked;
         for(int i=0;i<n;i++){
@@ -215,11 +213,11 @@ public class Admin {
     }
 
 
-    public boolean isMainCommand(String mainCommand){//검사완료
+    public static boolean isMainCommand(String mainCommand){//검사완료
         return mainCommand.equals("menu")||mainCommand.equals("stock")||mainCommand.equals("exit");
     }
 
-    public boolean exitCheckCommand(String command){//검사완료
+    public static boolean exitCheckCommand(String command){//검사완료
         return command.equals("exit");
     }
 
