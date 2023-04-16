@@ -3,12 +3,50 @@ package kiosk.prompt;
 import kiosk.dataFile.MenuRepository;
 import kiosk.domain.Menu;
 
+import java.util.Scanner;
 import java.util.List;
 
 public class OrderPrompt {
-    private List<Menu> menus = MenuRepository.getMenus();
-    public OrderPrompt(){
-        showPrompt();
+    private List<Menu> menus = MenuRepository.getMenus();    
+
+    public OrderPrompt(){                
+        OrderController();           
+    }
+
+    private String OrderController(){
+        while(true){
+            showPrompt();
+            Scanner sc = new Scanner(System.in);
+            String str = sc.nextLine();
+
+            // if(str.equals("pay")){
+            //     payCall();
+            // }
+            // if(str.equals("manage")){
+            //     manageCall();
+            // }
+            // if(str.equals("exit")){
+            //     exitCall();
+            // }
+
+            switch(str) {
+                case "pay" :
+                    payCall();
+                    str="pay";
+                    break;
+                case "manage" :
+                    manageCall();
+                    str="manage";
+                    break;
+                case "exit" :
+                    exitCall();                    
+                    break;
+                default :
+                    checkCall();
+                    break;
+            }
+
+        }
     }
 
     private void showPrompt(){
@@ -24,35 +62,30 @@ public class OrderPrompt {
         System.out.println("----------------------------------------------------------------");
         System.out.println("아래의 입력 대기 줄에 주문할 메뉴를 입력해주세요.");
         System.out.println("최종결제를 원한다면 'pay'를 입력해주세요.");
-
         //사용자 입력처리
         //종료라면 exitcall
         //관리라면 managecall
         //결제라면 paycall
         //아니라면 checkCall
-
     }
     private void shoppingBasketPrompt(){
 
     }
     private void exitCall(){                //석
-
+        System.out.println("exit Done");
+        System.exit(0);
+        return;
     }
     private void manageCall(){              //석
-
+        System.out.println("manage Done");
+        return;
     }
     private void payCall(){                 //석
-
+        System.out.println("pay Done");
+        return;
     }
     private void checkCall(){               //홍
-        //구분하기
-
-        //옳은 입력이라면 inventoryRepository의 __함수 부르기
-        //showPrompt();
-
-        //안좋은 입력이면 거절메세지 후 showPrompt();
+        OrderController();
+        return;        
     }
-    //입력받기 함수-> 그게 어떤 입력인 지 확인(종료, 관리, 결제, 주문) -> 종료 관리 결제 일 때 어떻게 넘길지 정하고 주문일때는 주문 확인 함수 불러오기
-    //그것이 옳은 입력인가?
-
 }
