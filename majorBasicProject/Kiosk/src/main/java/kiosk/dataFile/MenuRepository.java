@@ -2,13 +2,12 @@ package kiosk.dataFile;
 
 import kiosk.domain.Menu;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
 
 public class MenuRepository {
 
@@ -18,15 +17,11 @@ public class MenuRepository {
     public MenuRepository(){
     }
     void makeMenu(String fileName){
-        File csv = new File(fileName);
-        //원래 fileName 자리에 filePath가 들어가야 하는 거라서 이게 체크 해봐야 함
-        BufferedReader br = null;
-        String line = "";
-
-        try{
-            br = new BufferedReader(new FileReader(csv));
-            while((line = br.readLine()) != null){
-                String[] lineArr = line.split(",");
+        try(Scanner scan =  new Scanner(new File(fileName))){
+            while(scan.hasNext()){
+                String str = scan.nextLine();
+                System.out.println(str);
+                String[] lineArr = str.split(",");
                 //메뉴이름, 메뉴가격, 메뉴옵션, 레시피...
 
                 String[] array = new String[2];
@@ -39,12 +34,12 @@ public class MenuRepository {
                     dynamicArray.get(i - 3).add(array[1]);
                 }
                 //2차원 arrayList에 재료이름과 재료 수량을 넣는다.
+                System.out.println("Mission Complete");
 
             }
         } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }catch(java.io.IOException e){
-            System.out.println("java.io.IOException");
+            // TODO Auto-generated catch block
+            System.out.println("FileNotFoundException");
         }
     }
 
