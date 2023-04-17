@@ -1,5 +1,6 @@
 import kiosk.config.AppConfig;
 import kiosk.buyer.order.Controller;
+import kiosk.dataFile.MenuRepository;
 import kiosk.prompt.ManagePrompt;
 import kiosk.prompt.OrderPrompt;
 
@@ -8,6 +9,12 @@ public class Main {
 
         OrderPrompt orderPrompt = AppConfig.orderPrompt();
         ManagePrompt managePrompt = AppConfig.managePrompt();
+        MenuRepository MR = new MenuRepository();
+
+
+
+
+
 
     }
 }

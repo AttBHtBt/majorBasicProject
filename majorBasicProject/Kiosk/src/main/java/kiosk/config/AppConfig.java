@@ -1,5 +1,6 @@
 package kiosk.config;
 import kiosk.buyer.order.Controller;
+import kiosk.dataFile.MenuRepository;
 import kiosk.prompt.*;
 public class AppConfig {
     private static Controller controller;
@@ -26,4 +27,6 @@ public class AppConfig {
         }
         return managePrompt;
     }
+
+
 }
