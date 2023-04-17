@@ -11,9 +11,9 @@ import java.util.Scanner;
 
 public class MenuRepository {
 
-    private static final HashMap<String, Menu> MENU_Map = new HashMap<>();
+    private static final HashMap<Integer, Menu> MENU_Map = new HashMap<>();
 
-    int a;
+    int menuNum = 0;//메뉴 갯수
     public MenuRepository(){
     }
     public void makeMenu(String fileName){
@@ -65,6 +65,11 @@ public class MenuRepository {
     }
 
     private void addMenu(Menu menu){// 중복 검사는 아직 안 함
-        MENU_Map.put(menu.getMenu(), menu);
+        MENU_Map.put(this.menuNum, menu);
+        menuNum++;
+    }
+
+    void deleteMenu(String name, String option){
+
     }
 }
