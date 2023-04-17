@@ -9,6 +9,7 @@ import java.util.List;
 public class ManagePrompt {
     private List<Menu> menus = MenuRepository.getMenus();
     public ManagePrompt(){
+        showPrompt();
     }
 
     public void showPrompt(){
