@@ -1,6 +1,7 @@
 package kiosk.dataFile;
 
 import kiosk.domain.Menu;
+import kiosk.domain.Menu;
 import kiosk.manager.Admin;
 
 import java.io.File;
@@ -83,18 +84,29 @@ public class MenuRepository {
         }
     }
 
-    private void addMenu(Menu menu){// 중복 검사는 아직 안 함
+    public static HashMap<String, Menu> getMenu_Map(){
+        return MENU_Map;
+    }
+    public static void addMenu(Menu menu){// 중복 검사는 아직 안 함
         String key = menu.getMenu()+menu.getBeverageStateOption();
         MENU_Map.put(key, menu);
     }
 
-    void deleteMenu(String name, String option){
+    public static void deleteMenu(String name, String option){
         String findKey = name + option;
         MENU_Map.remove(findKey);
     }
 
-    void regenerateMenuFile(){
+    public static void regenerateMenuFile(){
         // 파일에 문제 있으면 여기서 regenerate 할 예정.
         DataFile.regenerateMenuCSV();
+    }
+
+
+
+    public static boolean isMenuNameinRepository(String menuName, String orderOption){
+        if (MENU_Map.get(menuName+orderOption) == null)
+            return false;
+        return true;
     }
 }

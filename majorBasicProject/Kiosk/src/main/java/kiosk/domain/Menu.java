@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Menu {
-    private final String menu;      //메뉴이름
-    private final int price;       //메뉴가격
-    private final String beverageStateOption;   //음료상태옵션
-    private final HashMap<String, Integer> ingredient  = new HashMap<>(); // 재료
+    private String menu;      //메뉴이름
+    private int price;       //메뉴가격
+    private String beverageStateOption;   //음료상태옵션
+    private HashMap<String, Integer> ingredient  = new HashMap<>(); // 재료
 
     public Menu(String menu, String price, String beverageStateOption, ArrayList<ArrayList<String>> dynamicArray) {
         this.menu = menu;
@@ -32,5 +32,21 @@ public class Menu {
 
     public HashMap<String, Integer> getIngredient() {
         return ingredient;
+    }
+
+    public void setMenu(String menu) {
+        this.menu = menu;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setBeverageStateOption(String beverageStateOption) {
+        this.beverageStateOption = beverageStateOption;
+    }
+
+    public void setIngredient(HashMap<String, Integer> ingredient) {
+        this.ingredient = ingredient;
     }
 }

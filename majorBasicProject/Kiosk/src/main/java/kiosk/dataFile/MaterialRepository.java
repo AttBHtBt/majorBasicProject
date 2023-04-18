@@ -37,6 +37,9 @@ public class MaterialRepository {
         }
     }
 
+    public static HashMap<String, Material> getMaterial_Map(){
+        return Material_Map;
+    }
     void addMaterial(Material material){
         Material_Map.put(material.getName(), material);
     }
@@ -48,4 +51,5 @@ public class MaterialRepository {
     void regenerateMaterialFile(){
         DataFile.regenerateIngredientCSV();
     }
+
 }
