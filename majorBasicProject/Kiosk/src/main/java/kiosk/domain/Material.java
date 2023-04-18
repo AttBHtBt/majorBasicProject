@@ -15,6 +15,14 @@ public class Material {
     public int getAmount() {
         return amount;
     }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
+    }
 }
 
 

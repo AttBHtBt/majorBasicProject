@@ -3,11 +3,13 @@ package kiosk.prompt;
 import kiosk.dataFile.MenuRepository;
 import kiosk.domain.Menu;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.List;
 
 public class OrderPrompt {
-    private List<Menu> menus = MenuRepository.getMenus();    
+    private HashMap<String, Menu> menus = MenuRepository.getMenu_Map();
 
     public OrderPrompt(){                
         OrderController();           
@@ -53,8 +55,10 @@ public class OrderPrompt {
         System.out.println("Menu");
         System.out.println("메뉴, 가격과 선택할 수 있는 메뉴 옵션입니다.");
         System.out.println("----------------------------------------------------------------");
-        for(Menu m : menus){
-            System.out.println(m.getMenu()+" "+m.getBeverageStateOption()+" "+m.getPrice()+"원");
+        for(HashMap.Entry<String, Menu> entry: menus.entrySet()){
+            String key = entry.getKey();
+            Menu menu = entry.getValue();
+            System.out.println(menu.getMenu()+" "+menu.getBeverageStateOption()+" "+menu.getPrice()+"원");
         }
         System.out.println("----------------------------------------------------------------");
         System.out.println("핫, 아이스 두가지 선택이 가능한 메뉴는 ICE 선택시 500원이 추가 됩니다.");

@@ -1,5 +1,77 @@
 package kiosk.dataFile;
 
-public class cartRepository {
+import kiosk.domain.Material;
+import kiosk.domain.Menu;
 
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+
+public class cartRepository {
+    private static final HashMap<String, Menu> Menu_Map = MenuRepository.getMenu_Map();
+    private static final HashMap<String, Material> Material_Map = MaterialRepository.getMaterial_Map();
+
+    private ArrayList<String> allIngredientName = new ArrayList<>();
+    private ArrayList<Integer> allIngredientAmount = new ArrayList<>();
+    private ArrayList<Integer> remainingStockAmount = new ArrayList<>();
+
+
+    //메뉴 이름, 옵션, 주문개수로 주문 가능한지 확인
+
+    //재고가 없는 경우에도 처리.
+    public int isOrderFromStockAvailable(String menuName, String orderOption, int orderAmount){
+        //초기화
+        int availableAmount = 0;
+        allIngredientAmount.clear(); allIngredientName.clear(); remainingStockAmount.clear();
+
+        //menuName+orderOption : 아메리카노 + ice의 hashMap key는 아메리카노ice.
+        Menu menu = Menu_Map.get(menuName+orderOption);
+        //쓰기 불편해서 ingredientName=레시피 이름, ingredientAmount=레시피에 필요한 재료숫자, remainingAmount= DB재고잔량 배열로 변환.
+        initiallizationForCalc(menu);
+
+        // 모든 재고 잔량에 맞춰서 주문가능한 개수를 반환.
+        availableAmount = calculateAvailableOrderAmount();
+        // 주문가능한 숫자에 맞춰서 재고 잔량 수정.
+        setStockAmount(availableAmount);
+        //주문 가능한 개수 반환
+        return availableAmount;
+    }
+    //메뉴 이름, 옵션, 주문개수로 주문 (재고 차감) - 주문이 불가능하면 최대주문가능개수에 따라 주기.
+
+    //최대 주문개수 반환.
+
+
+    private void initiallizationForCalc(Menu menu){
+
+        HashMap<String, Integer> ingredients = menu.getIngredient();
+        for (HashMap.Entry<String, Integer> entry:ingredients.entrySet()){
+            allIngredientName.add(entry.getKey());
+            allIngredientAmount.add(entry.getValue());
+        }
+
+        for (String str : allIngredientName){
+             Material stock = Material_Map.get(str);
+             remainingStockAmount.add(stock.getAmount());
+        }
+    }
+
+    private int calculateAvailableOrderAmount(){
+
+        int orderAmount = 0;
+        while (true){
+            for (int i = 0; i < remainingStockAmount.size(); i++) {
+                if (remainingStockAmount.get(i) - allIngredientAmount.get(i) < 0) {
+                    return orderAmount;
+                }
+            }
+            orderAmount++;
+        }
+    }
+
+    private void setStockAmount(int availableOrderAmount){
+        for (int i = 0; i < allIngredientName.size(); i++) {
+            Material_Map.get(allIngredientName.get(i))
+                    .setAmount(remainingStockAmount.get(i) - availableOrderAmount * allIngredientAmount.get(i));
+        }
+    }
 }
