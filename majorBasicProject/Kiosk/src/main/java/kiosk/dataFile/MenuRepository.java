@@ -64,7 +64,7 @@ public class MenuRepository {
             }
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            System.out.println("FileNotFoundException");
+            System.out.println("FileNotFoundException: FileName" + fileName);
         } catch (IndexOutOfBoundsException e){
             System.out.println("IndexOutOfBoundsException");
         }
