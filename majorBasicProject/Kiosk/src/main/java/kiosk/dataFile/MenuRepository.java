@@ -12,7 +12,8 @@ public class MenuRepository {
             Arrays.asList(new Menu("아메리카노","2,500","ICE"),
                     new Menu("아메리카노","2,000","HOT"),
                     new Menu("카페라떼","3,000","ICE"),
-                    new Menu("카페라떼","2,500","HOT")
+                    new Menu("카페라떼","2,500","HOT"),
+                    new Menu("핫초코","3000"," ")
             )
     );
 
