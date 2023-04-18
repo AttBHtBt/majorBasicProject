@@ -95,5 +95,6 @@ public class MenuRepository {
 
     void regenerateMenuFile(){
         // 파일에 문제 있으면 여기서 regenerate 할 예정.
+        DataFile.regenerateMenuCSV();
     }
 }

@@ -47,7 +47,6 @@ public class PwdRepository {
     }
 
     void regeneratePwdFile(){
-
+        DataFile.regenerateAdminTxT();
     }
-
 }
