@@ -13,6 +13,7 @@ public class PwdRepository {
         Boolean check = true;
         try (Scanner scan = new Scanner(new File(fileName))) {
             check = check && this.isAdminFileValid(scan);
+            //ㅗ디
             if(check)
                 pwd = scan.nextLine().trim();
             else
