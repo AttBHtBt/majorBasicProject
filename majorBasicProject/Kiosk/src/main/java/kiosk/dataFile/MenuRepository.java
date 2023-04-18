@@ -1,6 +1,7 @@
 package kiosk.dataFile;
 
 import kiosk.domain.Menu;
+import kiosk.manager.Admin;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,27 +18,33 @@ import java.util.Scanner;
 
 public class MenuRepository {
 
-    private static final HashMap<Integer, Menu> MENU_Map = new HashMap<>();
+    private static final HashMap<String, Menu> MENU_Map = new HashMap<>();
 
-    int menuNum = 0;//메뉴 갯수
     public MenuRepository(){
     }
     public void makeMenu(String fileName){
         try(Scanner scan =  new Scanner(new File(fileName))){
-            while(scan.hasNext()){
+            Boolean check = true;
+            while(scan.hasNext() && check){
                 String str = scan.nextLine();
-                //System.out.println(str);
                 String[] lineArr = str.split(",");
                 //메뉴이름, 메뉴가격, 메뉴옵션, 레시피...
 
-                //System.out.println("point1");
+                check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
+                        && Admin.isMenuPriceSemanticsValid(lineArr[1].trim())
+                        && Admin.isMenuOptionSyntaxValid(lineArr[1].trim());
 
+                for(int j = 3; j< lineArr.length; j++){
+                    check = check && Admin.isRecipieSyntaxValid(lineArr[j].trim())
+                            && Admin.isRecipieSemanticsValid(lineArr[j].trim());
+                }
 
-                //dynamicArray.add(new ArrayList<String>());
+                if(!check)
+                    break;
 
-               // System.out.println("point 2");
                 ArrayList<ArrayList<String>> dynamicArray = new ArrayList<>();
                 for(int i = 3; i< lineArr.length; i++){
+
                     String[] array = lineArr[i].split(":");
                     ArrayList<String> list = new ArrayList<>();
                     list.add(array[0].trim());
@@ -45,8 +52,12 @@ public class MenuRepository {
                     dynamicArray.add(list);
                 }
 
+
                 this.addMenu(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
                 //2차원 arrayList에 재료이름과 재료 수량을 넣는다.
+
+
+
 
                 // 얘네는 체크용으로 만들어 놓은 코드이니 신경 안써도 괜찮다.
                 //System.out.println("Mission Complete");
@@ -62,6 +73,8 @@ public class MenuRepository {
 
 
             }
+            if(!check)
+                regenerateMenuFile();
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             System.out.println("FileNotFoundException: FileName" + fileName);
@@ -71,11 +84,26 @@ public class MenuRepository {
     }
 
     private void addMenu(Menu menu){// 중복 검사는 아직 안 함
-        MENU_Map.put(this.menuNum, menu);
-        menuNum++;
+        String key = menu.getMenu()+menu.getBeverageStateOption();
+        MENU_Map.put(key, menu);
     }
+
+    /*
+    1 아메리카노
+    2 아이스티
+    3 물
+    4 바닐라라떼
+    for(int i; i<map.size; i++){
+        menu = map.get(i).getName
+
+    }
+     */
 
     void deleteMenu(String name, String option){
 
+    }
+
+    void regenerateMenuFile(){
+        // 파일에 문제 있으면 여기서 regenerate 할 예정.
     }
 }

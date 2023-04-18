@@ -329,5 +329,38 @@ public class Admin {
     public static boolean isMenuNameSynaxValid(String str){
         return (Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*", str));
     }
+
+
+    public static boolean CSVisStockSyntaxValid(String str)
+    {
+        String[] splittedIngredients;
+        String ingredient;
+        String quantity;
+
+        splittedIngredients = str.trim().split(",");
+        ingredient = splittedIngredients[0];
+        quantity = splittedIngredients[1];
+
+        boolean isIngredientSyntaxValid = Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", ingredient);
+        boolean isQuanitySyntaxValid = Pattern.matches("^[0-9]{1,10}", quantity);
+
+        return (isIngredientSyntaxValid && isQuanitySyntaxValid);
+    }
+
+    public static boolean CSVisStockSemanticsValid(String str)
+    {
+        String[] splittedIngredients;
+        String ingredient;
+        String quantity;
+
+        splittedIngredients = str.trim().split(",");
+        ingredient = splittedIngredients[0];
+        quantity = splittedIngredients[1];
+
+        float quantityToNumber = Float.parseFloat(quantity);
+        boolean isQuantityRangeValid = (0 <= quantityToNumber && quantityToNumber <= Integer.MAX_VALUE * 1.0);
+
+        return (isQuantityRangeValid);
+    }
 }
 

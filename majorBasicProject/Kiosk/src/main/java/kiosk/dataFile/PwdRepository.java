@@ -9,9 +9,14 @@ public class PwdRepository {
 
     String pwd;
 
-    public void makeMenu(String fileName) {
+    public void makePwd(String fileName) {
+        Boolean check = true;
         try (Scanner scan = new Scanner(new File(fileName))) {
-            this.isAdminFileValid(scan);
+            check = check && this.isAdminFileValid(scan);
+            if(check)
+                pwd = scan.nextLine().trim();
+            else
+                regeneratePwdFile();
         } catch (FileNotFoundException e) {
             System.out.println("FileNotFoundException: " + fileName);
         }
@@ -38,6 +43,10 @@ public class PwdRepository {
             }
         }
         return true;
+    }
+
+    void regeneratePwdFile(){
+
     }
 
 }
