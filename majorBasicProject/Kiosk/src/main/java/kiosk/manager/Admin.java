@@ -240,6 +240,8 @@ public class Admin {
      */
 
     //TEST 필요
+
+    //RecipieSyntaxValid : 딸기:123.12에 소수도 받던가? => 소수점을 받을 수 없기 때문에 그냥 정수라고 수정했음.
     public static boolean isRecipieSyntaxValid(String str)
     {
         String[] splittedIngredients;
@@ -247,6 +249,7 @@ public class Admin {
         String quantity;
 
         splittedIngredients = str.trim().split(":");
+        if (splittedIngredients.length != 2) return false;
         ingredient = splittedIngredients[0];
         quantity = splittedIngredients[1];
 
@@ -263,11 +266,12 @@ public class Admin {
         String quantity;
 
         splittedIngredients = str.trim().split(":");
+        if (splittedIngredients.length != 2) return false;
         ingredient = splittedIngredients[0];
         quantity = splittedIngredients[1];
 
-        float quantityToNumber = Float.parseFloat(quantity);
-        boolean isQuantityRangeValid = (1 <= quantityToNumber && quantityToNumber <= Integer.MAX_VALUE * 1.0);
+        int quantityToNumber = Integer.parseInt(quantity);
+        boolean isQuantityRangeValid = (1 <= quantityToNumber && quantityToNumber <= Integer.MAX_VALUE);
 
         return (isQuantityRangeValid);
     }
@@ -315,7 +319,7 @@ public class Admin {
         ingredient = splittedIngredients[0];
         quantity = splittedIngredients[1];
 
-        float quantityToNumber = Float.parseFloat(quantity);
+        int quantityToNumber = Integer.parseInt(quantity);
         boolean isQuantityRangeValid = (0 <= quantityToNumber && quantityToNumber <= Integer.MAX_VALUE * 1.0);
 
         return (isQuantityRangeValid);
@@ -357,7 +361,7 @@ public class Admin {
         ingredient = splittedIngredients[0];
         quantity = splittedIngredients[1];
 
-        float quantityToNumber = Float.parseFloat(quantity);
+        int quantityToNumber = Integer.parseInt(quantity);
         boolean isQuantityRangeValid = (0 <= quantityToNumber && quantityToNumber <= Integer.MAX_VALUE * 1.0);
 
         return (isQuantityRangeValid);

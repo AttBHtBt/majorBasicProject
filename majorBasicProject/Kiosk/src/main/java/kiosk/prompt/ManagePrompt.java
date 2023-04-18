@@ -155,7 +155,7 @@ public class ManagePrompt {
 //        return false;
 //    }
 
-    //[공백]*menu[공백]+[-d][공백]+[메뉴][공백]*
+    //[공백]*menu[공백]+[-d][공백]+[메뉴][공백]+[음료상태옵션][공백]*
     private void deleteMenu(){
 
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2), commandLineTokens.get(3));

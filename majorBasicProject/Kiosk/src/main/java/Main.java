@@ -16,7 +16,7 @@ public class Main {
         MTR.makeMaterial(DataFile.dataFileDirectory + DataFile.ingredientFileName);
 
         PwdRepository PR = new PwdRepository();
-        PR.makeMenu(DataFile.dataFileDirectory + DataFile.adminFileName);
+        PR.makePwd(DataFile.dataFileDirectory + DataFile.adminFileName);
 
 //        OrderPrompt orderPrompt = AppConfig.orderPrompt();
         ManagePrompt managePrompt = AppConfig.managePrompt();
