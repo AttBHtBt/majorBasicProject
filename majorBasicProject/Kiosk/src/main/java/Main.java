@@ -5,7 +5,9 @@ import kiosk.prompt.OrderPrompt;
 
 public class Main {
     public static void main(String[] args){
-        OrderPrompt orderPrompt = AppConfig.orderPrompt();
-    }
 
+        OrderPrompt orderPrompt = AppConfig.orderPrompt();
+        ManagePrompt managePrompt = AppConfig.managePrompt();
+
+    }
 }
