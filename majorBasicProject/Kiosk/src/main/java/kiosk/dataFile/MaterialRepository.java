@@ -24,7 +24,7 @@ public class MaterialRepository {
                 System.out.println(lineArr[1].trim());*/
             }
         }catch (FileNotFoundException e){
-            System.out.println("FileNotFoundException");
+            System.out.println("FileNotFoundException: " + fileName);
         }
     }
 

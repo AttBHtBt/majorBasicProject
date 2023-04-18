@@ -9,6 +9,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
+
+/*
+* 파일 무결성 검사 : kiosk.manager.Admin의 *SyntaxValid 함수들 사용해서 각각외 요소들 확인 가능.
+ */
+
+
 public class MenuRepository {
 
     private static final HashMap<Integer, Menu> MENU_Map = new HashMap<>();
@@ -58,7 +64,7 @@ public class MenuRepository {
             }
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
-            System.out.println("FileNotFoundException");
+            System.out.println("FileNotFoundException: FileName" + fileName);
         } catch (IndexOutOfBoundsException e){
             System.out.println("IndexOutOfBoundsException");
         }

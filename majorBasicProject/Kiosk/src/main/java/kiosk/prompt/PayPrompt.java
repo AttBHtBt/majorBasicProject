@@ -1,9 +1,13 @@
 package kiosk.prompt;
-import kiosk.prompt.OrderPrompt;
+//import kiosk.prompt.OrderPrompt;
 
 
 public class PayPrompt {
-    OrderPrompt op = new OrderPrompt();
-
+    public PayPrompt(){
+        showPrompt();
+    }
+    private void showPrompt(){
+        System.out.println("Pay > ");
+    }
 
 }
