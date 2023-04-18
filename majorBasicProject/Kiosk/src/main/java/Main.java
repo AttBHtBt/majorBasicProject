@@ -12,6 +12,7 @@ public class Main {
 
         MaterialRepository MTR = new MaterialRepository();
         MTR.makeMaterial("C:\\workspace\\kiosk\\majorBasicProject\\Kiosk\\src\\material.csv");
+
         OrderPrompt orderPrompt = AppConfig.orderPrompt();
         ManagePrompt managePrompt = AppConfig.managePrompt();
 
