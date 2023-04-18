@@ -88,19 +88,9 @@ public class MenuRepository {
         MENU_Map.put(key, menu);
     }
 
-    /*
-    1 아메리카노
-    2 아이스티
-    3 물
-    4 바닐라라떼
-    for(int i; i<map.size; i++){
-        menu = map.get(i).getName
-
-    }
-     */
-
     void deleteMenu(String name, String option){
-
+        String findKey = name + option;
+        MENU_Map.remove(findKey);
     }
 
     void regenerateMenuFile(){

@@ -41,6 +41,10 @@ public class MaterialRepository {
         Material_Map.put(material.getName(), material);
     }
 
+    void deleteMaterial(String name){
+        Material_Map.remove(name);
+    }
+
     void regenerateMaterialFile(){
         // 파일에 문제 있으면 여기서 regenerate 할 예정.
     }
