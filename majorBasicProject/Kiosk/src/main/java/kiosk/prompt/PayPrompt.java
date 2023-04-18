@@ -1,5 +1,5 @@
 package kiosk.prompt;
-import kiosk.prompt.OrderPrompt;
+//import kiosk.prompt.OrderPrompt;
 
 
 public class PayPrompt {
