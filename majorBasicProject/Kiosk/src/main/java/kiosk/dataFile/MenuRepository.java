@@ -63,14 +63,14 @@ public class MenuRepository {
                 // 얘네는 체크용으로 만들어 놓은 코드이니 신경 안써도 괜찮다.
                 //System.out.println("Mission Complete");
 
-         /*       for(int i = 0; i<3; i++){
+                for(int i = 0; i<3; i++){
                     System.out.println(lineArr[i]);
                 }
 
                 for(int j = 0; j<dynamicArray.size(); j++){
                     System.out.print(dynamicArray.get(j).get(0));
                     System.out.println(dynamicArray.get(j).get(1));
-                }*/
+                }
 
 
             }

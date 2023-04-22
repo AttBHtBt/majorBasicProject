@@ -7,8 +7,8 @@ import java.time.chrono.MinguoEra;
 
 public class DataFile {
     public static String dataFileDirectory = ".\\Kiosk\\src\\";
-    public static String menuFileName = "menu.csv";
-    public static String ingredientFileName = "ingredients.csv";
+    public static String menuFileName = "menu_1.csv";
+    public static String ingredientFileName = "ingredients_1.csv";
     public static String adminFileName = "admin.txt";
 
     /**
