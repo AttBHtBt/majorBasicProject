@@ -139,7 +139,8 @@ public class OrderPrompt {
                     for (Map.Entry<String, Menu> entry : menus.entrySet()){ // 장바구니 추가
                         String strKey = entry.getKey();
                         Menu m= entry.getValue();
-                        if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state)) ; //개수 항목 ++;
+                        if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state))
+                            m.setOrderCount(m.getOrderCount() + parseInt(ordline_howmany_front)); //개수 항목 ++;
                     }
                 }
                 else{
