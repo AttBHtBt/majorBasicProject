@@ -8,6 +8,8 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.List;
 
+import static java.lang.Integer.parseInt;
+
 public class OrderPrompt {
     private HashMap<String, Menu> menus = MenuRepository.getMenu_Map();
     private String status = "Good";
@@ -16,8 +18,8 @@ public class OrderPrompt {
         OrderController();           
     }
 
-    private String OrderController(){
-        while(status.equals("Good"){
+    private void OrderController(){
+        while(status.equals("Good")){
             
             showPrompt();                                   //프롬프트를 보여준다
 
@@ -38,19 +40,24 @@ public class OrderPrompt {
                     exitCall();                             //exit함수 호출
                     break;                                  //switch문 탈출
                 default:
-                    checkCall();                            //check함수 호출
+                    checkCall(str);                            //check함수 호출
                     break;                                  //switch문 탈출
             }
         }
     }
 
+
     private void showPrompt(){
         System.out.println("Menu");
         System.out.println("메뉴, 가격과 선택할 수 있는 메뉴 옵션입니다.");
         System.out.println("----------------------------------------------------------------");
-        for(Menu m : menus){
+
+        for (Map.Entry<String, Menu> entry : menus.entrySet()){
+            String strKey = entry.getKey();
+            Menu m= entry.getValue();
             System.out.println(m.getMenu()+" "+m.getBeverageStateOption()+" "+m.getPrice()+"원");
         }
+
         System.out.println("----------------------------------------------------------------");
         System.out.println("핫, 아이스 두가지 선택이 가능한 메뉴는 ICE 선택시 500원이 추가 됩니다.");
         shoppingBasketPrompt();
@@ -74,10 +81,7 @@ public class OrderPrompt {
         System.out.println("exit Done");
         System.exit(0);                                         //프로그램 전체 종료
     }              
-    private void checkCall(){               //홍
-        OrderController();
-        private void checkCall(String s){               //홍
-            //OrderController();
+    private void checkCall(String s){               //홍
             //구분하기
             String ord_line = s;
             String ordline_menu = null,ordline_state = null,ordline_howmany = null;
@@ -115,8 +119,11 @@ public class OrderPrompt {
                     if(0<parseInt(ordline_howmany_front) && ((ordline_howmany_rear.equals("잔") || ordline_howmany_rear.equals("개")) || ordline_howmany_rear.equals("")))
                         ordline_checkswitch++; // 숫자 부분이 1이상 인티저이고 숫자 뒷부분이 "잔" 또는 "개" 또는 ""이면
                 }
-                for(Menu m : menus)
+                for (Map.Entry<String, Menu> entry : menus.entrySet()){
+                    String strKey = entry.getKey();
+                    Menu m= entry.getValue();
                     if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state))  ordline_checkswitch++;
+                }
             }
             if(ordline_checkswitch>1){
                 System.out.println("옳은 입력임");
