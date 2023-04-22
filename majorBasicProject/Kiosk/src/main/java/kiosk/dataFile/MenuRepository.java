@@ -33,7 +33,7 @@ public class MenuRepository {
 
                 check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
                         && Admin.isMenuPriceSemanticsValid(lineArr[1].trim())
-                        && Admin.isMenuOptionSyntaxValid(lineArr[1].trim());
+                        && Admin.isMenuOptionSyntaxValid(lineArr[2].trim());
 
                 for(int j = 3; j< lineArr.length; j++){
                     check = check && Admin.isRecipieSyntaxValid(lineArr[j].trim())
