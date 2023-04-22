@@ -48,7 +48,7 @@ public class ManagePromptToken {
         for (String item: items){
             String[] tokens = item.split(":");
             this.items.add(
-                    new Item(item, tokens[0], Float.parseFloat(tokens[1])));
+                    new Item(item, tokens[0], Integer.parseInt(tokens[1])));
         }
     }
 
@@ -57,8 +57,8 @@ public class ManagePromptToken {
 
         protected String originalString;
         protected String item;
-        protected float quantity;
-        public Item(String originalString, String item, float quantity) {
+        protected int quantity;
+        public Item(String originalString, String item, int quantity) {
             this.originalString = originalString;
             this.item = item;
             this.quantity = quantity;
@@ -81,11 +81,11 @@ public class ManagePromptToken {
             this.item = item;
         }
 
-        public float getQuantity() {
+        public int getQuantity() {
             return quantity;
         }
 
-        public void setQuantity(float quantity) {
+        public void setQuantity(int quantity) {
             this.quantity = quantity;
         }
     };

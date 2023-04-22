@@ -2,14 +2,13 @@ package kiosk.domain;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class Menu {
     private String menu;      //메뉴이름
     private int price;       //메뉴가격
     private String beverageStateOption;   //음료상태옵션
     private HashMap<String, Integer> ingredient  = new HashMap<>(); // 재료
-
-
     private int orderCount = 0;
 
     public Menu(String menu, String price, String beverageStateOption, ArrayList<ArrayList<String>> dynamicArray) {
@@ -18,6 +17,17 @@ public class Menu {
         this.beverageStateOption = beverageStateOption;
         for(int j = 0; j<dynamicArray.size(); j++){
             ingredient.put(dynamicArray.get(j).get(0), Integer.parseInt(dynamicArray.get(j).get(1)));
+        }
+    }
+
+    public Menu(String menu, int price, String beverageStateOption, List<String> unDividedIngredients) {
+        this.menu = menu;
+        this.price = price;
+        this.beverageStateOption = beverageStateOption;
+        for(int j = 0; j<unDividedIngredients.size(); j++){
+            String str = unDividedIngredients.get(j);
+            String[] divided = str.split(":");
+            ingredient.put(divided[0], Integer.parseInt(divided[1]));
         }
     }
 

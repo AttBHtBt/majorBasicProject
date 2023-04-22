@@ -37,16 +37,18 @@ public class MaterialRepository {
     public static HashMap<String, Material> getMaterial_Map(){
         return Material_Map;
     }
-    void addMaterial(Material material){
+    
+    public static boolean isDuplicatedMaterial(String ingredient){
+        if (Material_Map.get(ingredient) == null)
+            return false;
+        else 
+            return true;
+    }
+    public static void addMaterial(Material material){
         Material_Map.put(material.getName(), material);
     }
 
-    void deleteMaterial(String name){
+    public static void deleteMaterial(String name){
         Material_Map.remove(name);
     }
-
-    void regenerateMaterialFile(){
-        DataFile.regenerateIngredientCSV();
-    }
-
 }
