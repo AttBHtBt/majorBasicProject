@@ -8,6 +8,7 @@ public class Menu {
     private int price;       //메뉴가격
     private String beverageStateOption;   //음료상태옵션
     private HashMap<String, Integer> ingredient  = new HashMap<>(); // 재료
+    private int Num; // 담은 갯수
 
     public Menu(String menu, String price, String beverageStateOption, ArrayList<ArrayList<String>> dynamicArray) {
         this.menu = menu;
