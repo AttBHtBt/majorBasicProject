@@ -8,6 +8,11 @@ public class Material {
         this.amount = Integer.parseInt(amount);
     }
 
+    public Material(String name, int amount) {
+        this.name = name;
+        this.amount = amount;
+    }
+
     public String getName() {
         return name;
     }

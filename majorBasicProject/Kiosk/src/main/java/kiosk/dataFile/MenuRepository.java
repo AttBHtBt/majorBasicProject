@@ -1,15 +1,11 @@
 package kiosk.dataFile;
 
 import kiosk.domain.Menu;
-import kiosk.domain.Menu;
 import kiosk.manager.Admin;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 /*
@@ -87,11 +83,20 @@ public class MenuRepository {
         DataFile.regenerateMenuCSV();
     }
 
-
-
     public static boolean isMenuNameinRepository(String menuName, String orderOption){
         if (MENU_Map.get(menuName+orderOption) == null)
             return false;
         return true;
+    }
+    
+    
+    //출력 테스팅 용
+    public static void printAllMenus(){
+        for( HashMap.Entry<String, Menu> entry : MENU_Map.entrySet() ){
+            String strKey = entry.getKey();
+            Menu menu = entry.getValue();
+            System.out.printf("%s \t %s \t %d \t %d \t", menu.getMenu(), menu.getBeverageStateOption(), menu.getPrice(), menu.getOrderCount());
+            HashMap<String, Integer> ingredient = menu.getIngredient();
+        }
     }
 }

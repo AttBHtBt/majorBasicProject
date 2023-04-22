@@ -4,51 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="105a9569-4b28-401a-b891-d9a71f8fba39" name="Changes" comment="hch">
-      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/admin_1.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/admin_1_error.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/ingredients_1_error.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/menu_1_error.csv" afterDir="false" />
+    <list default="true" id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="Modified : regenerate logic">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-04-18__6_25__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-04-17__8_29__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2023-04-17__8_29__Changes_1.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/domain/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/domain/Menu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/ingredients.csv" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/ingredients.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/DataFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/DataFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MaterialRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MaterialRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/domain/ManagePromptToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/domain/ManagePromptToken.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/domain/Material.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/domain/Material.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/domain/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/domain/Menu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$/majorBasicProject/Kiosk">
-      <ProjectState />
-    </projectState>
-  </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand />
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
   <component name="Git.Settings">
-    <option name="RECENT_BRANCH_BY_REPOSITORY">
-      <map>
-        <entry key="$PROJECT_DIR$" value="payment" />
-      </map>
-    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectId" id="2OmCrl8vJPXTLYf0MxKZVY3uzsB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -56,37 +35,32 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
     "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.lookFeel"
+    "settings.editor.selected.configurable": "configurable.group.appearance",
+    "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="corretto-18" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="org.example.Kiosk.main" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
-  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task id="LOCAL-00001" summary="int orderCount in 장바구니 added">
-      <created>1682145120354</created>
+    <task id="LOCAL-00001" summary="Modified : regenerate logic">
+      <created>1682154842959</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1682145120354</updated>
+      <updated>1682154842959</updated>
+    </task>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="Modified : regenerate logic" />
+      <created>1682156570742</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682156570742</updated>
+      <workItem from="1682156574041" duration="4745000" />
     </task>
     <option name="localTasksCounter" value="2" />
     <servers />
@@ -105,7 +79,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="payment" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -118,19 +92,8 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="int orderCount in 장바구니 added" />
-    <option name="LAST_COMMIT_MESSAGE" value="int orderCount in 장바구니 added" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/PwdRepository.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="Modified : regenerate logic" />
+    <option name="LAST_COMMIT_MESSAGE" value="Modified : regenerate logic" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

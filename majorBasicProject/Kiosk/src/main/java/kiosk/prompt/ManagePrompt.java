@@ -1,22 +1,25 @@
 package kiosk.prompt;
 
+import kiosk.dataFile.MaterialRepository;
+import kiosk.dataFile.MenuRepository;
+import kiosk.domain.Material;
 import kiosk.manager.Admin;
 import kiosk.domain.ManagePromptToken;
 
 import java.util.Arrays;
 
 import java.io.PrintStream;
+import kiosk.domain.Menu;
 import java.util.*;
 
 public class ManagePrompt {
 
     private Scanner sc = new Scanner(System.in);
-
     Admin admin = Admin.getAdmin();
     private String input;
-
     private List<String> commandLineTokens;
     public ManagePromptToken tokens;
+    
 
     //정규표현식
 
@@ -65,33 +68,36 @@ public class ManagePrompt {
 
     //[공백]*menu[공백]+[-a][공백]+[메뉴][공백]+[음료상태옵션][공백]+[가격][공백]+[재료(단위):사용 수량[공백*]]+
     // command option menu menuOption price [ingredients]+
-
-
+    
     /*
         MENU
      */
+    
+    //tokens : menu, -a, menuName, menuOption, price, [ingredients],...
     private void addMenu(){
-
         List<String> unDividedIngredients = commandLineTokens.subList(5, commandLineTokens.size());
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),
                 commandLineTokens.get(3), commandLineTokens.get(4), unDividedIngredients);
         System.out.println(tokens.toString());
 
         if (!addMenuSyntaxValid()){
-            System.out.println("Syntax Error");
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
         if (!addMenuSemanticsValid()){
-            System.out.println("SemanticsError");
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
-
-//        if (isAlreadyInMenuDatabase())
-//            printerror();
-//        addMenutoMenuDatabase(tokens);
-
+        if (MenuRepository.isMenuNameinRepository(tokens.getMenu(), tokens.getMenuOption())) {
+            System.out.println("(오류) 동일한 이름의 메뉴가 동시에 동일한 음료 상태 옵션과 함께 존재합니다.");
+            return;
+        }
+        
+        //String menu, String price, String beverageStateOption, List<String> ["abc(ml):123, ..."]
+        Menu menu = new Menu(tokens.getMenu(), tokens.getPrice(),  tokens.getMenuOption(), unDividedIngredients);
+        MenuRepository.addMenu(menu);
     }
-
+    
     private boolean addMenuSyntaxValid() {
         boolean isValidAddMenuCommand = (
                 Admin.menuCheckAddCommand(tokens.getOptionCommand()) &&
@@ -126,18 +132,20 @@ public class ManagePrompt {
         System.out.println(tokens.toString());
 
         if (!addMenuSyntaxValid()){
-            System.out.println("Syntax Error");
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
         if (!addMenuSemanticsValid()) {
-            System.out.println("SemanticsError");
-            return ;
-
-//        if (!deleteMenuFromDatabase() && !addMenutoMenuDatabase())
-//            return;     //하나라도 실패했다면
-//        else {
-//                //modify가 성공했다면
-//        }
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+            return;
+        }
+        if (!MenuRepository.isMenuNameinRepository(tokens.getMenu(), tokens.getMenuOption()))
+            System.out.println("(오류) 메뉴가 레시피 파일에 존재하지 않습니다.");
+        else {
+            MenuRepository.deleteMenu(tokens.getMenu(), tokens.getMenuOption());
+            MenuRepository.addMenu(
+                    new Menu(tokens.getMenu(), tokens.getPrice(),  tokens.getMenuOption(), unDividedIngredients)
+            );
         }
     }
 
@@ -147,13 +155,6 @@ public class ManagePrompt {
           deleteMenuFromDatabase()
 
        */
-//    private boolean addMenuToMenuDatabase() {
-//        return false;
-//    }
-//
-//    private boolean deleteMenuFromDatabase() {
-//        return false;
-//    }
 
     //[공백]*menu[공백]+[-d][공백]+[메뉴][공백]+[음료상태옵션][공백]*
     private void deleteMenu(){
@@ -163,16 +164,17 @@ public class ManagePrompt {
 
         if (!deleteMenuSyntaxValid())
         {
-            System.out.println("Syntax Error");
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
         if (!deleteMenuSemanticsValid()){
-            System.out.println("SemanticsError");
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
-
-//        if (!deleteMenuFromDatabase())
-//            return;
+        if (!MenuRepository.isMenuNameinRepository(tokens.getMenu(), tokens.getMenuOption()))
+            System.out.println("(오류) 메뉴가 레시피 파일에 존재하지 않습니다.");
+        else
+            MenuRepository.deleteMenu(tokens.getMenu(), tokens.getMenuOption());
     }
 
     private boolean deleteMenuSyntaxValid() {
@@ -198,17 +200,20 @@ public class ManagePrompt {
         System.out.println(tokens.toString());
 
         if (!addStockSyntaxValid()){
-            System.out.println("Syntax Error");
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
         if (!addStockSemanticsValid()){
-            System.out.println("SemanticsError");
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
-
-        //동일한 재고가 있다면
-//        if (!addStocktoDatabase())
-//            return ;
+        
+        // tokens.getItems().get(0).getItem() : Item: 재고이름:수량, 재고이름, 수량
+        if (MaterialRepository.isDuplicatedMaterial(tokens.getItems().get(0).getItem()))
+            System.out.println("(오류) : 이미 데이터베이스에 동일한 재료가 존재합니다.");
+        else {
+            MaterialRepository.addMaterial(new Material(tokens.getItems().get(0).getItem(), tokens.getItems().get(0).getQuantity()));
+        }
     }
 
     private boolean addStockSyntaxValid() {
@@ -235,19 +240,24 @@ public class ManagePrompt {
         System.out.println(tokens.toString());
 
         if (!addStockSyntaxValid()){
-            System.out.println("Syntax Error");
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
         if (!addStockSemanticsValid()){
-            System.out.println("SemanticsError");
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
 
         //동일한 재고가 없다면
-//        if (!deleteStockfromDatabase())
-//            return;
-//        addStockToDatabase();
+        if (!MaterialRepository.isDuplicatedMaterial(tokens.getItems().get(0).getItem())){
+            System.out.println("(오류) 데이터베이스에 동일한 재료가 존재하지 않습니다.");
+        } else {
+            MaterialRepository.deleteMaterial(tokens.getItems().get(0).getItem());
+            MaterialRepository.addMaterial(new Material(tokens.getItems().get(0).getItem(), tokens.getItems().get(0).getQuantity()));
+        }
     }
+    
+    
     private void deleteStock(){
         //명령줄 형식에 맞는지 확인
         //의미규칙에 맞는지 확인
@@ -256,12 +266,14 @@ public class ManagePrompt {
         System.out.println(tokens.toString());
 
         if (!deleteStockSyntaxValid()){
-            System.out.println("Syntax Error");
-            return ;
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+            return;
         }
-        //동일한 재료가 없다면
-//        if (!deleteStockFromDatabase())
-//            return;
+        if (!MaterialRepository.isDuplicatedMaterial(tokens.getItems().get(0).getItem())){
+            System.out.println("(오류) 데이터베이스에 동일한 재료가 존재하지 않습니다.");
+        } else {
+            MaterialRepository.deleteMaterial(tokens.getItems().get(0).getItem());
+        }
     }
 
     private boolean deleteStockSyntaxValid() {
