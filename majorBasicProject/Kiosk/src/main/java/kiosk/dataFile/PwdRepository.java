@@ -29,12 +29,13 @@ public class PwdRepository {
      * "admin:admin\nfadf"== false
      * "admin:admin\t" == false
      */
-    private boolean isAdminFileValid(Scanner scan) {
+    public static boolean isAdminFileValid(Scanner scan) {
         while (scan.hasNext()) {
             String str = scan.nextLine();
             if (!Pattern.matches("admin:admin", str) || scan.hasNext()) {
                 //admin:admin이 아닐 경우 + admin:admin 이외의 것이 적혀있을 경우 무결성 오류
                 System.out.println("isNotValid [admin.txt] file");
+                DataFile.isAdminFileValid = false;
                 return false;
             }
         }

@@ -1,9 +1,11 @@
 package kiosk.prompt;
 
-import kiosk.dataFile.MenuRepository;
-import kiosk.dataFile.cartRepository;
+import kiosk.dataFile.*;
+import kiosk.domain.Material;
 import kiosk.domain.Menu;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -73,15 +75,24 @@ public class OrderPrompt {
 
     }
     private void payCall(){                                     //pay 함수
-        System.out.println("pay Done");
         PayPrompt payPrompt = new PayPrompt();                  //payPrompt 클래스를 생성한다
     }
     private void manageCall(){                                  //manage 함수
-        System.out.println("manage Done");
         ManagePrompt managePrompt = new ManagePrompt();         //managePrompt 클래스를 생성한다
     }
     private void exitCall(){                                    //exit 함수
-        System.out.println("exit Done");
+        try {
+            boolean regenerate = MenuRepository.isMenuFilevalid(DataFile.DATAFILEDIRECTORY + DataFile.menuFileName) ||
+                MaterialRepository.isIngredientFileValid(DataFile.DATAFILEDIRECTORY + DataFile.menuFileName) ||
+                PwdRepository.isAdminFileValid(new Scanner(new File(DataFile.DATAFILEDIRECTORY + DataFile.adminFileName)));
+            
+            if (regenerate)
+                DataFile.regenerate();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        MenuRepository.regenerateMenuFile();
+            
         System.exit(0);                                         //프로그램 전체 종료
     }              
     private void checkCall(String s){               //홍

@@ -70,4 +70,13 @@ public class DataFile {
         if (!isIngredientFileValid)
             regenerateAdminTxT();
     }
+    
+    public static void pwd(){
+        System.out.println(System.getProperty("user.dir"));
+    }
+    
+    public static void currentDir(String pathName){
+        File dir = new File(pathName);
+        System.out.println(dir.getAbsolutePath());
+    }
 }

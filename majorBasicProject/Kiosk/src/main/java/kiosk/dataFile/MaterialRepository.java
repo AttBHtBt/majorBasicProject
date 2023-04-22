@@ -33,6 +33,28 @@ public class MaterialRepository {
                 System.out.println("FileNotFoundException: " + fileName);
         }
     }
+    
+    //중복 아님.
+    public static boolean isIngredientFileValid (String fileName) {
+        try (Scanner scan = new Scanner(new File(fileName))) {
+            Boolean check = true;
+            while (scan.hasNext()) {
+                String str = scan.nextLine();
+
+                check = check && Admin.CSVisStockSyntaxValid(str) &&
+                        Admin.CSVisStockSemanticsValid(str);
+                if(!check)
+                    break;
+
+                String[] lineArr = str.split(",");
+            }
+            if (!check)
+                DataFile.isIngredientFileValid = false;
+        }catch (FileNotFoundException e){
+            System.out.println("FileNotFoundException: " + fileName);
+        }
+        return true;
+    }
 
     public static HashMap<String, Material> getMaterial_Map(){
         return Material_Map;
