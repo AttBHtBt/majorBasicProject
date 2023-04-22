@@ -14,23 +14,22 @@ public class Main {
     public static void main(String[] args){
 
         MenuRepository MR = new MenuRepository();
-//        MR.makeMenu(DataFile.dataFileDirectory + DataFile.menuFileName);
-
         System.out.println(System.getProperty("user.dir"));
-        File dir = new File("..\\..\\");
-
-        String[] filenames = dir.list();
-        for (String filename : filenames) {
-            System.out.println("filename : " + filename);
-        }
-
-        MR.makeMenu("..\\..\\..\\src" + DataFile.menuFileName);
+        MR.makeMenu("C:\\Users\\bacon\\IdeaProjects\\work\\majorBasicProject\\Kiosk\\src\\menu_1.csv");
+//        File dir = new File("..\\..\\");
 //
-//        MaterialRepository MTR = new MaterialRepository();
-//        MTR.makeMaterial(DataFile.dataFileDirectory + DataFile.ingredientFileName);
+//        String[] filenames = dir.list();
+//        for (String filename : filenames) {
+//            System.out.println("filename : " + filename);
+//        }
+
+
 //
-//        PwdRepository PR = new PwdRepository();
-//        PR.makePwd(DataFile.dataFileDirectory + DataFile.adminFileName);
+        MaterialRepository MTR = new MaterialRepository();
+        MTR.makeMaterial("C:\\Users\\bacon\\IdeaProjects\\work\\majorBasicProject\\Kiosk\\src\\ingredients_1.csv");
+//
+        PwdRepository PR = new PwdRepository();
+        PR.makePwd("C:\\Users\\bacon\\IdeaProjects\\work\\majorBasicProject\\Kiosk\\src\\admin.txt");
 
         OrderPrompt orderPrompt = AppConfig.orderPrompt();
 //        ManagePrompt managePrompt = AppConfig.managePrompt();

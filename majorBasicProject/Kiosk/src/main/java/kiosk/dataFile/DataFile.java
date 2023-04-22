@@ -43,7 +43,7 @@ public class DataFile {
     public static void regenerateAdminTxT() {
         File menuFile = new File(dataFileDirectory + menuFileName_Testing);
         File ingredientFile = new File(dataFileDirectory + ingredientFileName_Testing);
-        File adminFile = new File(dataFileDirectory + adminFileName_Testing);
+        File adminFile = new File("C:\\Users\\bacon\\IdeaProjects\\work\\majorBasicProject\\Kiosk\\src\\admin.txt");
         try {
             FileWriter adminFileW = new FileWriter(adminFile);
             adminFileW.write("");

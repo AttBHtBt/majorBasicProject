@@ -32,7 +32,7 @@ public class OrderPrompt {
                     payCall();                              //pay함수 호출
                     status = "exit";                        //status 값을 exit로 바꿔 루프를 돌지 않고 종료하게 만든다
                     break;                                  //switch문 탈출
-                case "manage":                              //manage인 경우에
+                case "admin:admin":                              //manage인 경우에
                     manageCall();                           //manage함수 호출
                     status = "exit";                        //status 값을 exit로 바꿔 루프를 돌지 않고 종료하게 만든다
                     break;                                  //switch문 탈출
@@ -94,7 +94,7 @@ public class OrderPrompt {
             if (0 < slash_cnt && slash_cnt < 3) {
                 if (slash_cnt == 1) { // 구분자 하나일 때 ,첫 구분자 위치 뒤" /" 추가
                     int k = ord_line.indexOf("/");
-                    ord_line=ord_line.replace(ord_line.substring(k+1,ord_line.length()), " /" + ord_line.substring(k+1,ord_line.length()));
+                    ord_line=ord_line.replace(ord_line.substring(k+1,ord_line.length()), "-/" + ord_line.substring(k+1,ord_line.length()));
                 }
 
                 String a[]=ord_line.split("/");
