@@ -17,7 +17,7 @@ public class OrderPrompt {
     }
 
     private String OrderController(){
-        while(status.equals("Good"){
+        while(status.equals("Good")){
             
             showPrompt();                                   //프롬프트를 보여준다
 

@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Map;
+import java.util.Map.Entry;
+
 
 
 /*
@@ -33,7 +36,7 @@ public class MenuRepository {
 
                 check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
                         && Admin.isMenuPriceSemanticsValid(lineArr[1].trim())
-                        && Admin.isMenuOptionSyntaxValid(lineArr[1].trim());
+                        && Admin.isMenuOptionSyntaxValid(lineArr[2].trim());
 
                 for(int j = 3; j< lineArr.length; j++){
                     check = check && Admin.isRecipieSyntaxValid(lineArr[j].trim())
@@ -62,7 +65,7 @@ public class MenuRepository {
 
                 // 얘네는 체크용으로 만들어 놓은 코드이니 신경 안써도 괜찮다.
                 //System.out.println("Mission Complete");
-
+/*
                 for(int i = 0; i<3; i++){
                     System.out.println(lineArr[i]);
                 }
@@ -72,8 +75,10 @@ public class MenuRepository {
                     System.out.println(dynamicArray.get(j).get(1));
                 }
 
-
+*/
             }
+
+            printHashmap(MENU_Map);
             if(!check)
                 regenerateMenuFile();
         } catch (FileNotFoundException e) {
@@ -102,11 +107,18 @@ public class MenuRepository {
         DataFile.regenerateMenuCSV();
     }
 
-
-
     public static boolean isMenuNameinRepository(String menuName, String orderOption){
         if (MENU_Map.get(menuName+orderOption) == null)
             return false;
         return true;
+    }
+
+    private void printHashmap(HashMap<String,Menu> map){
+        for (Entry<String, Menu> entrySet : map.entrySet()) {
+            System.out.println(entrySet.getKey() + " : " + entrySet.getValue().getMenu() + " : " +
+                    entrySet.getValue().getPrice() + " : " + entrySet.getValue().getBeverageStateOption()+
+                    " : " + entrySet.getValue().getIngredient());
+        }
+
     }
 }

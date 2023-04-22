@@ -178,10 +178,12 @@ public class Admin {
         int integer;                                   //검사완료
         try{
             integer=Integer.parseInt(strInteger);
+
         } catch(NumberFormatException e){
+            System.out.println("integer");
             return false;
         }
-        return integer<=0;              //return integer>0?
+        return integer>=0;              //return integer>0?
     }
     public static boolean checkPriceForm(String strPrice){//검사완료
         return checkIntegerForm(strPrice);
@@ -322,7 +324,8 @@ public class Admin {
         int quantityToNumber = Integer.parseInt(quantity);
         boolean isQuantityRangeValid = (0 <= quantityToNumber && quantityToNumber <= Integer.MAX_VALUE * 1.0);
 
-        return (isQuantityRangeValid);
+        return isQuantityRangeValid;
+
     }
 
     public static boolean isAdminSyntaxValid(String str)
@@ -337,15 +340,17 @@ public class Admin {
 
     public static boolean CSVisStockSyntaxValid(String str)
     {
+        System.out.println("yyyy");
         String[] splittedIngredients;
         String ingredient;
         String quantity;
 
         splittedIngredients = str.trim().split(",");
-        ingredient = splittedIngredients[0];
-        quantity = splittedIngredients[1];
+        ingredient = splittedIngredients[0].trim();
+        quantity = splittedIngredients[1].trim();
 
         boolean isIngredientSyntaxValid = Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", ingredient);
+//        boolean isIngredientSyntaxValid = Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", "물(ml)");
         boolean isQuanitySyntaxValid = Pattern.matches("^[0-9]{1,10}", quantity);
 
         return (isIngredientSyntaxValid && isQuanitySyntaxValid);
@@ -353,6 +358,7 @@ public class Admin {
 
     public static boolean CSVisStockSemanticsValid(String str)
     {
+        System.out.println("hellohello");
         String[] splittedIngredients;
         String ingredient;
         String quantity;
@@ -362,7 +368,7 @@ public class Admin {
         quantity = splittedIngredients[1];
 
         int quantityToNumber = Integer.parseInt(quantity);
-        boolean isQuantityRangeValid = (0 <= quantityToNumber && quantityToNumber <= Integer.MAX_VALUE * 1.0);
+        boolean isQuantityRangeValid = ((0 <= quantityToNumber) && (quantityToNumber <= (Integer.MAX_VALUE * 1)));
 
         return (isQuantityRangeValid);
     }

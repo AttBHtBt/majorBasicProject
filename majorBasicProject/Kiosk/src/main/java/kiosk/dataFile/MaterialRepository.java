@@ -19,19 +19,22 @@ public class MaterialRepository {
             while (scan.hasNext()) {
                 String str = scan.nextLine();
 
-                check = check && Admin.CSVisStockSyntaxValid(str) &&
-                        Admin.CSVisStockSemanticsValid(str);
+
+                check = check && Admin.CSVisStockSyntaxValid(str) && Admin.CSVisStockSemanticsValid(str);
+                check = check;
                 if(!check)
                     break;
 
                 String[] lineArr = str.split(",");
                 this.addMaterial(new Material(lineArr[0].trim(), lineArr[1].trim()));
 
-                /*System.out.print(lineArr[0].trim()); 확인용 프린트문
-                System.out.println(lineArr[1].trim());*/
+                System.out.print(lineArr[0].trim());
+                System.out.println(lineArr[1].trim());
             }
-            if(!check)
+            if(!check) {
+                System.out.println("hellow mf");
                 regenerateMaterialFile();
+            }
         }catch (FileNotFoundException e){
                 System.out.println("FileNotFoundException: " + fileName);
         }

@@ -4,7 +4,6 @@ import kiosk.prompt.OrderPrompt;
 
 import java.util.Scanner;
 
-
 public class PayPrompt {
 
     private int number;//장바구니에서 가져온 결제 예정액
