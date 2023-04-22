@@ -9,6 +9,9 @@ public class Menu {
     private String beverageStateOption;   //음료상태옵션
     private HashMap<String, Integer> ingredient  = new HashMap<>(); // 재료
 
+
+    private int orderCount = 0;
+
     public Menu(String menu, String price, String beverageStateOption, ArrayList<ArrayList<String>> dynamicArray) {
         this.menu = menu;
         this.price = Integer.parseInt(price);
@@ -49,4 +52,13 @@ public class Menu {
     public void setIngredient(HashMap<String, Integer> ingredient) {
         this.ingredient = ingredient;
     }
+
+    public int getOrderCount() {
+        return orderCount;
+    }
+
+    public void setOrderCount(int orderCount) {
+        this.orderCount = orderCount;
+    }
+
 }
