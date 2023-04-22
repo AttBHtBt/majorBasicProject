@@ -1,0 +1,19 @@
+<changelist name="Uncommitted_changes_before_Checkout_at_2023-04-18_오후_6_25_[Changes]" date="1681809925959" recycled="true" deleted="true">
+  <option name="PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-04-18_오후_6_25_[Changes]/shelved.patch" />
+  <option name="DESCRIPTION" value="Uncommitted changes before Checkout at 2023-04-18 오후 6:25 [Changes]" />
+  <binary>
+    <option name="BEFORE_PATH" value="majorBasicProject/Kiosk/build/classes/java/main/kiosk/prompt/PayPrompt.class" />
+    <option name="AFTER_PATH" value="majorBasicProject/Kiosk/build/classes/java/main/kiosk/prompt/PayPrompt.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-04-18_오후_6_25_[Changes]/PayPrompt.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="majorBasicProject/Kiosk/build/classes/java/main/kiosk/prompt/ManagePrompt.class" />
+    <option name="AFTER_PATH" value="majorBasicProject/Kiosk/build/classes/java/main/kiosk/prompt/ManagePrompt.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-04-18_오후_6_25_[Changes]/ManagePrompt.class" />
+  </binary>
+  <binary>
+    <option name="BEFORE_PATH" value="majorBasicProject/Kiosk/build/classes/java/main/kiosk/config/AppConfig.class" />
+    <option name="AFTER_PATH" value="majorBasicProject/Kiosk/build/classes/java/main/kiosk/config/AppConfig.class" />
+    <option name="SHELVED_PATH" value="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2023-04-18_오후_6_25_[Changes]/AppConfig.class" />
+  </binary>
+</changelist>

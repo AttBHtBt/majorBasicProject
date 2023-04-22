@@ -1,0 +1,19 @@
+Index: majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package kiosk.dataFile;\r\n\r\nimport kiosk.domain.Menu;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.Arrays;\r\nimport java.util.List;\r\n\r\npublic class MenuRepository {\r\n\r\n    private static final List<Menu> menus= new ArrayList<>(\r\n            Arrays.asList(new Menu(\"아메리카노\",\"2,500\",\"ICE\"),\r\n                    new Menu(\"21아메리카노\",\"2,000\",\"HOT\"),\r\n                    new Menu(\"카페라떼\",\"3,000\",\"ICE\"),\r\n                    new Menu(\"카페라떼\",\"2,500\",\"HOT\")\r\n            )\r\n    );\r\n\r\n    private MenuRepository(){\r\n\r\n    }\r\n\r\n    public static List<Menu> getMenus(){\r\n        return menus;\r\n    }\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java b/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java
+--- a/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java	
++++ b/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java	
+@@ -10,7 +10,7 @@
+ 
+     private static final List<Menu> menus= new ArrayList<>(
+             Arrays.asList(new Menu("아메리카노","2,500","ICE"),
+-                    new Menu("21아메리카노","2,000","HOT"),
++                    new Menu("아메리카노","2,000","HOT"),
+                     new Menu("카페라떼","3,000","ICE"),
+                     new Menu("카페라떼","2,500","HOT")
+             )
