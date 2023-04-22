@@ -10,44 +10,37 @@ import java.util.List;
 
 public class OrderPrompt {
     private HashMap<String, Menu> menus = MenuRepository.getMenu_Map();
+    private String status = "Good";
 
     public OrderPrompt(){                
         OrderController();           
     }
 
     private String OrderController(){
-        while(true){
-            showPrompt();
-            Scanner sc = new Scanner(System.in);
+        while(status.equals("Good"){
+            
+            showPrompt();                                   //프롬프트를 보여준다
+
+            Scanner sc = new Scanner(System.in);            //사용자에게 입력을 받는다
             String str = sc.nextLine();
 
-            // if(str.equals("pay")){
-            //     payCall();
-            // }
-            // if(str.equals("manage")){
-            //     manageCall();
-            // }
-            // if(str.equals("exit")){
-            //     exitCall();
-            // }
 
-            switch(str) {
-                case "pay" :
-                    payCall();
-                    str="pay";
-                    break;
-                case "manage" :
-                    manageCall();
-                    str="manage";
-                    break;
-                case "exit" :
-                    exitCall();                    
-                    break;
-                default :
-                    checkCall();
-                    break;
+            switch (str) {                                  //입력값이
+                case "pay":                                 //pay인 경우에
+                    payCall();                              //pay함수 호출
+                    status = "exit";                        //status 값을 exit로 바꿔 루프를 돌지 않고 종료하게 만든다
+                    break;                                  //switch문 탈출
+                case "manage":                              //manage인 경우에
+                    manageCall();                           //manage함수 호출
+                    status = "exit";                        //status 값을 exit로 바꿔 루프를 돌지 않고 종료하게 만든다
+                    break;                                  //switch문 탈출
+                case "exit":                                //exit인 경우에
+                    exitCall();                             //exit함수 호출
+                    break;                                  //switch문 탈출
+                default:
+                    checkCall();                            //check함수 호출
+                    break;                                  //switch문 탈출
             }
-
         }
     }
 
@@ -55,10 +48,8 @@ public class OrderPrompt {
         System.out.println("Menu");
         System.out.println("메뉴, 가격과 선택할 수 있는 메뉴 옵션입니다.");
         System.out.println("----------------------------------------------------------------");
-        for(HashMap.Entry<String, Menu> entry: menus.entrySet()){
-            String key = entry.getKey();
-            Menu menu = entry.getValue();
-            System.out.println(menu.getMenu()+" "+menu.getBeverageStateOption()+" "+menu.getPrice()+"원");
+        for(Menu m : menus){
+            System.out.println(m.getMenu()+" "+m.getBeverageStateOption()+" "+m.getPrice()+"원");
         }
         System.out.println("----------------------------------------------------------------");
         System.out.println("핫, 아이스 두가지 선택이 가능한 메뉴는 ICE 선택시 500원이 추가 됩니다.");
@@ -66,28 +57,23 @@ public class OrderPrompt {
         System.out.println("----------------------------------------------------------------");
         System.out.println("아래의 입력 대기 줄에 주문할 메뉴를 입력해주세요.");
         System.out.println("최종결제를 원한다면 'pay'를 입력해주세요.");
-        //사용자 입력처리
-        //종료라면 exitcall
-        //관리라면 managecall
-        //결제라면 paycall
-        //아니라면 checkCall
+        System.out.print("order > ");
     }
-    private void shoppingBasketPrompt(){
+    private void shoppingBasketPrompt(){                        //장바구니 호출
 
     }
-    private void exitCall(){                //석
-        System.out.println("exit Done");
-        System.exit(0);
-        return;
-    }
-    private void manageCall(){              //석
-        System.out.println("manage Done");
-        return;
-    }
-    private void payCall(){                 //석
+    private void payCall(){                                     //pay 함수
         System.out.println("pay Done");
-        return;
+        PayPrompt payPrompt = new PayPrompt();                  //payPrompt 클래스를 생성한다
     }
+    private void manageCall(){                                  //manage 함수
+        System.out.println("manage Done");
+        ManagePrompt managePrompt = new ManagePrompt();         //managePrompt 클래스를 생성한다
+    }
+    private void exitCall(){                                    //exit 함수
+        System.out.println("exit Done");
+        System.exit(0);                                         //프로그램 전체 종료
+    }              
     private void checkCall(){               //홍
         OrderController();
         //구분하기
