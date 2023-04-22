@@ -4,8 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="105a9569-4b28-401a-b891-d9a71f8fba39" name="Changes" comment="int orderCount in 장바구니 added">
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/OrderPrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/OrderPrompt.java" afterDir="false" />
+    <list default="true" id="105a9569-4b28-401a-b891-d9a71f8fba39" name="Changes" comment="hch">
+      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/admin_1.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/admin_1_error.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/ingredients_1_error.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/menu_1_error.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/domain/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/domain/Menu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/ingredients.csv" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/ingredients.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/DataFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/DataFile.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,21 +46,29 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-18" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="majorBasicProject.Kiosk.main" />
+      <module name="org.example.Kiosk.main" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -114,5 +131,9 @@
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
