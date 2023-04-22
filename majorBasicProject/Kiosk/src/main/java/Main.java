@@ -13,16 +13,10 @@ import java.io.File;
 public class Main {
     public static void main(String[] args){
 
-        MenuRepository MR = new MenuRepository();
+
+
+        MenuRepository MR = new MenuRepository("C:\\workspace\\kiosk_new\\majorBasicProject\\Kiosk\\src\\");
 //        MR.makeMenu(DataFile.dataFileDirectory + DataFile.menuFileName);
-
-        System.out.println(System.getProperty("user.dir"));
-        File dir = new File("..\\..\\");
-
-        String[] filenames = dir.list();
-        for (String filename : filenames) {
-            System.out.println("filename : " + filename);
-        }
 
         MR.makeMenu("..\\..\\..\\src" + DataFile.menuFileName);
 //
