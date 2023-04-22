@@ -4,7 +4,8 @@ import kiosk.dataFile.MaterialRepository;
 import kiosk.dataFile.MenuRepository;
 import kiosk.dataFile.PwdRepository;
 import kiosk.prompt.ManagePrompt;
-//import kiosk.prompt.OrderPrompt;
+import kiosk.prompt.OrderPrompt;
+
 
 public class Main {
     public static void main(String[] args){
@@ -18,8 +19,8 @@ public class Main {
         PwdRepository PR = new PwdRepository();
         PR.makePwd(DataFile.dataFileDirectory + DataFile.adminFileName);
 
-//        OrderPrompt orderPrompt = AppConfig.orderPrompt();
-        ManagePrompt managePrompt = AppConfig.managePrompt();
+        OrderPrompt orderPrompt = AppConfig.orderPrompt();
+//        ManagePrompt managePrompt = AppConfig.managePrompt();
 
     }
 }

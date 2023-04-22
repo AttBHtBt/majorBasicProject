@@ -17,8 +17,8 @@ public class OrderPrompt {
     }
 
     private String OrderController(){
-        while(status.equals("Good"){
-            
+        while(status.equals("Good")){
+
             showPrompt();                                   //프롬프트를 보여준다
 
             Scanner sc = new Scanner(System.in);            //사용자에게 입력을 받는다
