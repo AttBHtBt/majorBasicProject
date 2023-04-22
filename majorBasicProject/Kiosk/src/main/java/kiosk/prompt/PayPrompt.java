@@ -3,7 +3,7 @@ import kiosk.domain.Menu;
 import kiosk.prompt.OrderPrompt;
 import java.util.Scanner;
 public class PayPrompt {
-    private int total=10000;//장바구니에서 가져온 결제 예정액,먼저 10000원이라고 가정
+    private int total_pay=10000;//장바구니에서 가져온 결제 예정액,먼저 10000원이라고 가정
     public PayPrompt(){
         showPrompt();
     }
@@ -33,18 +33,18 @@ public class PayPrompt {
         }
     };
     private void totalPay(){//총결제 함수
-        System.out.println("결제예정액:"+total+"원이 결제되었습니다.");
+        System.out.println("결제예정액:"+total_pay+"원이 결제되었습니다.");
         orderCall();
     }
     private void partPay(){//결제 예정액을 가져와서 차감시키면서 진행(total=결제 예정액,part=분할결제 금액)
         System.out.println("분할결제 시작");
-        while(total>0){//결제 예정액이 다 결제 될때까지
-            System.out.println("총 결제예정액:"+total);
+        while(total_pay>0){//결제 예정액이 다 결제 될때까지
+            System.out.println("총 결제예정액:"+total_pay);
             System.out.println("분할결제 할려는 금액을 입력하세요.:");
             try {
                 Scanner scanner = new Scanner(System.in);
                 int once_Pay = scanner.nextInt();//part=분할결제 금액
-                total-=once_Pay;
+                total_pay-=once_Pay;
             }catch (Exception e) {
                 System.out.println("(오류) 숫자(양의 정수)를 입력하세요.");
             }
