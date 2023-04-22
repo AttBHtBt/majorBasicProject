@@ -14,9 +14,9 @@ public class PwdRepository {
         try (Scanner scan = new Scanner(new File(fileName))) {
             check = check && this.isAdminFileValid(scan);
             //ㅗ디
-            if(check)
-                pwd = scan.nextLine().trim();
-            else
+            if(!check)
+//                pwd = scan.nextLine().trim();
+//            else
                 regeneratePwdFile();
         } catch (FileNotFoundException e) {
             System.out.println("FileNotFoundException: " + fileName);
