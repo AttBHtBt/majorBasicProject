@@ -29,19 +29,23 @@ public class MenuRepository {
             while(scan.hasNext() && check){
                 String str = scan.nextLine();
                 String[] lineArr = str.split(",");
+                if (!(lineArr.length >=4)) {
+                    check = false;
+                    break;
+                }
+                
                 //메뉴이름, 메뉴가격, 메뉴옵션, 레시피...
-
                 check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
                         && Admin.isMenuPriceSemanticsValid(lineArr[1].trim())
                         && Admin.isMenuOptionSyntaxValid(lineArr[2].trim());
+                
 
                 for(int j = 3; j< lineArr.length; j++){
                     check = check && Admin.isRecipieSyntaxValid(lineArr[j].trim())
                             && Admin.isRecipieSemanticsValid(lineArr[j].trim());
+                    if(!check)
+                        break;
                 }
-
-                if(!check)
-                    break;
 
                 ArrayList<ArrayList<String>> dynamicArray = new ArrayList<>();
                 for(int i = 3; i< lineArr.length; i++){
@@ -52,30 +56,11 @@ public class MenuRepository {
                     list.add(array[1].trim());
                     dynamicArray.add(list);
                 }
-
-
-                this.addMenu(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
                 //2차원 arrayList에 재료이름과 재료 수량을 넣는다.
-
-
-
-
-                // 얘네는 체크용으로 만들어 놓은 코드이니 신경 안써도 괜찮다.
-                //System.out.println("Mission Complete");
-
-         /*       for(int i = 0; i<3; i++){
-                    System.out.println(lineArr[i]);
-                }
-
-                for(int j = 0; j<dynamicArray.size(); j++){
-                    System.out.print(dynamicArray.get(j).get(0));
-                    System.out.println(dynamicArray.get(j).get(1));
-                }*/
-
-
+                this.addMenu(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
             }
-            if(!check)
-                regenerateMenuFile();
+            if (!check)
+                DataFile.isMenuFileValid = false;
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             System.out.println("FileNotFoundException: FileName" + fileName);

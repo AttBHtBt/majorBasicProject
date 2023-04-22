@@ -26,12 +26,9 @@ public class MaterialRepository {
 
                 String[] lineArr = str.split(",");
                 this.addMaterial(new Material(lineArr[0].trim(), lineArr[1].trim()));
-
-                /*System.out.print(lineArr[0].trim()); 확인용 프린트문
-                System.out.println(lineArr[1].trim());*/
             }
-            if(!check)
-                regenerateMaterialFile();
+            if (!check)
+                DataFile.isIngredientFileValid = false;
         }catch (FileNotFoundException e){
                 System.out.println("FileNotFoundException: " + fileName);
         }

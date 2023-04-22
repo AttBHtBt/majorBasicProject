@@ -21,6 +21,8 @@ public class Main {
 
         PwdRepository PR = new PwdRepository();
         PR.makePwd(DataFile.DATAFILEDIRECTORY + DataFile.adminFileName);
+        
+        DataFile.regenerate();
 
         OrderPrompt orderPrompt = AppConfig.orderPrompt();
 //        ManagePrompt managePrompt = AppConfig.managePrompt();

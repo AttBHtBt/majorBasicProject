@@ -18,6 +18,10 @@ public class DataFile {
     public static String menuFileName = "menu.csv";
     public static String ingredientFileName = "ingredients.csv";
     public static String adminFileName = "admin.txt";
+    
+    public static boolean isMenuFileValid = true;
+    public static boolean isIngredientFileValid = true;
+    public static boolean isAdminFileValid = true;
 
     /**
      * For Regenerating Testing Only
@@ -56,5 +60,14 @@ public class DataFile {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+    
+    public static void regenerate(){
+        if (!isMenuFileValid)
+            regenerateMenuCSV();
+        if (!isIngredientFileValid)
+            regenerateMenuCSV();
+        if (!isIngredientFileValid)
+            regenerateAdminTxT();
     }
 }
