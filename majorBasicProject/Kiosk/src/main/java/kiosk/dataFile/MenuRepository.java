@@ -144,7 +144,7 @@ public class MenuRepository {
     
     public static Menu getMenuFromNameAndOption(String menuName, String orderOption) {
         for (Menu menu : MENU_Map) {
-            System.out.printf("[%s], [%s]\n", menu.getMenu(), menu.getBeverageStateOption());
+//            System.out.printf("[%s], [%s]\n", menu.getMenu(), menu.getBeverageStateOption());
             if (menu.getMenu().equals(menuName) && menu.getBeverageStateOption().equals(orderOption)) {
                 return menu;
             }
