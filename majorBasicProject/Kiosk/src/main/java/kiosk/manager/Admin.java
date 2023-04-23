@@ -346,6 +346,8 @@ public class Admin {
         quantity = splittedIngredients[1];
 
         boolean isIngredientSyntaxValid = Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", ingredient);
+        boolean asf = Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", "원두(g)");
+        boolean test = ingredient.equals("물(ml)");
         boolean isQuanitySyntaxValid = Pattern.matches("^[0-9]{1,10}", quantity);
 
         return (isIngredientSyntaxValid && isQuanitySyntaxValid);

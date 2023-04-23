@@ -1,15 +1,11 @@
 package kiosk.dataFile;
 
 import kiosk.domain.Menu;
-import kiosk.domain.Menu;
 import kiosk.manager.Admin;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 
 /*
@@ -29,19 +25,23 @@ public class MenuRepository {
             while(scan.hasNext() && check){
                 String str = scan.nextLine();
                 String[] lineArr = str.split(",");
+                if (!(lineArr.length >=4)) {
+                    check = false;
+                    break;
+                }
+                
                 //메뉴이름, 메뉴가격, 메뉴옵션, 레시피...
-
                 check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
                         && Admin.isMenuPriceSemanticsValid(lineArr[1].trim())
                         && Admin.isMenuOptionSyntaxValid(lineArr[2].trim());
+                
 
                 for(int j = 3; j< lineArr.length; j++){
                     check = check && Admin.isRecipieSyntaxValid(lineArr[j].trim())
                             && Admin.isRecipieSemanticsValid(lineArr[j].trim());
+                    if(!check)
+                        break;
                 }
-
-                if(!check)
-                    break;
 
                 ArrayList<ArrayList<String>> dynamicArray = new ArrayList<>();
                 for(int i = 3; i< lineArr.length; i++){
@@ -52,36 +52,64 @@ public class MenuRepository {
                     list.add(array[1].trim());
                     dynamicArray.add(list);
                 }
-
-
-                this.addMenu(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
                 //2차원 arrayList에 재료이름과 재료 수량을 넣는다.
-
-
-
-
-                // 얘네는 체크용으로 만들어 놓은 코드이니 신경 안써도 괜찮다.
-                //System.out.println("Mission Complete");
-
-         /*       for(int i = 0; i<3; i++){
-                    System.out.println(lineArr[i]);
-                }
-
-                for(int j = 0; j<dynamicArray.size(); j++){
-                    System.out.print(dynamicArray.get(j).get(0));
-                    System.out.println(dynamicArray.get(j).get(1));
-                }*/
-
-
+                this.addMenu(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
             }
-            if(!check)
-                regenerateMenuFile();
+            if (!check)
+                DataFile.isMenuFileValid = false;
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             System.out.println("FileNotFoundException: FileName" + fileName);
         } catch (IndexOutOfBoundsException e){
             System.out.println("IndexOutOfBoundsException");
         }
+    }
+    
+    
+    //중복아님.
+    public static boolean isMenuFilevalid(String fileName){
+        try(Scanner scan =  new Scanner(new File(fileName))){
+            Boolean check = true;
+            while(scan.hasNext() && check){
+                String str = scan.nextLine();
+                String[] lineArr = str.split(",");
+                if (!(lineArr.length >=4)) {
+                    check = false;
+                    break;
+                }
+
+                //메뉴이름, 메뉴가격, 메뉴옵션, 레시피...
+                check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
+                        && Admin.isMenuPriceSemanticsValid(lineArr[1].trim())
+                        && Admin.isMenuOptionSyntaxValid(lineArr[2].trim());
+
+
+                for(int j = 3; j< lineArr.length; j++){
+                    check = check && Admin.isRecipieSyntaxValid(lineArr[j].trim())
+                            && Admin.isRecipieSemanticsValid(lineArr[j].trim());
+                    if(!check)
+                        break;
+                }
+
+                ArrayList<ArrayList<String>> dynamicArray = new ArrayList<>();
+                for(int i = 3; i< lineArr.length; i++){
+
+                    String[] array = lineArr[i].split(":");
+                    ArrayList<String> list = new ArrayList<>();
+                    list.add(array[0].trim());
+                    list.add(array[1].trim());
+                    dynamicArray.add(list);
+                }
+            }
+            if (!check)
+                DataFile.isMenuFileValid = false;
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            System.out.println("FileNotFoundException: FileName" + fileName);
+        } catch (IndexOutOfBoundsException e){
+            System.out.println("IndexOutOfBoundsException");
+        }
+        return true;
     }
 
     public static HashMap<String, Menu> getMenu_Map(){
@@ -102,11 +130,20 @@ public class MenuRepository {
         DataFile.regenerateMenuCSV();
     }
 
-
-
     public static boolean isMenuNameinRepository(String menuName, String orderOption){
         if (MENU_Map.get(menuName+orderOption) == null)
             return false;
         return true;
+    }
+    
+    
+    //출력 테스팅 용
+    public static void printAllMenus(){
+        for( HashMap.Entry<String, Menu> entry : MENU_Map.entrySet() ){
+            String strKey = entry.getKey();
+            Menu menu = entry.getValue();
+            System.out.printf("%s \t %s \t %d \t %d \t", menu.getMenu(), menu.getBeverageStateOption(), menu.getPrice(), menu.getOrderCount());
+            HashMap<String, Integer> ingredient = menu.getIngredient();
+        }
     }
 }

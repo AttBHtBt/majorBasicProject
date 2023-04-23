@@ -13,24 +13,18 @@ import java.io.File;
 public class Main {
     public static void main(String[] args){
 
+        DataFile.currentDir(DataFile.DATAFILEDIRECTORY);
+        DataFile.pwd();
         MenuRepository MR = new MenuRepository();
-//        MR.makeMenu(DataFile.dataFileDirectory + DataFile.menuFileName);
+        MR.makeMenu(DataFile.DATAFILEDIRECTORY + DataFile.menuFileName);
 
-        System.out.println(System.getProperty("user.dir"));
-        File dir = new File("..\\..\\");
+        MaterialRepository MTR = new MaterialRepository();
+        MTR.makeMaterial(DataFile.DATAFILEDIRECTORY + DataFile.ingredientFileName);
 
-        String[] filenames = dir.list();
-        for (String filename : filenames) {
-            System.out.println("filename : " + filename);
-        }
-
-        MR.makeMenu("..\\..\\..\\src" + DataFile.menuFileName);
-//
-//        MaterialRepository MTR = new MaterialRepository();
-//        MTR.makeMaterial(DataFile.dataFileDirectory + DataFile.ingredientFileName);
-//
-//        PwdRepository PR = new PwdRepository();
-//        PR.makePwd(DataFile.dataFileDirectory + DataFile.adminFileName);
+        PwdRepository PR = new PwdRepository();
+        PR.makePwd(DataFile.DATAFILEDIRECTORY + DataFile.adminFileName);
+        
+        DataFile.regenerate();
 
         OrderPrompt orderPrompt = AppConfig.orderPrompt();
 //        ManagePrompt managePrompt = AppConfig.managePrompt();
