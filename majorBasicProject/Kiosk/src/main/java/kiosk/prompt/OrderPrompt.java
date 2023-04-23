@@ -6,15 +6,12 @@ import kiosk.domain.Menu;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
-import java.util.List;
+import java.util.*;
 
 import static java.lang.Integer.parseInt;
 
 public class OrderPrompt {
-    private HashMap<String, Menu> menus = MenuRepository.getMenu_Map();
+    private ArrayList<Menu> menus = MenuRepository.getMenu_Map();
     private String status = "Good";
     private cartRepository cr= new cartRepository();
 
@@ -56,9 +53,7 @@ public class OrderPrompt {
         System.out.println("메뉴, 가격과 선택할 수 있는 메뉴 옵션입니다.");
         System.out.println("----------------------------------------------------------------");
 
-        for (Map.Entry<String, Menu> entry : menus.entrySet()){
-            String strKey = entry.getKey();
-            Menu m= entry.getValue();
+        for (Menu m: menus){
             System.out.println(m.getMenu()+" "+m.getBeverageStateOption()+" "+m.getPrice()+"원");
         }
 
@@ -133,13 +128,11 @@ public class OrderPrompt {
                     if(0<parseInt(ordline_howmany_front) && ((ordline_howmany_rear.equals("잔") || ordline_howmany_rear.equals("개")) || ordline_howmany_rear.equals("")))
                         ordline_checkswitch++; // 숫자 부분이 1이상 인티저이고 숫자 뒷부분이 "잔" 또는 "개" 또는 ""이면
                 }
-                for (Map.Entry<String, Menu> entry : menus.entrySet()){
-                    String strKey = entry.getKey();
-                    Menu m= entry.getValue();
+                for (Menu m: menus){
                     if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state))  ordline_checkswitch++;
                 }
             }
-            if(ordline_checkswitch>1){
+            if(ordline_checkswitch>=1){
                 System.out.println("옳은 입력임");
                 System.out.println("메뉴:"+ordline_menu);
                 System.out.println("옵션:"+ordline_state);
@@ -147,9 +140,7 @@ public class OrderPrompt {
 
                 available_order_amount=cr.getAvailableOrderAmount(ordline_menu, ordline_state,parseInt(ordline_howmany_front));
                 if(available_order_amount >= parseInt(ordline_howmany_front)){
-                    for (Map.Entry<String, Menu> entry : menus.entrySet()){ // 장바구니 추가
-                        String strKey = entry.getKey();
-                        Menu m= entry.getValue();
+                    for (Menu m: menus){
                         if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state))
                             m.setOrderCount(m.getOrderCount() + parseInt(ordline_howmany_front)); //개수 항목 ++;
                     }
