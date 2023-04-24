@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="관리프롬프트 루핑안되는 오류 해결">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="CheckMenuDu/CheckRecipeDu/CheckOption test 완성">
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,19 +178,19 @@
       <option name="project" value="LOCAL" />
       <updated>1682337145106</updated>
     </task>
-    <task id="LOCAL-00011" summary="데이터파일ㅇ 못읽는 버그 수정">
-      <created>1682337949165</created>
+    <task id="LOCAL-00011" summary="CheckMenuDu/CheckRecipeDu/CheckOption 1차적으로 완성">
+      <created>1682345302723</created>
       <option name="number" value="00011" />
       <option name="presentableId" value="LOCAL-00011" />
       <option name="project" value="LOCAL" />
-      <updated>1682337949165</updated>
+      <updated>1682345302724</updated>
     </task>
-    <task id="LOCAL-00012" summary="관리프롬프트 루핑안되는 오류 해결">
-      <created>1682339614313</created>
+    <task id="LOCAL-00012" summary="CheckMenuDu/CheckRecipeDu/CheckOption test 완성">
+      <created>1682346311584</created>
       <option name="number" value="00012" />
       <option name="presentableId" value="LOCAL-00012" />
       <option name="project" value="LOCAL" />
-      <updated>1682339614313</updated>
+      <updated>1682346311584</updated>
     </task>
     <option name="localTasksCounter" value="13" />
     <servers />
@@ -234,9 +233,9 @@
     <MESSAGE value="입출력 세부사항 수정 hch" />
     <MESSAGE value="PAY : Logic REVERTED" />
     <MESSAGE value="Pay -&gt; Order로 넘어갈때 장바구니개수0으로 초기화/" />
-    <MESSAGE value="데이터파일ㅇ 못읽는 버그 수정" />
-    <MESSAGE value="관리프롬프트 루핑안되는 오류 해결" />
-    <option name="LAST_COMMIT_MESSAGE" value="관리프롬프트 루핑안되는 오류 해결" />
+    <MESSAGE value="CheckMenuDu/CheckRecipeDu/CheckOption 1차적으로 완성" />
+    <MESSAGE value="CheckMenuDu/CheckRecipeDu/CheckOption test 완성" />
+    <option name="LAST_COMMIT_MESSAGE" value="CheckMenuDu/CheckRecipeDu/CheckOption test 완성" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -248,8 +247,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java</url>
-          <line>192</line>
-          <option name="timeStamp" value="37" />
+          <line>193</line>
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
