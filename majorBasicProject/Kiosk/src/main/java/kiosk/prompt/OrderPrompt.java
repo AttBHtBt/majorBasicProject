@@ -4,6 +4,7 @@ import kiosk.dataFile.*;
 import kiosk.domain.Material;
 import kiosk.domain.Menu;
 
+import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
@@ -84,11 +85,13 @@ public class OrderPrompt {
             
             if (regenerate)
                 DataFile.regenerate();
+            else {  //데이터 파일 모두 괜찮으니까 자료구조를 데이터파일에 옮김.
+                DataFile.convertMenuRepositoryToCSV();
+                DataFile.convertMaterialRepositoryToCSV(); 
+            }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        MenuRepository.regenerateMenuFile();
-            
         System.exit(0);                                         //프로그램 전체 종료
     }              
     private void checkCall(String s){               //홍

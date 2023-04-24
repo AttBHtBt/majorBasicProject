@@ -1,11 +1,19 @@
 package kiosk.dataFile;
 
+import kiosk.domain.Material;
+import kiosk.domain.Menu;
+
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.time.chrono.MinguoEra;
+import java.util.ArrayList;
 
 public class DataFile {
+
+    private static final ArrayList<Menu> menus = MenuRepository.getMenu_Map();
+    private static final ArrayList<Material> materials = MaterialRepository.getMaterial_Map();
 
     public static String DATAFILEDIRECTORY = "." + File.separator +
             ".." + File.separator +
@@ -66,7 +74,7 @@ public class DataFile {
         if (!isMenuFileValid)
             regenerateMenuCSV();
         if (!isIngredientFileValid)
-            regenerateMenuCSV();
+            regenerateIngredientCSV();
         if (!isIngredientFileValid)
             regenerateAdminTxT();
     }
@@ -78,5 +86,55 @@ public class DataFile {
     public static void currentDir(String pathName){
         File dir = new File(pathName);
         System.out.println(dir.getAbsolutePath());
+    }
+
+    //convertMenuRepositoryToCSV
+    //convertMaterialRepositoryToCSV
+    public static void convertMenuRepositoryToCSV() {
+        File menuFile = new File(DATAFILEDIRECTORY + menuFileName_Testing);
+        try {
+            FileWriter menuFileW = new FileWriter(menuFile);
+            BufferedWriter writer = new BufferedWriter(menuFileW);
+            for (Menu menu: menus) {
+                writer.write(getMenuLine(menu));
+                writer.newLine();
+            }
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void convertMaterialRepositoryToCSV() {
+        File ingredientFile = new File(DATAFILEDIRECTORY + ingredientFileName_Testing);
+        try {
+            FileWriter ingredientFileW = new FileWriter(ingredientFile);
+            BufferedWriter writer = new BufferedWriter(ingredientFileW);
+            for (Material material: materials) {
+                writer.write(getMaterialLine(material));
+                writer.newLine();
+            }
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static String getMenuLine(Menu menu){
+        String lineStr;
+        ArrayList<Menu.Ingredient> ingredients = menu.getIngredient();
+        
+        lineStr = String.format("%s,%s,%s,", menu.getMenu(), String.valueOf(menu.getPrice()), menu.getBeverageStateOption().toUpperCase());
+        for (Menu.Ingredient ingredient: ingredients){
+            lineStr += String.format("%s:%s,", ingredient.getName(), String.valueOf(ingredient.getNum()));
+        }
+        return lineStr.substring(0, lineStr.length()-1);
+    }
+    
+    public static String getMaterialLine(Material material){
+        String lineStr;
+        lineStr = String.format("%s,%s", material.getName(), material.getAmount());
+        return lineStr;
     }
 }
