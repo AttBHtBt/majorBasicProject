@@ -8,7 +8,7 @@ import java.util.Scanner;
 public class PayPrompt {
     private int total_pay;//장바구니에서 가져온 결제 예정액,먼저 10000원이라고 가정
     private int total_print;//결제예정액 출력
-    
+
     private ArrayList<Menu> Menu_Map = MenuRepository.getMenu_Map();
     public PayPrompt(){
         total_pay = 0;
@@ -17,16 +17,21 @@ public class PayPrompt {
         showPrompt();
     }
     private void getTotal(){//장바구니에서 결제예정액 가져오는 함수
-        
+
         for(Menu menu: Menu_Map) {
             total_pay += (menu.getPrice() * menu.getOrderCount());
-            System.out.printf("%d * %d = %d\n", menu.getPrice(), menu.getOrderCount(), total_print);
+            if( menu.getOrderCount()>0){
+                System.out.printf("%s/%s/%d\n",menu.getMenu(),menu.getBeverageStateOption(), menu.getOrderCount());
+            }
+
         }
+
         total_print = total_pay;
     }
     private void showPrompt(){
-        while (true) {                                      //무한 루프를 돌면서
+        while (true) {//무한 루프를 돌면서
             //shoppingBasketPrompt();//장바구니와 결제 예정액 출력
+            System.out.println("결제 예정액:"+total_pay);
             System.out.print("Payment > ");
 
             Scanner sc = new Scanner(System.in);            //사용자에게 입력을 받는다
