@@ -76,6 +76,7 @@ public class ManagePrompt {
      */
     
     //tokens : menu, -a, menuName, menuOption, price, [ingredients],...
+    // menuOption에 -를 받게 되어있느가?
     private void addMenu(){
         List<String> unDividedIngredients = commandLineTokens.subList(5, commandLineTokens.size());
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),

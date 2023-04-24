@@ -32,6 +32,8 @@ public class OrderPrompt {
 
             switch (str) {                                  //입력값이
                 case "pay":                                 //pay인 경우에
+                    System.out.println("장바구니");
+                    showshoppingBasket();
                     payCall();                              //pay함수 호출
                     status = "exit";                        //status 값을 exit로 바꿔 루프를 돌지 않고 종료하게 만든다
                     break;                                  //switch문 탈출
@@ -49,6 +51,20 @@ public class OrderPrompt {
             }
         }
     }
+    
+    private void showMenuIfOption(Menu m) {
+        DecimalFormat df= new DecimalFormat("###,###"); // 가격 출력 콤마 추가
+        if (m.getBeverageStateOption().equals("HOT")) {
+            System.out.printf("%s %s원 (ICE/HOT)\n", m.getMenu(), df.format(m.getPrice()));
+        }
+    }
+    
+    private void showMenuIfNoOption(Menu m) {
+        DecimalFormat df= new DecimalFormat("###,###"); // 가격 출력 콤마 추가
+        if (m.getBeverageStateOption().equals("-")) {
+            System.out.printf("%s %s원\n", m.getMenu(), df.format(m.getPrice()));
+        }
+    }
 
 
     private void showPrompt(){
@@ -59,7 +75,8 @@ public class OrderPrompt {
         System.out.println("----------------------------------------------------------------");
 
         for (Menu m: menus){
-            System.out.println(m.getMenu()+" "+m.getBeverageStateOption()+" "+df.format(m.getPrice())+"원");
+            showMenuIfOption(m);
+            showMenuIfNoOption(m);
         }
 
         System.out.println("----------------------------------------------------------------");
@@ -112,12 +129,21 @@ public class OrderPrompt {
                 if(ord_line.charAt(j)=='/')slash_cnt++;
             }
             if (0 < slash_cnt && slash_cnt < 3) {
+                String []splitted = ord_line.split("/");
+                if(splitted.length == 0)
+                    ord_line = "asfsaf/asfsdaf/safasf";
+                if (slash_cnt == 1 && splitted.length < 2)
+                    ord_line = "safsasa/asfsfs/safsf";
                 if (slash_cnt == 1) { // 구분자 하나일 때 ,첫 구분자 위치 뒤" /" 추가
-                    int k = ord_line.indexOf("/");
-                    ord_line=ord_line.replace(ord_line.substring(k+1,ord_line.length()), "-/" + ord_line.substring(k+1,ord_line.length()));
+                    if (splitted.length == 1)
+                        ord_line = splitted[0] + "/-/" + "asfasfas";
+                    else 
+                        ord_line = splitted[0] + "/-/" + splitted[1];
                 }
-
-                String a[]=ord_line.split("/");
+                if (slash_cnt == 2 && splitted.length < 3)
+                    ord_line = "safsdaf/asfsaf/safsdafd";
+                
+                String a[] = ord_line.split("/");
                 ordline_menu= a[0]; //시작 부분 부터 첫 구분자 앞까지
 
                 ordline_state=a[1];

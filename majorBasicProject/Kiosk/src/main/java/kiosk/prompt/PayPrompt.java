@@ -3,6 +3,7 @@ import kiosk.dataFile.MenuRepository;
 import kiosk.domain.Menu;
 import kiosk.prompt.OrderPrompt;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
 public class PayPrompt {
@@ -14,8 +15,11 @@ public class PayPrompt {
         total_pay = 0;
         total_print = 0;
         getTotal();
+        DecimalFormat df= new DecimalFormat("###,###");
+        System.out.printf("총 결제 금액은 %s원입니다.\n", df.format(total_print));
         showPrompt();
     }
+    
     private void getTotal(){//장바구니에서 결제예정액 가져오는 함수
         
         for(Menu menu: Menu_Map) {
