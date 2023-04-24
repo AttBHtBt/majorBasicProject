@@ -20,15 +20,17 @@ public class ManagePrompt {
     private List<String> commandLineTokens;
     public ManagePromptToken tokens;
     
+    private boolean loopManagePrompt = true;
+    
 
     //정규표현식
 
     public ManagePrompt(){
-        showPrompt();
-        getInput();
-        classifyCommandLine(input);
-        
-        
+        while (loopManagePrompt){
+            showPrompt();
+            getInput();
+            classifyCommandLine(input);
+        }
     }
     private void showPrompt(){
         System.out.print("Admin > ");
@@ -40,7 +42,6 @@ public class ManagePrompt {
 
     private void classifyCommandLine(String input){
         String cmd = Admin.checkCommand(input);
-
         commandLineTokens = Arrays.asList(input.trim().split("\\s+"));
         switch (cmd)
         {
@@ -64,6 +65,7 @@ public class ManagePrompt {
                 break;
             case "exit":
                 OrderPrompt orderPrompt = new OrderPrompt();
+                loopManagePrompt = false;
                 break;
         }
     }
@@ -81,7 +83,6 @@ public class ManagePrompt {
         List<String> unDividedIngredients = commandLineTokens.subList(5, commandLineTokens.size());
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),
                 commandLineTokens.get(3), commandLineTokens.get(4), unDividedIngredients);
-        System.out.println(tokens.toString());
 
         if (!addMenuSyntaxValid()){
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
@@ -149,7 +150,6 @@ public class ManagePrompt {
         List<String> unDividedIngredients = commandLineTokens.subList(5, commandLineTokens.size());
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),
                 commandLineTokens.get(3), commandLineTokens.get(4), unDividedIngredients);
-        System.out.println(tokens.toString());
 
         if (!addMenuSyntaxValid()){
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
@@ -180,7 +180,6 @@ public class ManagePrompt {
     private void deleteMenu(){
 
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2), commandLineTokens.get(3));
-        System.out.println(tokens.toString());
 
         if (!deleteMenuSyntaxValid())
         {
@@ -217,7 +216,6 @@ public class ManagePrompt {
     private void addStock(){
         List<String> unDividedIngredients = commandLineTokens.subList(2, commandLineTokens.size());
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), unDividedIngredients);
-        System.out.println(tokens.toString());
 
         if (!addStockSyntaxValid()){
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
@@ -257,7 +255,6 @@ public class ManagePrompt {
         //애초에 Token으로 나눌수 있는지부터 확인.
         List<String> unDividedIngredients = commandLineTokens.subList(2, commandLineTokens.size());
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), unDividedIngredients);
-        System.out.println(tokens.toString());
 
         if (!addStockSyntaxValid()){
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
@@ -283,7 +280,6 @@ public class ManagePrompt {
         //의미규칙에 맞는지 확인
         List<String> unDividedIngredients = commandLineTokens.subList(2, commandLineTokens.size());
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), unDividedIngredients);
-        System.out.println(tokens.toString());
 
         if (!deleteStockSyntaxValid()){
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");

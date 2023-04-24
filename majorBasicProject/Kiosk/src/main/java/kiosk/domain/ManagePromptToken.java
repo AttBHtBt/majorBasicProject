@@ -137,22 +137,22 @@ public class ManagePromptToken {
         this.items = items;
     }
 
-    @Override
-    public String toString() {
-
-        String printItems = "";
-        for (Item item: items) {
-            printItems = printItems + "\t" + item.item + ":" + item.quantity;
-        }
-
-        return "ManagePromptToken{" +
-                "mainCommand='" + mainCommand + '\'' +
-                ", optionCommand='" + optionCommand + '\'' +
-                ", menu='" + menu + '\'' +
-                ", menuOption='" + menuOption + '\'' +
-                ", price=" + price +
-                ", items=" + printItems +
-                '}';
-
-    }
+//    @Override
+//    public String toString() {
+//
+//        String printItems = "";
+//        for (Item item: items) {
+//            printItems = printItems + "\t" + item.item + ":" + item.quantity;
+//        }
+//
+//        return "ManagePromptToken{" +
+//                "mainCommand='" + mainCommand + '\'' +
+//                ", optionCommand='" + optionCommand + '\'' +
+//                ", menu='" + menu + '\'' +
+//                ", menuOption='" + menuOption + '\'' +
+//                ", price=" + price +
+//                ", items=" + printItems +
+//                '}';
+//
+//    }
 }
