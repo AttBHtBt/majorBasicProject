@@ -35,7 +35,7 @@ public class cartRepository {
         // 주문가능한 숫자에 맞춰서 재고 잔량 수정.
         setStockAmount(availableAmount);
         //주문 가능한 개수 반환
-        return availableAmount;;
+        return availableAmount;
     }
 
     private void initiallizationForCalc(Menu menu){

@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="Cart Repository 수정">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="Cart Repository 작동하도록 수정">
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/cartRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/cartRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -101,7 +100,7 @@
       <workItem from="1682213550038" duration="771000" />
       <workItem from="1682268434330" duration="710000" />
       <workItem from="1682276828865" duration="5823000" />
-      <workItem from="1682299514922" duration="15543000" />
+      <workItem from="1682299514922" duration="15567000" />
     </task>
     <task id="LOCAL-00002" summary="MODIFIED : ManagePrompt의 메뉴/재료 * 추가/수정/삭제 기능;">
       <created>1682161682178</created>
@@ -166,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682316133223</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Cart Repository 작동하도록 수정">
+      <created>1682316156563</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1682316156563</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +212,8 @@
     <MESSAGE value="프로그램 종료 시 자료구조 DataFile에 옮기기" />
     <MESSAGE value="SELECTIVE NEWLINE: 프로그램 종료 시 자료구조 DataFile에 옮기기" />
     <MESSAGE value="Cart Repository 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cart Repository 수정" />
+    <MESSAGE value="Cart Repository 작동하도록 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="Cart Repository 작동하도록 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
