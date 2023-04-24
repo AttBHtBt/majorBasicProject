@@ -3,6 +3,7 @@ package kiosk.prompt;
 import kiosk.dataFile.*;
 import kiosk.domain.Material;
 import kiosk.domain.Menu;
+import kiosk.manager.Admin;
 
 import javax.xml.crypto.Data;
 import java.io.File;
@@ -155,6 +156,11 @@ public class OrderPrompt {
                 }
                 ordline_howmany_front = ordline_howmany.substring(0, p); // 숫자부분
                 ordline_howmany_rear = ordline_howmany.substring(p, ordline_howmany.length()); // 숫자 뒷부분
+                
+                //숫자 범위를넘어가면
+                if (!Admin.isMenuPriceSyntaxValid(ordline_howmany_front) || !Admin.isMenuPriceSemanticsValid(ordline_howmany_front))
+                    ordline_howmany_front = "0";
+                
                 if (0 < parseInt(ordline_howmany_front) && ((ordline_howmany_rear.equals("잔") || ordline_howmany_rear.equals("개")) || ordline_howmany_rear.equals("")))
                     ordline_checkswitch++; // 숫자 부분이 1이상 인티저이고 숫자 뒷부분이 "잔" 또는 "개" 또는 ""이면
             }

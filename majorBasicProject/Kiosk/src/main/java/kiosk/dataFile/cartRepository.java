@@ -29,6 +29,8 @@ public class cartRepository {
 
         //쓰기 불편해서 ingredientName=레시피 이름, ingredientAmount=레시피에 필요한 재료숫자, remainingAmount= DB재고잔량 배열로 변환.
         initiallizationForCalc(menu);
+        if (remainingStockAmount.size() != allIngredientAmount.size())
+            return (0);
 
         // 모든 재고 잔량에 맞춰서 주문가능한 개수를 반환.
         availableAmount = calculateAvailableOrderAmount(orderAmount);
