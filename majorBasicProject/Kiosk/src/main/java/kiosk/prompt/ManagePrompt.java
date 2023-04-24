@@ -27,6 +27,8 @@ public class ManagePrompt {
         showPrompt();
         getInput();
         classifyCommandLine(input);
+        
+        
     }
     private void showPrompt(){
         System.out.print("Admin > ");

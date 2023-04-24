@@ -33,7 +33,8 @@ public class OrderPrompt {
                     payCall();                              //pay함수 호출
                     status = "exit";                        //status 값을 exit로 바꿔 루프를 돌지 않고 종료하게 만든다
                     break;                                  //switch문 탈출
-                case "admin:admin":                              //manage인 경우에
+                case "admin:admin":                              //manage인 경우 : 주문개수 초기화
+                    MenuRepository.setOrderCountToZero();
                     manageCall();                           //manage함수 호출
                     status = "exit";                        //status 값을 exit로 바꿔 루프를 돌지 않고 종료하게 만든다
                     break;                                  //switch문 탈출
