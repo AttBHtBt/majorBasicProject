@@ -97,7 +97,8 @@ public class DataFile {
             BufferedWriter writer = new BufferedWriter(menuFileW);
             for (Menu menu: menus) {
                 writer.write(getMenuLine(menu));
-                writer.newLine();
+                if ((menus.get(menus.size() -1).getMenu() + menu.getBeverageStateOption()) == (menu.getMenu() + menu.getBeverageStateOption()))
+                    writer.newLine();
             }
             writer.flush();
         } catch (IOException e) {
@@ -112,7 +113,8 @@ public class DataFile {
             BufferedWriter writer = new BufferedWriter(ingredientFileW);
             for (Material material: materials) {
                 writer.write(getMaterialLine(material));
-                writer.newLine();
+                if (materials.get(materials.size() -1).getName() == material.getName())
+                    writer.newLine();
             }
             writer.flush();
         } catch (IOException e) {
