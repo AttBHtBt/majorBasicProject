@@ -53,6 +53,7 @@ public class MenuRepository {
                     dynamicArray.add(list);
                 }
                 //2차원 arrayList에 재료이름과 재료 수량을 넣는다.
+                MENU_Map.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
             }
             if (!check)
                 DataFile.isMenuFileValid = false;
@@ -148,10 +149,10 @@ public class MenuRepository {
     }
 
     public static void deleteMenu(String name, String option){
-        //findKey=name+option
-        for (Menu menu: MENU_Map) {
+        ArrayList<Menu> menus = MenuRepository.getMenu_Map();
+        for (Menu menu: menus) {
             if (menu.getMenu().equals(name) && menu.getBeverageStateOption().equals(option)){
-                MENU_Map.remove(menu);
+                menus.remove(menu);
                 return ;
             }
         }
@@ -163,7 +164,8 @@ public class MenuRepository {
     }
 
     public static boolean isMenuNameinRepository(String menuName, String orderOption){
-        for (Menu menu: MENU_Map) {
+        ArrayList<Menu> menus = MenuRepository.getMenu_Map();
+        for (Menu menu: menus) {
             if (menu.getMenu().equals(menuName) && menu.getBeverageStateOption().equals(orderOption)){
                 return true;
             }
