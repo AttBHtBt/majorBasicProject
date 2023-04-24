@@ -1,8 +1,11 @@
 package kiosk.prompt;
 
-import kiosk.dataFile.MenuRepository;
+import kiosk.dataFile.*;
+import kiosk.domain.Material;
 import kiosk.domain.Menu;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -13,6 +16,7 @@ import static java.lang.Integer.parseInt;
 public class OrderPrompt {
     private HashMap<String, Menu> menus = MenuRepository.getMenu_Map();
     private String status = "Good";
+    private cartRepository cr= new cartRepository();
 
     public OrderPrompt(){                
         OrderController();           
@@ -32,7 +36,7 @@ public class OrderPrompt {
                     payCall();                              //pay함수 호출
                     status = "exit";                        //status 값을 exit로 바꿔 루프를 돌지 않고 종료하게 만든다
                     break;                                  //switch문 탈출
-                case "manage":                              //manage인 경우에
+                case "admin:admin":                              //manage인 경우에
                     manageCall();                           //manage함수 호출
                     status = "exit";                        //status 값을 exit로 바꿔 루프를 돌지 않고 종료하게 만든다
                     break;                                  //switch문 탈출
@@ -60,25 +64,35 @@ public class OrderPrompt {
 
         System.out.println("----------------------------------------------------------------");
         System.out.println("핫, 아이스 두가지 선택이 가능한 메뉴는 ICE 선택시 500원이 추가 됩니다.");
-        shoppingBasketPrompt();
+        System.out.println("\n현재 장바구니에 담긴 메뉴는 아래와 같습니다.");
+        showshoppingBasket();
         System.out.println("----------------------------------------------------------------");
         System.out.println("아래의 입력 대기 줄에 주문할 메뉴를 입력해주세요.");
         System.out.println("최종결제를 원한다면 'pay'를 입력해주세요.");
         System.out.print("order > ");
     }
-    private void shoppingBasketPrompt(){                        //장바구니 호출
+    private void showshoppingBasket(){                        //장바구니 호출
 
     }
     private void payCall(){                                     //pay 함수
-        System.out.println("pay Done");
         PayPrompt payPrompt = new PayPrompt();                  //payPrompt 클래스를 생성한다
     }
     private void manageCall(){                                  //manage 함수
-        System.out.println("manage Done");
         ManagePrompt managePrompt = new ManagePrompt();         //managePrompt 클래스를 생성한다
     }
     private void exitCall(){                                    //exit 함수
-        System.out.println("exit Done");
+        try {
+            boolean regenerate = MenuRepository.isMenuFilevalid(DataFile.DATAFILEDIRECTORY + DataFile.menuFileName) ||
+                MaterialRepository.isIngredientFileValid(DataFile.DATAFILEDIRECTORY + DataFile.menuFileName) ||
+                PwdRepository.isAdminFileValid(new Scanner(new File(DataFile.DATAFILEDIRECTORY + DataFile.adminFileName)));
+            
+            if (regenerate)
+                DataFile.regenerate();
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        MenuRepository.regenerateMenuFile();
+            
         System.exit(0);                                         //프로그램 전체 종료
     }              
     private void checkCall(String s){               //홍
@@ -86,7 +100,7 @@ public class OrderPrompt {
             String ord_line = s;
             String ordline_menu = null,ordline_state = null,ordline_howmany = null;
             String ordline_howmany_front = null , ordline_howmany_rear = null;
-            int slash_cnt=0,ordline_checkswitch=0;
+            int slash_cnt=0,ordline_checkswitch=0,available_order_amount=0;
 
             for(int j=0;j < ord_line.length();j++){
                 if(ord_line.charAt(j)=='/')slash_cnt++;
@@ -94,7 +108,7 @@ public class OrderPrompt {
             if (0 < slash_cnt && slash_cnt < 3) {
                 if (slash_cnt == 1) { // 구분자 하나일 때 ,첫 구분자 위치 뒤" /" 추가
                     int k = ord_line.indexOf("/");
-                    ord_line=ord_line.replace(ord_line.substring(k+1,ord_line.length()), " /" + ord_line.substring(k+1,ord_line.length()));
+                    ord_line=ord_line.replace(ord_line.substring(k+1,ord_line.length()), "-/" + ord_line.substring(k+1,ord_line.length()));
                 }
 
                 String a[]=ord_line.split("/");
@@ -130,6 +144,20 @@ public class OrderPrompt {
                 System.out.println("메뉴:"+ordline_menu);
                 System.out.println("옵션:"+ordline_state);
                 System.out.println("개수:"+ordline_howmany_front);
+
+                available_order_amount=cr.getAvailableOrderAmount(ordline_menu, ordline_state,parseInt(ordline_howmany_front));
+                if(available_order_amount >= parseInt(ordline_howmany_front)){
+                    for (Map.Entry<String, Menu> entry : menus.entrySet()){ // 장바구니 추가
+                        String strKey = entry.getKey();
+                        Menu m= entry.getValue();
+                        if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state))
+                            m.setOrderCount(m.getOrderCount() + parseInt(ordline_howmany_front)); //개수 항목 ++;
+                    }
+                }
+                else{
+                    System.out.println("재고 문제로 현재 해당 메뉴는 "+available_order_amount+"잔까지 주문이 가능합니다.");
+                }
+
             }
             else{
                 System.out.println("메뉴명, 음료 상태 옵션, 개수 순서대로 공백없이 \'/\'로 구분해 입력해주세요.");
@@ -139,10 +167,5 @@ public class OrderPrompt {
                 System.out.println("----------------------------------------------------------------");
             }
         showPrompt();
-
-        //옳은 입력이라면 inventoryRepository의 __함수 부르기
-        //showPrompt();
-
-        //안좋은 입력이면 거절메세지 후 showPrompt();
     }
 }

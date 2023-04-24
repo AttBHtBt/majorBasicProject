@@ -26,30 +26,51 @@ public class MaterialRepository {
 
                 String[] lineArr = str.split(",");
                 this.addMaterial(new Material(lineArr[0].trim(), lineArr[1].trim()));
-
-                /*System.out.print(lineArr[0].trim()); 확인용 프린트문
-                System.out.println(lineArr[1].trim());*/
             }
-            if(!check)
-                regenerateMaterialFile();
+            if (!check)
+                DataFile.isIngredientFileValid = false;
         }catch (FileNotFoundException e){
                 System.out.println("FileNotFoundException: " + fileName);
         }
+    }
+    
+    //중복 아님.
+    public static boolean isIngredientFileValid (String fileName) {
+        try (Scanner scan = new Scanner(new File(fileName))) {
+            Boolean check = true;
+            while (scan.hasNext()) {
+                String str = scan.nextLine();
+
+                check = check && Admin.CSVisStockSyntaxValid(str) &&
+                        Admin.CSVisStockSemanticsValid(str);
+                if(!check)
+                    break;
+
+                String[] lineArr = str.split(",");
+            }
+            if (!check)
+                DataFile.isIngredientFileValid = false;
+        }catch (FileNotFoundException e){
+            System.out.println("FileNotFoundException: " + fileName);
+        }
+        return true;
     }
 
     public static HashMap<String, Material> getMaterial_Map(){
         return Material_Map;
     }
-    void addMaterial(Material material){
+    
+    public static boolean isDuplicatedMaterial(String ingredient){
+        if (Material_Map.get(ingredient) == null)
+            return false;
+        else 
+            return true;
+    }
+    public static void addMaterial(Material material){
         Material_Map.put(material.getName(), material);
     }
 
-    void deleteMaterial(String name){
+    public static void deleteMaterial(String name){
         Material_Map.remove(name);
     }
-
-    void regenerateMaterialFile(){
-        DataFile.regenerateIngredientCSV();
-    }
-
 }
