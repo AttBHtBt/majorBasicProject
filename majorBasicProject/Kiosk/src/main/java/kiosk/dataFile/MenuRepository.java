@@ -21,6 +21,11 @@ public class MenuRepository {
     public MenuRepository(){
     }
     public void makeMenu(String fileName){
+        // 얘네 수정해줘야 함
+        if(isMenuFilevalid(fileName))
+            System.out.println("good");
+        else
+            System.out.println("bad");
         try(Scanner scan =  new Scanner(new File(fileName))){
             Boolean check = true;
             while(scan.hasNext() && check){
@@ -104,8 +109,13 @@ public class MenuRepository {
                 forValidationTest.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
             }
 
-
-
+            // 얘네 test인데 check랑 and 연산 해주기는 해야 함
+            check = check && CheckMenuDu(forValidationTest);
+            check = check;
+            check =  check && CheckRecipeDu(forValidationTest);
+            check = check;
+            check =  check && CheckOption(forValidationTest);
+            check = check;
             //중복 메뉴있는지 찾고
 
 
@@ -147,7 +157,7 @@ public class MenuRepository {
         return true;
     }
     //중복 메뉴있는지 찾고
-    private boolean CheckMenuDu(ArrayList<Menu> fvt){
+    private static boolean CheckMenuDu(ArrayList<Menu> fvt){
         for(int i = 0; i<fvt.size(); i++){
             for(int j = i+1; j<fvt.size(); j++){
                 if(fvt.get(i).getMenu().equals(fvt.get(j).getMenu())){
@@ -160,7 +170,7 @@ public class MenuRepository {
     }
 
     //중복 레시피있는지 찾고 레시피 안에서 중복 찾기
-    private boolean CheckRecipeDu(ArrayList<Menu> fvt){
+    private static boolean CheckRecipeDu(ArrayList<Menu> fvt){
         for(int i = 0; i< fvt.size(); i++){
             for(int j = 0; j<fvt.get(i).getIngredient().size(); j++){
                 for(int r = j+1; r<fvt.get(i).getIngredient().size(); r++){
@@ -178,7 +188,7 @@ public class MenuRepository {
     //ICE/HOT이 동시에 있는지 찾기.
     // 하이픈이 있다면 ice.hot이 없어야 하고, ice나 핫이 있다면 그 반대가 있으면서 하이픈은 존재해서는 안된다.
     // 하나씩 보는데, 앞에서 이미 한 얘인지 한번 조사해줘야 한다.
-    private boolean CheckOption(ArrayList<Menu> fvt){
+    private static boolean CheckOption(ArrayList<Menu> fvt){
         int check = 0;
         for(int i = 0; i<fvt.size(); i++){
             check = 0;
