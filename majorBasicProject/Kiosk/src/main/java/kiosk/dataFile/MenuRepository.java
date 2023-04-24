@@ -1,5 +1,6 @@
 package kiosk.dataFile;
 
+import kiosk.domain.ManagePromptToken;
 import kiosk.domain.Menu;
 import kiosk.manager.Admin;
 
@@ -80,8 +81,12 @@ public class MenuRepository {
                 check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
                         && Admin.isMenuPriceSemanticsValid(lineArr[1].trim())
                         && Admin.isMenuOptionSyntaxValid(lineArr[2].trim());
-
-
+                
+                //중복 메뉴있는지 찾고
+                //중복 레시피있는지 찾고
+                //hypen이 있다면 ICE/HOT이 있는지 찾고
+                //ICE/HOT이 있다면, hypne이 있는지 찾기.
+                
                 for(int j = 3; j< lineArr.length; j++){
                     check = check && Admin.isRecipieSyntaxValid(lineArr[j].trim())
                             && Admin.isRecipieSemanticsValid(lineArr[j].trim());
@@ -156,4 +161,45 @@ public class MenuRepository {
             menu.setOrderCount(0);
         }
     }
+
+    //- 입력시 HOT/ICE인 메뉴가 존재함 
+    public static boolean isHotOrIceInSameMenuName(ManagePromptToken tokens) {
+        for (Menu menu: MENU_Map){
+            if (menu.getMenu().equals(tokens.getMenu()) &&
+                    (menu.getBeverageStateOption().toUpperCase().equals("HOT") ||
+                    menu.getBeverageStateOption().toUpperCase().equals("ICE")))
+               return true;
+        }
+        return false;
+    }
+    
+    //HOT / ICE 입력 시 -인 메뉴가 존재함
+    //INGREDIENTS에 중복된 메뉴가 있음.
+    
+    //HOT / ICE 입력 시 -인 메뉴가 존재함
+     public static boolean isHyphenInSameMenuName(ManagePromptToken tokens){
+         for (Menu menu: MENU_Map){
+             if (menu.getMenu().equals(tokens.getMenu()) &&
+                     menu.getBeverageStateOption().equals("-"))
+                 return true;
+         }
+         return false;
+     }
+    
+    //INGREDIENTS에 중복된 메뉴가 있음.
+    public static boolean isSameNameInIngredients(List<ManagePromptToken.Item> items){
+        ManagePromptToken.Item former;
+        ManagePromptToken.Item latter;
+        
+        for(int i = 0; i < items.size(); i++) {
+            former = items.get(i);
+            for (int j = 0; j < items.size() - 1; j++) {
+                latter = items.get(j);
+                if (latter.getItem().equals(former.getItem()))
+                    return true;
+            }
+        }
+        return false;
+    }
+    
 }

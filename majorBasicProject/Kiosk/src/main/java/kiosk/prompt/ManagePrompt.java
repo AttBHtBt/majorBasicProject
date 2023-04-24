@@ -87,13 +87,30 @@ public class ManagePrompt {
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
-        if (!addMenuSemanticsValid()){
+        if (!addMenuSemanticsValid()) {
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
         if (MenuRepository.isMenuNameinRepository(tokens.getMenu(), tokens.getMenuOption())) {
             System.out.println("(오류) 동일한 이름의 메뉴가 동시에 동일한 음료 상태 옵션과 함께 존재합니다.");
             return;
+        }
+        //- 입력시 HOT/ICE인 메뉴가 존재함 
+        if (tokens.getOptionCommand().equals("-")){
+            MenuRepository.isHotOrIceInSameMenuName(tokens);
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+            return ;
+        }
+        //HOT / ICE 입력 시 -인 메뉴가 존재함
+        if (tokens.getOptionCommand().toUpperCase().equals("HOT") || tokens.getOptionCommand().toUpperCase().equals("ICE")){
+            MenuRepository.isHyphenInSameMenuName(tokens);
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+            return ;
+        }
+        //INGREDIENTS에 중복된 메뉴가 있음.
+        if (MenuRepository.isSameNameInIngredients(tokens.getItems())){
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+            return ;
         }
         
         //String menu, String price, String beverageStateOption, List<String> ["abc(ml):123, ..."]

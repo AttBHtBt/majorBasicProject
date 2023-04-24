@@ -4,15 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="PAY : Logic REVERTED">
+    <list default="true" id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="장바구니 출력 수정 + 주문 입력 오류 수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/ManagePrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/ManagePrompt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/OrderPrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/OrderPrompt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/PayPrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/PayPrompt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/OrderPrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/OrderPrompt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/PayPrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/PayPrompt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/menu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/menu.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -165,7 +160,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682317367998</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="장바구니 출력 수정 + 주문 입력 오류 수정">
+      <created>1682324428564</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1682324428564</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -205,7 +207,8 @@
     <MESSAGE value="프로그램 종료 시 자료구조 DataFile에 옮기기" />
     <MESSAGE value="입출력 세부사항 수정 hch" />
     <MESSAGE value="PAY : Logic REVERTED" />
-    <option name="LAST_COMMIT_MESSAGE" value="PAY : Logic REVERTED" />
+    <MESSAGE value="장바구니 출력 수정 + 주문 입력 오류 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="장바구니 출력 수정 + 주문 입력 오류 수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
