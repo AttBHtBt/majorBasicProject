@@ -101,7 +101,7 @@ public class MenuRepository {
                     dynamicArray.add(list);
                 }
                 forValidationTest.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
-            }
+            }        
             //중복 메뉴있는지 찾고
             //중복 레시피있는지 찾고
             //hypen이 있다면 ICE/HOT이 있는지 찾고
