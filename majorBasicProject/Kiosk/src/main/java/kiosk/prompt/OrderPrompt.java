@@ -65,10 +65,13 @@ public class OrderPrompt {
         System.out.println("----------------------------------------------------------------");
         System.out.println("아래의 입력 대기 줄에 주문할 메뉴를 입력해주세요.");
         System.out.println("최종결제를 원한다면 'pay'를 입력해주세요.");
-        System.out.print("order > ");
+        System.out.print("Kiosk >");
     }
-    private void showshoppingBasket(){                        //장바구니 호출
-
+    private void showshoppingBasket(){
+        for (Menu m: menus){ // 장바구니 추가
+            if(m.getOrderCount()>0)
+                System.out.println(m.getMenu()+"/"+m.getBeverageStateOption()+"/"+m.getOrderCount()+"잔/"+m.getOrderCount()*m.getPrice()+"원");
+        }
     }
     private void payCall(){                                     //pay 함수
         PayPrompt payPrompt = new PayPrompt();                  //payPrompt 클래스를 생성한다
@@ -133,21 +136,24 @@ public class OrderPrompt {
                     if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state))  ordline_checkswitch++;
                 }
             }
-            if(ordline_checkswitch>=1){
-                System.out.println("옳은 입력임");
+            if(ordline_checkswitch>1){
+                /*System.out.println("옳은 입력임");
                 System.out.println("메뉴:"+ordline_menu);
                 System.out.println("옵션:"+ordline_state);
                 System.out.println("개수:"+ordline_howmany_front);
+                System.out.println(ordline_howmany_rear);*/    //입력 확인용 코드
 
                 available_order_amount=cr.getAvailableOrderAmount(ordline_menu, ordline_state,parseInt(ordline_howmany_front));
                 if(available_order_amount >= parseInt(ordline_howmany_front)){
                     for (Menu m: menus){
-                        if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state))
+                        if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state)) {
+                            System.out.println("주문이 장바구니에 추가되었습니다.\n");
                             m.setOrderCount(m.getOrderCount() + parseInt(ordline_howmany_front)); //개수 항목 ++;
+                        }
                     }
                 }
                 else{
-                    System.out.println("재고 문제로 현재 해당 메뉴는 "+available_order_amount+"잔까지 주문이 가능합니다.");
+                    System.out.println("재고 문제로 현재 해당 메뉴는 "+available_order_amount+"잔까지 주문이 가능합니다.\n");
                 }
 
             }
@@ -155,9 +161,8 @@ public class OrderPrompt {
                 System.out.println("메뉴명, 음료 상태 옵션, 개수 순서대로 공백없이 \'/\'로 구분해 입력해주세요.");
                 System.out.println("음료 상태 옵션 선택이 없는 주문(핫초코, 요거트 스무디 등)은");
                 System.out.println("메뉴명과 개수만을 공백 없이 \'/\'로 구분해 입력해주세요.\n");
-                System.out.println("주문 입력 예시)\n아메리카노/ICE/2잔 또는\n요거트스무디/1개");
+                System.out.println("주문 입력 예시)\n아메리카노/ICE/2잔 또는\n요거트스무디/1개\n");
                 System.out.println("----------------------------------------------------------------");
             }
-        showPrompt();
     }
 }
