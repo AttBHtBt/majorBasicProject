@@ -49,22 +49,22 @@ public class cartRepository {
 
         for (String str : allIngredientName){
             for (Material material: Material_Map){
-                remainingStockAmount.add(material.getAmount());
-                break;
+                if(material.getName().equals(str)) {
+                    remainingStockAmount.add(material.getAmount());
+                    break;
+                }
             }
         }
     }
 
     private int calculateAvailableOrderAmount(int orderAmount){
 
-        int availableOrderAmount = 0;
-        while (availableOrderAmount != orderAmount){
-            for (int i = 0; i < remainingStockAmount.size(); i++) {
-                if (remainingStockAmount.get(i) - allIngredientAmount.get(i) < 0) {
-                    return availableOrderAmount;
-                }
-            }
-            availableOrderAmount++;
+        int availableOrderAmount = Integer.MAX_VALUE;
+        int orderAmountQuotient;
+        
+        for (int i = 0; i < allIngredientName.size(); i++) {
+            orderAmountQuotient = remainingStockAmount.get(i) / allIngredientAmount.get(i);
+            availableOrderAmount = Integer.min(availableOrderAmount, orderAmountQuotient);
         }
         return availableOrderAmount;
     }
