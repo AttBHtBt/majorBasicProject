@@ -5,11 +5,14 @@ import kiosk.prompt.OrderPrompt;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+
+import static kiosk.dataFile.MenuRepository.getMenu_Map;
+
 public class PayPrompt {
     private int total_pay;//장바구니에서 가져온 결제 예정액,먼저 10000원이라고 가정
     private int total_print;//결제예정액 출력
 
-    private ArrayList<Menu> Menu_Map = MenuRepository.getMenu_Map();
+    private ArrayList<Menu> Menu_Map = getMenu_Map();
     public PayPrompt(){
         total_pay = 0;
         total_print = 0;
@@ -77,6 +80,11 @@ public class PayPrompt {
     }
     private void orderCall(){                                //order 프로프트로 전환
         System.out.println("주문 프롬프토로 돌아갑니다.");
+        //orderPrompt전환시 사용한거 0으로 전환
+        ArrayList<Menu> menu = MenuRepository.getMenu_Map();
+        for (Menu m: Menu_Map){
+            m.setOrderCount(0);
+        }
         OrderPrompt OrderPrompt = new OrderPrompt();         //orderPrompt 클래스를 생성한다
     }
 

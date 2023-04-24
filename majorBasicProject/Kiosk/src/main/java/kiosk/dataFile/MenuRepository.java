@@ -16,6 +16,7 @@ import java.util.*;
 public class MenuRepository {
 
     private static final ArrayList<Menu> MENU_Map = new ArrayList<>();
+    private static final ArrayList<Menu> forValidationTest = new ArrayList<>();
     public MenuRepository(){
     }
     public void makeMenu(String fileName){
@@ -52,7 +53,6 @@ public class MenuRepository {
                     dynamicArray.add(list);
                 }
                 //2차원 arrayList에 재료이름과 재료 수량을 넣는다.
-                this.addMenu(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
             }
             if (!check)
                 DataFile.isMenuFileValid = false;
@@ -81,11 +81,7 @@ public class MenuRepository {
                 check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
                         && Admin.isMenuPriceSemanticsValid(lineArr[1].trim())
                         && Admin.isMenuOptionSyntaxValid(lineArr[2].trim());
-                
-                //중복 메뉴있는지 찾고
-                //중복 레시피있는지 찾고
-                //hypen이 있다면 ICE/HOT이 있는지 찾고
-                //ICE/HOT이 있다면, hypne이 있는지 찾기.
+
                 
                 for(int j = 3; j< lineArr.length; j++){
                     check = check && Admin.isRecipieSyntaxValid(lineArr[j].trim())
@@ -103,7 +99,36 @@ public class MenuRepository {
                     list.add(array[1].trim());
                     dynamicArray.add(list);
                 }
+                forValidationTest.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
             }
+            //중복 메뉴있는지 찾고
+            //중복 레시피있는지 찾고
+            //hypen이 있다면 ICE/HOT이 있는지 찾고
+            //ICE/HOT이 있다면, hypne이 있는지 찾기.
+            //ICE/HOT이 동시에 있는지 찾기.
+//            
+//            check = check && isDuplicateInMenuName(forValidationTest);
+//            check = check && isDuplicateRecipie(forValidationTest);
+//            {
+//                Menu former;
+//                Menu latter;
+//                for (int i = 0; i < forValidationTest.size(); i++){
+//                    former = forValidationTest.get(i);
+//                    for (int j = i + 1; j < forValidationTest.size(); j++){
+//                        latter = forValidationTest.get(j);
+//                        //메뉴 중복
+//                        if ()
+//                        if (former.getMenu().equals(latter.getMenu())){
+//                            if (former.getBeverageStateOption().equals("-") && (latter.getBeverageStateOption().toUpperCase().equals("HOT") || latter.getBeverageStateOption().toUpperCase().equals("ICE"))){
+//                                check = false;
+//                            }
+//                        }
+//                    }
+//                    
+//                }
+//            }
+//                
+//            
             if (!check)
                 DataFile.isMenuFileValid = false;
         } catch (FileNotFoundException e) {
@@ -193,7 +218,7 @@ public class MenuRepository {
         
         for(int i = 0; i < items.size(); i++) {
             former = items.get(i);
-            for (int j = 0; j < items.size() - 1; j++) {
+            for (int j = i+1; j < items.size(); j++) {
                 latter = items.get(j);
                 if (latter.getItem().equals(former.getItem()))
                     return true;

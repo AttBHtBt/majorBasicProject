@@ -39,7 +39,6 @@ public class ManagePromptToken {
         this.mainCommand = mainCommand;
         this.optionCommand = optionCommand;
         generateItems(items);
-
     }
 
     private void generateItems(List<String> items){
