@@ -15,8 +15,7 @@ import java.util.*;
 
 public class MenuRepository {
 
-    private static final HashMap<String, Menu> MENU_Map = new HashMap<>();
-
+    private static final ArrayList<Menu> MENU_Map = new ArrayList<>();
     public MenuRepository(){
     }
     public void makeMenu(String fileName){
@@ -112,17 +111,21 @@ public class MenuRepository {
         return true;
     }
 
-    public static HashMap<String, Menu> getMenu_Map(){
+    public static ArrayList<Menu> getMenu_Map(){
         return MENU_Map;
     }
     public static void addMenu(Menu menu){// 중복 검사는 아직 안 함
-        String key = menu.getMenu()+menu.getBeverageStateOption();
-        MENU_Map.put(key, menu);
+        MENU_Map.add(menu);
     }
 
     public static void deleteMenu(String name, String option){
-        String findKey = name + option;
-        MENU_Map.remove(findKey);
+        //findKey=name+option
+        for (Menu menu: MENU_Map) {
+            if (menu.getMenu().equals(name) && menu.getBeverageStateOption().equals(option)){
+                MENU_Map.remove(menu);
+                return ;
+            }
+        }
     }
 
     public static void regenerateMenuFile(){
@@ -131,19 +134,21 @@ public class MenuRepository {
     }
 
     public static boolean isMenuNameinRepository(String menuName, String orderOption){
-        if (MENU_Map.get(menuName+orderOption) == null)
-            return false;
-        return true;
+        for (Menu menu: MENU_Map) {
+            if (menu.getMenu().equals(menuName) && menu.getBeverageStateOption().equals(orderOption)){
+                return true;
+            }
+        }
+        return false;
     }
     
-    
-    //출력 테스팅 용
-    public static void printAllMenus(){
-        for( HashMap.Entry<String, Menu> entry : MENU_Map.entrySet() ){
-            String strKey = entry.getKey();
-            Menu menu = entry.getValue();
-            System.out.printf("%s \t %s \t %d \t %d \t", menu.getMenu(), menu.getBeverageStateOption(), menu.getPrice(), menu.getOrderCount());
-            HashMap<String, Integer> ingredient = menu.getIngredient();
+    public static Menu getMenuFromNameAndOption(String menuName, String orderOption) {
+        for (Menu menu : MENU_Map) {
+//            System.out.printf("[%s], [%s]\n", menu.getMenu(), menu.getBeverageStateOption());
+            if (menu.getMenu().equals(menuName) && menu.getBeverageStateOption().equals(orderOption)) {
+                return menu;
+            }
         }
+        return null;
     }
 }

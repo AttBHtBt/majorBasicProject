@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class cartRepository {
-    private static final HashMap<String, Menu> Menu_Map = MenuRepository.getMenu_Map();
-    private static final HashMap<String, Material> Material_Map = MaterialRepository.getMaterial_Map();
+    private static final ArrayList<Menu> Menu_Map = MenuRepository.getMenu_Map();
+    private static final ArrayList<Material> Material_Map = MaterialRepository.getMaterial_Map();
 
     private ArrayList<String> allIngredientName = new ArrayList<>();
     private ArrayList<Integer> allIngredientAmount = new ArrayList<>();
@@ -25,7 +25,8 @@ public class cartRepository {
         allIngredientAmount.clear(); allIngredientName.clear(); remainingStockAmount.clear();
 
         //menuName+orderOption : 아메리카노 + ice의 hashMap key는 아메리카노ice.
-        Menu menu = Menu_Map.get(menuName+orderOption);
+        Menu menu = MenuRepository.getMenuFromNameAndOption(menuName, orderOption);
+
         //쓰기 불편해서 ingredientName=레시피 이름, ingredientAmount=레시피에 필요한 재료숫자, remainingAmount= DB재고잔량 배열로 변환.
         initiallizationForCalc(menu);
 
@@ -39,15 +40,18 @@ public class cartRepository {
 
     private void initiallizationForCalc(Menu menu){
 
-        HashMap<String, Integer> ingredients = menu.getIngredient();
-        for (HashMap.Entry<String, Integer> entry:ingredients.entrySet()){
-            allIngredientName.add(entry.getKey());
-            allIngredientAmount.add(entry.getValue());
+       ArrayList<Menu.Ingredient> ingredients = menu.getIngredient();
+       
+        for (Menu.Ingredient ingredient: ingredients){
+            allIngredientAmount.add(ingredient.getNum());
+            allIngredientName.add(ingredient.getName());
         }
 
         for (String str : allIngredientName){
-             Material stock = Material_Map.get(str);
-             remainingStockAmount.add(stock.getAmount());
+            for (Material material: Material_Map){
+                remainingStockAmount.add(material.getAmount());
+                break;
+            }
         }
     }
 
@@ -66,9 +70,15 @@ public class cartRepository {
     }
 
     private void setStockAmount(int availableOrderAmount){
+        
         for (int i = 0; i < allIngredientName.size(); i++) {
-            Material_Map.get(allIngredientName.get(i))
-                    .setAmount(remainingStockAmount.get(i) - availableOrderAmount * allIngredientAmount.get(i));
+            for (Material material: Material_Map){
+                if (material.getName().equals(allIngredientName.get(i))){
+                    material.setAmount(remainingStockAmount.get(i) - availableOrderAmount * allIngredientAmount.get(i));
+                }
+            }
+//            Material_Map.get(allIngredientName.get(i))
+//                    .setAmount(remainingStockAmount.get(i) - availableOrderAmount * allIngredientAmount.get(i));
         }
     }
 }

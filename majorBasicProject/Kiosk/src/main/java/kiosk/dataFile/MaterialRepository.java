@@ -6,13 +6,11 @@ import kiosk.manager.Admin;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MaterialRepository {
-
-    private static final HashMap<String, Material> Material_Map = new HashMap<>();
-
+    private static final ArrayList<Material> Material_Map = new ArrayList<>();
     public void makeMaterial(String fileName) {
         try (Scanner scan = new Scanner(new File(fileName))) {
             Boolean check = true;
@@ -56,21 +54,38 @@ public class MaterialRepository {
         return true;
     }
 
-    public static HashMap<String, Material> getMaterial_Map(){
+    public static ArrayList<Material> getMaterial_Map(){
         return Material_Map;
     }
     
     public static boolean isDuplicatedMaterial(String ingredient){
-        if (Material_Map.get(ingredient) == null)
-            return false;
-        else 
-            return true;
+        
+        for (Material material: Material_Map) {
+            if (material.getName().equals(ingredient)){
+                return true;
+            }
+        }
+        return false;
     }
     public static void addMaterial(Material material){
-        Material_Map.put(material.getName(), material);
+        Material_Map.add(material);
     }
 
     public static void deleteMaterial(String name){
-        Material_Map.remove(name);
+        for (Material material: Material_Map) {
+            if (material.getName().equals(name)){
+                Material_Map.remove(material);
+                return;
+            }
+        }
+    }
+    
+    public static Material getMaterialFromName(String name){
+        for (Material material: Material_Map) {
+            if (material.getName().equals(name)) {
+                return material;
+            }
+        }
+        return null;
     }
 }

@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="257edfd4-64f0-4b6c-a0ed-564a57de38af" name="Changes" comment="hch" />
+    <list default="true" id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="menu.csv -&gt; UTF-BOM to UTF 인코딩 방식 맞춤.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/MaterialRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/MaterialRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/MenuRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/MenuRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/domain/Menu.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/domain/Menu.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,67 +20,18 @@
       <ProjectState />
     </projectState>
   </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="Kiosk" type="f1a62948:ProjectNode" />
-              </path>
-            </expand>
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
   <component name="Git.Settings">
-    <option name="PREVIOUS_COMMIT_AUTHORS">
-      <list>
-        <option value="LG &lt;hchan3022@naver.com&gt;" />
-      </list>
-    </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="MIXED" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">
-    <option name="selectedUrlAndAccountId">
-      <UrlAndAccount>
-        <option name="accountId" value="002a1035-8bf2-4164-9a96-2ba86a070edf" />
-        <option name="url" value="https://github.com/AttBHtBt/majorBasicProject.git" />
-      </UrlAndAccount>
-    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="MavenImportPreferences">
-    <option name="importingSettings">
-      <MavenImportingSettings>
-        <option name="jdkForImporter" value="corretto-18" />
-      </MavenImportingSettings>
-    </option>
-  </component>
-  <component name="MavenRunner">
-    <option name="jreName" value="corretto-18" />
-  </component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
-  <component name="ProjectId" id="2OJbUo40zcs8bTXQRG5njL3kKT3" />
+  <component name="ProjectId" id="2OmCrl8vJPXTLYf0MxKZVY3uzsB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -85,22 +41,30 @@
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;TODO_SCOPE&quot;: &quot;All Places&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/majorBasicProject&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/cms/kiosk/majorBasicProject/Kiosk/build/classes/java/main&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.tools&quot;
-  },
-  &quot;keyToStringList&quot;: {
-    &quot;ChangesTree.GroupingKeys&quot;: [
-      &quot;directory&quot;,
-      &quot;module&quot;
-    ]
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-18" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Kiosk.main" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-18" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -113,79 +77,60 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="SvnConfiguration">
-    <configuration>C:\Users\LG\AppData\Roaming\Subversion</configuration>
-  </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="b48bc4c5-9b47-4fe4-8a1b-d62244ed802a" name="Changes" comment="hch" />
-      <created>1681281650687</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1681281650687</updated>
-    </task>
-    <task id="LOCAL-00001" summary="21">
-      <created>1681284012697</created>
+    <task id="LOCAL-00001" summary="Modified : regenerate logic">
+      <created>1682154842959</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1681284012697</updated>
+      <updated>1682154842959</updated>
     </task>
-    <task id="LOCAL-00002" summary="21">
-      <created>1681284567847</created>
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="Modified : regenerate logic" />
+      <created>1682156570742</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682156570742</updated>
+      <workItem from="1682156574041" duration="7247000" />
+      <workItem from="1682175064514" duration="237000" />
+      <workItem from="1682213550038" duration="771000" />
+      <workItem from="1682268434330" duration="710000" />
+      <workItem from="1682276828865" duration="5823000" />
+      <workItem from="1682299514922" duration="313000" />
+    </task>
+    <task id="LOCAL-00002" summary="MODIFIED : ManagePrompt의 메뉴/재료 * 추가/수정/삭제 기능;">
+      <created>1682161682178</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1681284567847</updated>
+      <updated>1682161682178</updated>
     </task>
-    <task id="LOCAL-00003" summary="옳은 입력 확인">
-      <created>1681731629605</created>
+    <task id="LOCAL-00003" summary="MODIFIED : 종료 시 DataFile 삭제 로직 추가">
+      <created>1682164155807</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1681731629605</updated>
+      <updated>1682164155807</updated>
     </task>
-    <task id="LOCAL-00004" summary="옳은 입력 확인">
-      <created>1681731812252</created>
+    <task id="LOCAL-00004" summary="menu.csv -&gt; UTF-BOM to UTF 인코딩 방식 맞춤.">
+      <created>1682283082730</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1681731812252</updated>
+      <updated>1682283082730</updated>
     </task>
-    <task id="LOCAL-00005" summary="옳은 입력 확인 수정 완">
-      <created>1681809763919</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1681809763919</updated>
-    </task>
-    <task id="LOCAL-00006" summary="옳은 입력 확인 수정 완">
-      <created>1681810567448</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1681810567448</updated>
-    </task>
-    <task id="LOCAL-00007" summary="옳은 입력 확인 수정 완">
-      <created>1681810615018</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1681810615018</updated>
-    </task>
-    <task id="LOCAL-00008" summary="hch">
-      <created>1682126017554</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1682126017554</updated>
-    </task>
-    <option name="localTasksCounter" value="9" />
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -204,40 +149,35 @@
                   </entry>
                 </map>
               </option>
-              <option name="TEXT_FILTER_SETTINGS">
-                <TextFilterSettings>
-                  <option name="REGEX" value="true" />
-                  <option name="MATCH_CASE" value="true" />
-                </TextFilterSettings>
-              </option>
             </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="RECENT_FILTERS">
-      <map>
-        <entry key="Branch">
-          <value>
-            <list>
-              <RecentGroup>
-                <option name="FILTER_VALUES">
-                  <option value="origin/main" />
-                </option>
-              </RecentGroup>
-            </list>
           </value>
         </entry>
       </map>
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="21" />
-    <MESSAGE value="옳은 입력 확인" />
-    <MESSAGE value="옳은 입력 확인 수정 완" />
-    <MESSAGE value="hch" />
-    <MESSAGE value="JEvo171: payment : WORKIGN" />
-    <option name="LAST_COMMIT_MESSAGE" value="JEvo171: payment : WORKIGN" />
+    <MESSAGE value="Modified : regenerate logic" />
+    <MESSAGE value="MODIFIED : ManagePrompt의 메뉴/재료 * 추가/수정/삭제 기능 + &#10;MESSAGE : 재고 빼고 재고 추가하는 함수만 검증하면 될듯합니다." />
+    <MESSAGE value="MODIFIED : 종료 시 DataFile 삭제 로직 추가" />
+    <MESSAGE value="HASHMAP -&gt; LIST로 구현" />
+    <MESSAGE value="menu.csv -&gt; UTF-BOM to UTF 인코딩 방식 맞춤." />
+    <option name="LAST_COMMIT_MESSAGE" value="menu.csv -&gt; UTF-BOM to UTF 인코딩 방식 맞춤." />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/cartRepository.java</url>
+          <line>42</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/cartRepository.java</url>
+          <line>27</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

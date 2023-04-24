@@ -9,12 +9,12 @@ import kiosk.prompt.OrderPrompt;
 import javax.xml.crypto.Data;
 import java.io.File;
 //import kiosk.prompt.OrderPrompt;
+import kiosk.prompt.OrderPrompt;
+
 
 public class Main {
     public static void main(String[] args){
 
-        DataFile.currentDir(DataFile.DATAFILEDIRECTORY);
-        DataFile.pwd();
         MenuRepository MR = new MenuRepository();
         MR.makeMenu(DataFile.DATAFILEDIRECTORY + DataFile.menuFileName);
 
