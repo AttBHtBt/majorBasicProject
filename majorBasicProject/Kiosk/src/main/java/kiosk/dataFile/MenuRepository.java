@@ -109,13 +109,16 @@ public class MenuRepository {
                 forValidationTest.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
             }
 
-            // 얘네 test인데 check랑 and 연산 해주기는 해야 함
+            /* 얘네 test인데 check랑 and 연산 해주기는 해야 함
             check = check && CheckMenuDu(forValidationTest);
             check = check;
             check =  check && CheckRecipeDu(forValidationTest);
             check = check;
             check =  check && CheckOption(forValidationTest);
             check = check;
+            */
+            check = check && CheckMenuDu(forValidationTest) && CheckRecipeDu(forValidationTest)
+                    && CheckOption(forValidationTest);
             //중복 메뉴있는지 찾고
 
 
