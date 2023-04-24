@@ -61,7 +61,7 @@ public class ManagePrompt {
                 deleteStock();
                 break;
             case "exit":
-                //prompt 전환 함수
+                OrderPrompt orderPrompt = new OrderPrompt();
                 break;
         }
     }

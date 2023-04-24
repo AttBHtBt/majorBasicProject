@@ -1,16 +1,28 @@
 package kiosk.prompt;
+import kiosk.dataFile.MenuRepository;
 import kiosk.domain.Menu;
 import kiosk.prompt.OrderPrompt;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 public class PayPrompt {
-    private int total_pay=10000;//장바구니에서 가져온 결제 예정액,먼저 10000원이라고 가정
-    private int total_print=total_pay;//결제예정액 출력
+    private int total_pay;//장바구니에서 가져온 결제 예정액,먼저 10000원이라고 가정
+    private int total_print;//결제예정액 출력
+    
+    private ArrayList<Menu> Menu_Map = MenuRepository.getMenu_Map();
     public PayPrompt(){
+        total_pay = 0;
+        total_print = 0;
+        getTotal();
         showPrompt();
     }
     private void getTotal(){//장바구니에서 결제예정액 가져오는 함수
-
-
+        
+        for(Menu menu: Menu_Map) {
+            total_pay += (menu.getPrice() * menu.getOrderCount());
+            System.out.printf("%d * %d = %d\n", menu.getPrice(), menu.getOrderCount(), total_print);
+        }
+        total_print = total_pay;
     }
     private void showPrompt(){
         while (true) {                                      //무한 루프를 돌면서
@@ -39,7 +51,7 @@ public class PayPrompt {
         System.out.println("결제예정액:"+total_print+"원이 결제되었습니다.");
         orderCall();
     }
-    private void partPay(){//결제 예정액을 가져와서 차감시키면서 진행(total=결제 예정액,part=분할결제 금액)
+    private void partPay(){//결제 예정액을 가져와서 차감시키면서 진행(total=결제 예정액/,part=분할결제 금액)
         System.out.println("분할결제 시작");
         while(total_pay>0){//결제 예정액이 다 결제 될때까지
             System.out.println("총 결제예정액:"+total_pay);

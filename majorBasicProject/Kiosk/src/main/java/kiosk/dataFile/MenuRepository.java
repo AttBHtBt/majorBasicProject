@@ -12,7 +12,6 @@ import java.util.*;
 * 파일 무결성 검사 : kiosk.manager.Admin의 *SyntaxValid 함수들 사용해서 각각외 요소들 확인 가능.
  */
 
-
 public class MenuRepository {
 
     private static final ArrayList<Menu> MENU_Map = new ArrayList<>();
