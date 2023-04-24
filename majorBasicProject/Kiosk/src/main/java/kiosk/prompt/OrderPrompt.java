@@ -7,6 +7,7 @@ import kiosk.domain.Menu;
 import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
@@ -51,12 +52,14 @@ public class OrderPrompt {
 
 
     private void showPrompt(){
+        DecimalFormat df= new DecimalFormat("###,###"); // 가격 출력 콤마 추가
+
         System.out.println("Menu");
         System.out.println("메뉴, 가격과 선택할 수 있는 메뉴 옵션입니다.");
         System.out.println("----------------------------------------------------------------");
 
         for (Menu m: menus){
-            System.out.println(m.getMenu()+" "+m.getBeverageStateOption()+" "+m.getPrice()+"원");
+            System.out.println(m.getMenu()+" "+m.getBeverageStateOption()+" "+df.format(m.getPrice())+"원");
         }
 
         System.out.println("----------------------------------------------------------------");
@@ -65,13 +68,14 @@ public class OrderPrompt {
         showshoppingBasket();
         System.out.println("----------------------------------------------------------------");
         System.out.println("아래의 입력 대기 줄에 주문할 메뉴를 입력해주세요.");
-        System.out.println("최종결제를 원한다면 'pay'를 입력해주세요.");
+        System.out.println("최종 결제를 원한다면 'pay'를 입력해주세요.");
         System.out.print("Kiosk >");
     }
     private void showshoppingBasket(){
+        DecimalFormat df= new DecimalFormat("###,###"); // 가격 출력 콤마 추가
         for (Menu m: menus){ // 장바구니 추가
             if(m.getOrderCount()>0)
-                System.out.println(m.getMenu()+"/"+m.getBeverageStateOption()+"/"+m.getOrderCount()+"잔/"+m.getOrderCount()*m.getPrice()+"원");
+                System.out.println(m.getMenu()+"/"+m.getBeverageStateOption()+"/"+m.getOrderCount()+"잔/"+df.format(m.getOrderCount()*m.getPrice())+"원");
         }
     }
     private void payCall(){                                     //pay 함수

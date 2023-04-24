@@ -20,7 +20,11 @@ public class PayPrompt {
         
         for(Menu menu: Menu_Map) {
             total_pay += (menu.getPrice() * menu.getOrderCount());
-            System.out.printf("%d * %d = %d\n", menu.getPrice(), menu.getOrderCount(), total_print);
+            if(total_pay==0){
+                System.out.println("장바구니에 아무것도 들어있지 않습니다.!");
+                orderCall(); // 주문 프롬프트로 다시 이동
+            }
+            //System.out.printf("%d * %d = %d\n", menu.getPrice(), menu.getOrderCount(), total_print);
         }
         total_print = total_pay;
     }
