@@ -37,7 +37,7 @@ public class PayPrompt {
                     break;                                  //switch문 탈출
                 case "pay -s":                              //-s인 경우에
                     partPay();                           //분할결제 함수 호출
-                    break;                                  //switch문 탈출
+                    break;                                //switch문 탈출
                 case "exit":                                //exit인 경우에
                     orderCall();//주문 프롬프트로 이동
                     break;
@@ -59,6 +59,9 @@ public class PayPrompt {
             try {
                 Scanner scanner = new Scanner(System.in);
                 int once_Pay = scanner.nextInt();//part=분할결제 금액
+                if(once_Pay<0){
+                    System.out.println("(오류) 숫자(양의 정수)를 입력하세요.");
+                    continue;}
                 total_pay-=once_Pay;
             }catch (Exception e) {
                 System.out.println("(오류) 숫자(양의 정수)를 입력하세요.");
