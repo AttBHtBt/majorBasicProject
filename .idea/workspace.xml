@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="프로그램 종료 시 자료구조 DataFile에 옮기기">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/DataFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/DataFile.java" afterDir="false" />
-    </list>
+    <list default="true" id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="프로그램 종료 시 자료구조 DataFile에 옮기기" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +53,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-18" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Kiosk.main" />
+      <module name="majorBasicProject.Kiosk.main" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -190,7 +187,8 @@
     <MESSAGE value="getTotal()" />
     <MESSAGE value="주문-관리 프롬프트 전환시 주문한 개수 0으로 초기화" />
     <MESSAGE value="프로그램 종료 시 자료구조 DataFile에 옮기기" />
-    <option name="LAST_COMMIT_MESSAGE" value="프로그램 종료 시 자료구조 DataFile에 옮기기" />
+    <MESSAGE value="입출력 세부사항 수정 hch" />
+    <option name="LAST_COMMIT_MESSAGE" value="입출력 세부사항 수정 hch" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
