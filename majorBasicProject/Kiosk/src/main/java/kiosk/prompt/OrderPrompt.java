@@ -4,8 +4,10 @@ import kiosk.dataFile.*;
 import kiosk.domain.Material;
 import kiosk.domain.Menu;
 
+import javax.xml.crypto.Data;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import java.util.*;
 
 import static java.lang.Integer.parseInt;
@@ -30,10 +32,13 @@ public class OrderPrompt {
 
             switch (str) {                                  //입력값이
                 case "pay":                                 //pay인 경우에
+                    System.out.println("장바구니");
+                    showshoppingBasket();
                     payCall();                              //pay함수 호출
                     status = "exit";                        //status 값을 exit로 바꿔 루프를 돌지 않고 종료하게 만든다
                     break;                                  //switch문 탈출
-                case "admin:admin":                              //manage인 경우에
+                case "admin:admin":                              //manage인 경우 : 주문개수 초기화
+                    MenuRepository.setOrderCountToZero();
                     manageCall();                           //manage함수 호출
                     status = "exit";                        //status 값을 exit로 바꿔 루프를 돌지 않고 종료하게 만든다
                     break;                                  //switch문 탈출
@@ -46,15 +51,32 @@ public class OrderPrompt {
             }
         }
     }
+    
+    private void showMenuIfOption(Menu m) {
+        DecimalFormat df= new DecimalFormat("###,###"); // 가격 출력 콤마 추가
+        if (m.getBeverageStateOption().equals("HOT")) {
+            System.out.printf("%s %s원 (ICE/HOT)\n", m.getMenu(), df.format(m.getPrice()));
+        }
+    }
+    
+    private void showMenuIfNoOption(Menu m) {
+        DecimalFormat df= new DecimalFormat("###,###"); // 가격 출력 콤마 추가
+        if (m.getBeverageStateOption().equals("-")) {
+            System.out.printf("%s %s원\n", m.getMenu(), df.format(m.getPrice()));
+        }
+    }
 
 
     private void showPrompt(){
+        DecimalFormat df= new DecimalFormat("###,###"); // 가격 출력 콤마 추가
+
         System.out.println("Menu");
         System.out.println("메뉴, 가격과 선택할 수 있는 메뉴 옵션입니다.");
         System.out.println("----------------------------------------------------------------");
 
         for (Menu m: menus){
-            System.out.println(m.getMenu()+" "+m.getBeverageStateOption()+" "+m.getPrice()+"원");
+            showMenuIfOption(m);
+            showMenuIfNoOption(m);
         }
 
         System.out.println("----------------------------------------------------------------");
@@ -63,11 +85,15 @@ public class OrderPrompt {
         showshoppingBasket();
         System.out.println("----------------------------------------------------------------");
         System.out.println("아래의 입력 대기 줄에 주문할 메뉴를 입력해주세요.");
-        System.out.println("최종결제를 원한다면 'pay'를 입력해주세요.");
-        System.out.print("order > ");
+        System.out.println("최종 결제를 원한다면 'pay'를 입력해주세요.");
+        System.out.print("Kiosk >");
     }
-    private void showshoppingBasket(){                        //장바구니 호출
-
+    private void showshoppingBasket(){
+        DecimalFormat df= new DecimalFormat("###,###"); // 가격 출력 콤마 추가
+        for (Menu m: menus){ // 장바구니 추가
+            if(m.getOrderCount()>0)
+                System.out.println(m.getMenu()+"/"+m.getBeverageStateOption()+"/"+m.getOrderCount()+"잔/"+df.format(m.getOrderCount()*m.getPrice())+"원");
+        }
     }
     private void payCall(){                                     //pay 함수
         PayPrompt payPrompt = new PayPrompt();                  //payPrompt 클래스를 생성한다
@@ -83,11 +109,13 @@ public class OrderPrompt {
             
             if (regenerate)
                 DataFile.regenerate();
+            else {  //데이터 파일 모두 괜찮으니까 자료구조를 데이터파일에 옮김.
+                DataFile.convertMenuRepositoryToCSV();
+                DataFile.convertMaterialRepositoryToCSV(); 
+            }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
-        MenuRepository.regenerateMenuFile();
-            
         System.exit(0);                                         //프로그램 전체 종료
     }              
     private void checkCall(String s){               //홍
@@ -101,12 +129,21 @@ public class OrderPrompt {
                 if(ord_line.charAt(j)=='/')slash_cnt++;
             }
             if (0 < slash_cnt && slash_cnt < 3) {
+                String []splitted = ord_line.split("/");
+                if(splitted.length == 0)
+                    ord_line = "asfsaf/asfsdaf/safasf";
+                if (slash_cnt == 1 && splitted.length < 2)
+                    ord_line = "safsasa/asfsfs/safsf";
                 if (slash_cnt == 1) { // 구분자 하나일 때 ,첫 구분자 위치 뒤" /" 추가
-                    int k = ord_line.indexOf("/");
-                    ord_line=ord_line.replace(ord_line.substring(k+1,ord_line.length()), "-/" + ord_line.substring(k+1,ord_line.length()));
+                    if (splitted.length == 1)
+                        ord_line = splitted[0] + "/-/" + "asfasfas";
+                    else 
+                        ord_line = splitted[0] + "/-/" + splitted[1];
                 }
-
-                String a[]=ord_line.split("/");
+                if (slash_cnt == 2 && splitted.length < 3)
+                    ord_line = "safsdaf/asfsaf/safsdafd";
+                
+                String a[] = ord_line.split("/");
                 ordline_menu= a[0]; //시작 부분 부터 첫 구분자 앞까지
 
                 ordline_state=a[1];
@@ -132,21 +169,24 @@ public class OrderPrompt {
                     if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state))  ordline_checkswitch++;
                 }
             }
-            if(ordline_checkswitch>=1){
-                System.out.println("옳은 입력임");
+            if(ordline_checkswitch>1){
+                /*System.out.println("옳은 입력임");
                 System.out.println("메뉴:"+ordline_menu);
                 System.out.println("옵션:"+ordline_state);
                 System.out.println("개수:"+ordline_howmany_front);
+                System.out.println(ordline_howmany_rear);*/    //입력 확인용 코드
 
                 available_order_amount=cr.getAvailableOrderAmount(ordline_menu, ordline_state,parseInt(ordline_howmany_front));
                 if(available_order_amount >= parseInt(ordline_howmany_front)){
                     for (Menu m: menus){
-                        if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state))
+                        if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state)) {
+                            System.out.println("주문이 장바구니에 추가되었습니다.\n");
                             m.setOrderCount(m.getOrderCount() + parseInt(ordline_howmany_front)); //개수 항목 ++;
+                        }
                     }
                 }
                 else{
-                    System.out.println("재고 문제로 현재 해당 메뉴는 "+available_order_amount+"잔까지 주문이 가능합니다.");
+                    System.out.println("재고 문제로 현재 해당 메뉴는 "+available_order_amount+"잔까지 주문이 가능합니다.\n");
                 }
 
             }
@@ -154,9 +194,8 @@ public class OrderPrompt {
                 System.out.println("메뉴명, 음료 상태 옵션, 개수 순서대로 공백없이 \'/\'로 구분해 입력해주세요.");
                 System.out.println("음료 상태 옵션 선택이 없는 주문(핫초코, 요거트 스무디 등)은");
                 System.out.println("메뉴명과 개수만을 공백 없이 \'/\'로 구분해 입력해주세요.\n");
-                System.out.println("주문 입력 예시)\n아메리카노/ICE/2잔 또는\n요거트스무디/1개");
+                System.out.println("주문 입력 예시)\n아메리카노/ICE/2잔 또는\n요거트스무디/1개\n");
                 System.out.println("----------------------------------------------------------------");
             }
-        showPrompt();
     }
 }

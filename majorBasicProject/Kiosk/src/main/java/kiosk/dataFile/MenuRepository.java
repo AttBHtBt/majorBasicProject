@@ -150,4 +150,10 @@ public class MenuRepository {
         }
         return null;
     }
+    
+    public static void setOrderCountToZero(){
+        for (Menu menu: MENU_Map){
+            menu.setOrderCount(0);
+        }
+    }
 }
