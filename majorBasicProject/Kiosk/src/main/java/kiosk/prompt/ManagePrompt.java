@@ -89,7 +89,8 @@ public class ManagePrompt {
         List<String> unDividedIngredients = commandLineTokens.subList(5, commandLineTokens.size());
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),
                 commandLineTokens.get(3), commandLineTokens.get(4).toUpperCase(), unDividedIngredients);
-        if (!addMenuSyntaxValid(tokens)){
+//    public ManagePromptToken(String mainCommand, String optionCommand, String menu, String menuOption, String price, List<String> items)
+            if (!addMenuSyntaxValid(tokens)){
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }

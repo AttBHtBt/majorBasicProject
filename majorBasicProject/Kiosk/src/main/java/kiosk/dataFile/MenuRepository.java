@@ -52,7 +52,6 @@ public class MenuRepository {
 
                     ArrayList<ArrayList<String>> dynamicArray = new ArrayList<>();
                     for (int i = 3; i < lineArr.length; i++) {
-
                         String[] array = lineArr[i].split(":");
                         ArrayList<String> list = new ArrayList<>();
                         list.add(array[0].trim());
@@ -61,7 +60,8 @@ public class MenuRepository {
                     }
                     //2차원 arrayList에 재료이름과 재료 수량을 넣는다.
                     MENU_Map.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim().toUpperCase(), dynamicArray));
-                    forValidationTest.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
+//                        public Menu(String menu, String price, String beverageStateOption, ArrayList<ArrayList<String>> dynamicArray)
+                        forValidationTest.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
                 }
                 check = check && CheckMenuDu(forValidationTest) && CheckRecipeDu(forValidationTest)
                         && CheckOption(forValidationTest);
@@ -73,9 +73,10 @@ public class MenuRepository {
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 System.out.println("FileNotFoundException: FileName" + fileName);
-            } catch (IndexOutOfBoundsException e) {
-                System.out.println("IndexOutOfBoundsException");
             }
+//            catch (IndexOutOfBoundsException e) {
+//                System.out.println("IndexOutOfBoundsException");
+//            }
             forValidationTest.clear();
         }
     
