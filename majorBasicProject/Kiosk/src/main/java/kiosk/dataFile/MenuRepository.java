@@ -5,9 +5,11 @@ import kiosk.domain.Menu;
 import kiosk.manager.Admin;
 
 import javax.swing.*;
+import javax.swing.plaf.MenuBarUI;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.function.DoubleToIntFunction;
 
 
 /*
@@ -55,7 +57,7 @@ public class MenuRepository {
                         dynamicArray.add(list);
                     }
                     //2차원 arrayList에 재료이름과 재료 수량을 넣는다.
-                    MENU_Map.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
+                    MENU_Map.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim().toUpperCase(), dynamicArray));
                     forValidationTest.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
                 }
                 check = check && CheckMenuDu(forValidationTest) && CheckRecipeDu(forValidationTest)
@@ -317,6 +319,12 @@ public class MenuRepository {
             }
         }
         return false;
+    }
+    
+    public static void printMenuRepository(){
+        for (Menu menu: MENU_Map){
+            System.out.println(menu.toString());
+        }
     }
     
 }

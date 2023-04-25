@@ -108,4 +108,14 @@ public class Menu {
         this.orderCount = orderCount;
     }
 
+    @Override
+    public String toString() {
+        return "Menu{" +
+                "menu='" + menu + '\'' +
+                ", price=" + price +
+                ", beverageStateOption='" + beverageStateOption + '\'' +
+                ", ingredient=" + ingredient +
+                ", orderCount=" + orderCount +
+                '}';
+    }
 }

@@ -6,6 +6,7 @@ import kiosk.domain.Material;
 import kiosk.manager.Admin;
 import kiosk.domain.ManagePromptToken;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import java.io.PrintStream;
@@ -19,6 +20,7 @@ public class ManagePrompt {
     private String input;
     private List<String> commandLineTokens;
     public ManagePromptToken tokens;
+    public ManagePromptToken tokens2;
     
     private boolean loopManagePrompt = true;
     
@@ -26,6 +28,7 @@ public class ManagePrompt {
     //정규표현식
 
     public ManagePrompt(){
+        loopManagePrompt = true;
         while (loopManagePrompt){
             showPrompt();
             getInput();
@@ -67,6 +70,8 @@ public class ManagePrompt {
                 OrderPrompt orderPrompt = new OrderPrompt();
                 loopManagePrompt = false;
                 break;
+            default:
+                System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
         }
     }
 
@@ -82,13 +87,12 @@ public class ManagePrompt {
     private void addMenu(){
         List<String> unDividedIngredients = commandLineTokens.subList(5, commandLineTokens.size());
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),
-                commandLineTokens.get(3), commandLineTokens.get(4), unDividedIngredients);
-
-        if (!addMenuSyntaxValid()){
+                commandLineTokens.get(3), commandLineTokens.get(4).toUpperCase(), unDividedIngredients);
+        if (!addMenuSyntaxValid(tokens)){
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
-        if (!addMenuSemanticsValid()) {
+        if (!addMenuSemanticsValid(tokens)) {
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
@@ -113,13 +117,59 @@ public class ManagePrompt {
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return ;
         }
-        
         //String menu, String price, String beverageStateOption, List<String> ["abc(ml):123, ..."]
-        Menu menu = new Menu(tokens.getMenu(), tokens.getPrice(),  tokens.getMenuOption(), unDividedIngredients);
-        MenuRepository.addMenu(menu);
+
+        
+        //HOT OR ICE
+        if (!tokens.getMenuOption().equals("-")){
+            getInput();
+            commandLineTokens = Arrays.asList(input.trim().split("\\s+"));
+            List<String> unDividedIngredients2 = commandLineTokens.subList(5, commandLineTokens.size());
+            tokens2 = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),
+                    commandLineTokens.get(3), commandLineTokens.get(4).toUpperCase(), unDividedIngredients2);
+            if (tokens.getMenuOption().equals("HOT") && tokens2.getMenuOption().equals("ICE") ||  tokens.getMenuOption().equals("ICE") && tokens2.getMenuOption().equals("HOT"))
+                return ;
+            if (!addMenuSyntaxValid(tokens2)){
+                System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                return ;
+            }
+            if (!addMenuSemanticsValid(tokens2)) {
+                System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                return ;
+            }
+            if (MenuRepository.isMenuNameinRepository(tokens2.getMenu(), tokens2.getMenuOption())) {
+                System.out.println("(오류) 동일한 이름의 메뉴가 동시에 동일한 음료 상태 옵션과 함께 존재합니다.");
+                return;
+            }
+            //- 입력시 HOT/ICE인 메뉴가 존재함 
+            if (tokens2.getOptionCommand().equals("-")){
+                MenuRepository.isHotOrIceInSameMenuName(tokens2);
+                System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                return ;
+            }
+            //HOT / ICE 입력 시 -인 메뉴가 존재함
+            if (tokens2.getOptionCommand().toUpperCase().equals("HOT") || tokens.getOptionCommand().toUpperCase().equals("ICE")){
+                MenuRepository.isHyphenInSameMenuName(tokens2);
+                System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                return ;
+            }
+            //INGREDIENTS에 중복된 메뉴가 있음.
+            if (MenuRepository.isSameNameInIngredients(tokens2.getItems())){
+                System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                return ;
+            }
+
+            Menu menu = new Menu(tokens.getMenu(), tokens.getPrice(),  tokens.getMenuOption(), unDividedIngredients);
+            MenuRepository.addMenu(menu);
+            if (tokens.getMenuOption().equals("ICE") || tokens.getMenuOption().equals("HOT")){
+                Menu menu2 = new Menu(tokens2.getMenu(), tokens2.getPrice(),  tokens2.getMenuOption(), unDividedIngredients2);
+                MenuRepository.addMenu(menu2);
+            }
+        }
+        MenuRepository.printMenuRepository();
     }
     
-    private boolean addMenuSyntaxValid() {
+    private boolean addMenuSyntaxValid(ManagePromptToken tokens) {
         boolean isValidAddMenuCommand = (
                 Admin.menuCheckAddCommand(tokens.getOptionCommand()) &&
                 Admin.isMenuNameSynaxValid(tokens.getMenu()) &&
@@ -136,7 +186,7 @@ public class ManagePrompt {
         return (isIngredientSyntaxValid && isValidAddMenuCommand);
     }
 
-    private boolean addMenuSemanticsValid() {
+    private boolean addMenuSemanticsValid(ManagePromptToken tokens) {
         boolean isValidAddMenuCommand = Admin.isMenuPriceSemanticsValid(Integer.toString(tokens.getPrice()));
 
         boolean isIngredientSemanticsValid = true;
@@ -146,26 +196,116 @@ public class ManagePrompt {
         return (isIngredientSemanticsValid && isValidAddMenuCommand);
     }
 
-    private void modifyMenu(){
+    private void modifyMenu() {
         List<String> unDividedIngredients = commandLineTokens.subList(5, commandLineTokens.size());
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),
                 commandLineTokens.get(3), commandLineTokens.get(4), unDividedIngredients);
 
-        if (!addMenuSyntaxValid()){
+        if (!addMenuSyntaxValid(tokens)) {
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
-            return ;
+            return;
         }
-        if (!addMenuSemanticsValid()) {
+        if (!addMenuSemanticsValid(tokens)) {
             System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
             return;
         }
         if (!MenuRepository.isMenuNameinRepository(tokens.getMenu(), tokens.getMenuOption()))
             System.out.println("(오류) 메뉴가 레시피 파일에 존재하지 않습니다.");
         else {
+            ArrayList<Menu> menus = MenuRepository.getMenu_Map();
             MenuRepository.deleteMenu(tokens.getMenu(), tokens.getMenuOption());
-            MenuRepository.addMenu(
-                    new Menu(tokens.getMenu(), tokens.getPrice(),  tokens.getMenuOption(), unDividedIngredients)
-            );
+            if (!tokens.getOptionCommand().equals("-")) {
+                for (Menu menu : menus) {
+                    if (menu.getMenu().equals(tokens.getMenu())) {
+                        if (tokens.getMenuOption().equals("HOT"))
+                            MenuRepository.deleteMenu(tokens.getMenu(), "ICE");
+                        else if (tokens.getMenuOption().equals("ICE"))
+                            MenuRepository.deleteMenu(tokens.getMenu(), "HOT");
+                    }
+                }
+            }
+
+            //add
+            {
+                if (!addMenuSyntaxValid(tokens)) {
+                    System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                    return;
+                }
+                if (!addMenuSemanticsValid(tokens)) {
+                    System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                    return;
+                }
+                if (MenuRepository.isMenuNameinRepository(tokens.getMenu(), tokens.getMenuOption())) {
+                    System.out.println("(오류) 동일한 이름의 메뉴가 동시에 동일한 음료 상태 옵션과 함께 존재합니다.");
+                    return;
+                }
+                //- 입력시 HOT/ICE인 메뉴가 존재함 
+                if (tokens.getOptionCommand().equals("-")) {
+                    MenuRepository.isHotOrIceInSameMenuName(tokens);
+                    System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                    return;
+                }
+                //HOT / ICE 입력 시 -인 메뉴가 존재함
+                if (tokens.getOptionCommand().toUpperCase().equals("HOT") || tokens.getOptionCommand().toUpperCase().equals("ICE")) {
+                    MenuRepository.isHyphenInSameMenuName(tokens);
+                    System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                    return;
+                }
+                //INGREDIENTS에 중복된 메뉴가 있음.
+                if (MenuRepository.isSameNameInIngredients(tokens.getItems())) {
+                    System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                    return;
+                }
+                //String menu, String price, String beverageStateOption, List<String> ["abc(ml):123, ..."]
+
+
+                //HOT OR ICE
+                if (!tokens.getMenuOption().equals("-")) {
+                    getInput();
+                    commandLineTokens = Arrays.asList(input.trim().split("\\s+"));
+                    List<String> unDividedIngredients2 = commandLineTokens.subList(5, commandLineTokens.size());
+                    tokens2 = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),
+                            commandLineTokens.get(3), commandLineTokens.get(4).toUpperCase(), unDividedIngredients2);
+                    if (tokens.getMenuOption().equals("HOT") && tokens2.getMenuOption().equals("ICE") || tokens.getMenuOption().equals("ICE") && tokens2.getMenuOption().equals("HOT"))
+                        return;
+                    if (!addMenuSyntaxValid(tokens2)) {
+                        System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                        return;
+                    }
+                    if (!addMenuSemanticsValid(tokens2)) {
+                        System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                        return;
+                    }
+                    if (MenuRepository.isMenuNameinRepository(tokens2.getMenu(), tokens2.getMenuOption())) {
+                        System.out.println("(오류) 동일한 이름의 메뉴가 동시에 동일한 음료 상태 옵션과 함께 존재합니다.");
+                        return;
+                    }
+                    //- 입력시 HOT/ICE인 메뉴가 존재함 
+                    if (tokens2.getOptionCommand().equals("-")) {
+                        MenuRepository.isHotOrIceInSameMenuName(tokens2);
+                        System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                        return;
+                    }
+                    //HOT / ICE 입력 시 -인 메뉴가 존재함
+                    if (tokens2.getOptionCommand().toUpperCase().equals("HOT") || tokens.getOptionCommand().toUpperCase().equals("ICE")) {
+                        MenuRepository.isHyphenInSameMenuName(tokens2);
+                        System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                        return;
+                    }
+                    //INGREDIENTS에 중복된 메뉴가 있음.
+                    if (MenuRepository.isSameNameInIngredients(tokens2.getItems())) {
+                        System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                        return;
+                    }
+
+                    Menu menu = new Menu(tokens.getMenu(), tokens.getPrice(), tokens.getMenuOption(), unDividedIngredients);
+                    MenuRepository.addMenu(menu);
+                    if (tokens.getMenuOption().equals("ICE") || tokens.getMenuOption().equals("HOT")) {
+                        Menu menu2 = new Menu(tokens2.getMenu(), tokens2.getPrice(), tokens2.getMenuOption(), unDividedIngredients2);
+                        MenuRepository.addMenu(menu2);
+                    }
+                }
+            }
         }
     }
 
@@ -180,6 +320,7 @@ public class ManagePrompt {
     private void deleteMenu(){
 
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2), commandLineTokens.get(3));
+        ArrayList<Menu> menus = MenuRepository.getMenu_Map();
 
         if (!deleteMenuSyntaxValid())
         {
@@ -192,8 +333,19 @@ public class ManagePrompt {
         }
         if (!MenuRepository.isMenuNameinRepository(tokens.getMenu(), tokens.getMenuOption()))
             System.out.println("(오류) 메뉴가 레시피 파일에 존재하지 않습니다.");
-        else
+        else{
             MenuRepository.deleteMenu(tokens.getMenu(), tokens.getMenuOption());
+            if (!tokens.getOptionCommand().equals("-")){
+                for (Menu menu: menus){
+                    if (menu.getMenu().equals(tokens.getMenu())){
+                        if (tokens.getMenuOption().equals("HOT"))
+                            MenuRepository.deleteMenu(tokens.getMenu(), "ICE");
+                        else if (tokens.getMenuOption().equals("ICE"))
+                            MenuRepository.deleteMenu(tokens.getMenu(), "HOT");
+                    }
+                }
+            }
+        }
     }
 
     private boolean deleteMenuSyntaxValid() {
