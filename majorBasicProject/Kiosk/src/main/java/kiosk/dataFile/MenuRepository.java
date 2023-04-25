@@ -21,54 +21,53 @@ public class MenuRepository {
     public MenuRepository(){
     }
     public void makeMenu(String fileName){
-        if(isMenuFilevalid(fileName)) {
-            System.out.println("good");
-        }
-        else
-            System.out.println("bad");
-        try(Scanner scan =  new Scanner(new File(fileName))){
-            Boolean check = true;
-            while(scan.hasNext() && check){
-                String str = scan.nextLine();
-                String[] lineArr = str.split(",");
-                if (!(lineArr.length >=4)) {
-                    check = false;
-                    break;
-                }
-                // 얘네 수정해줘야 함
-
-                //메뉴이름, 메뉴가격, 메뉴옵션, 레시피...
-                check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
-                        && Admin.isMenuPriceSemanticsValid(lineArr[1].trim())
-                        && Admin.isMenuOptionSyntaxValid(lineArr[2].trim());
-                
-
-                for(int j = 3; j< lineArr.length; j++){
-                    check = check && Admin.isRecipieSyntaxValid(lineArr[j].trim())
-                            && Admin.isRecipieSemanticsValid(lineArr[j].trim());
-                    if(!check)
+        if(!isMenuFilevalid(fileName)) {
+            DataFile.isMenuFileValid = false;
+        }else {
+            try (Scanner scan = new Scanner(new File(fileName))) {
+                Boolean check = true;
+                while (scan.hasNext() && check) {
+                    String str = scan.nextLine();
+                    String[] lineArr = str.split(",");
+                    if (!(lineArr.length >= 4)) {
+                        check = false;
                         break;
-                }
+                    }
+                    // 얘네 수정해줘야 함
 
-                ArrayList<ArrayList<String>> dynamicArray = new ArrayList<>();
-                for(int i = 3; i< lineArr.length; i++){
+                    //메뉴이름, 메뉴가격, 메뉴옵션, 레시피...
+                    check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
+                            && Admin.isMenuPriceSemanticsValid(lineArr[1].trim())
+                            && Admin.isMenuOptionSyntaxValid(lineArr[2].trim());
 
-                    String[] array = lineArr[i].split(":");
-                    ArrayList<String> list = new ArrayList<>();
-                    list.add(array[0].trim());
-                    list.add(array[1].trim());
-                    dynamicArray.add(list);
+
+                    for (int j = 3; j < lineArr.length; j++) {
+                        check = check && Admin.isRecipieSyntaxValid(lineArr[j].trim())
+                                && Admin.isRecipieSemanticsValid(lineArr[j].trim());
+                        if (!check)
+                            break;
+                    }
+
+                    ArrayList<ArrayList<String>> dynamicArray = new ArrayList<>();
+                    for (int i = 3; i < lineArr.length; i++) {
+
+                        String[] array = lineArr[i].split(":");
+                        ArrayList<String> list = new ArrayList<>();
+                        list.add(array[0].trim());
+                        list.add(array[1].trim());
+                        dynamicArray.add(list);
+                    }
+                    //2차원 arrayList에 재료이름과 재료 수량을 넣는다.
+                    MENU_Map.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
                 }
-                //2차원 arrayList에 재료이름과 재료 수량을 넣는다.
-                MENU_Map.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
+                if (!check)
+                    DataFile.isMenuFileValid = false;
+            } catch (FileNotFoundException e) {
+                // TODO Auto-generated catch block
+                System.out.println("FileNotFoundException: FileName" + fileName);
+            } catch (IndexOutOfBoundsException e) {
+                System.out.println("IndexOutOfBoundsException");
             }
-            if (!check)
-                DataFile.isMenuFileValid = false;
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            System.out.println("FileNotFoundException: FileName" + fileName);
-        } catch (IndexOutOfBoundsException e){
-            System.out.println("IndexOutOfBoundsException");
         }
     }
     
