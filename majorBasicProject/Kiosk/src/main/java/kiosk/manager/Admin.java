@@ -41,15 +41,15 @@ public class Admin {
     private static String[] unitTable={"ml","L","g","Kg","개"};              //민수 : 이건 왜 넣은거에요?
 
     public static String checkCommand(String command){//검사완료
+        if (Pattern.matches(cmdExit, command))
+            return "exit";
         String[] commandElements=command.trim().split("\\s+");
         
         if (commandElements.length < 3)
             return error;
         if(!isMainCommand(commandElements[0]))
             return error;
-        
-        if (Pattern.matches(cmdExit, command))
-            return "exit";
+
         else if (Pattern.matches(MENUA, command))
             return "menu -a";
         else if (Pattern.matches(MENUM, command))
@@ -144,8 +144,8 @@ public class Admin {
 
         if(amountElements.length!=2)
             return false;
-        if (!Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", ingredient))
-            return false;
+//        if (!Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", ingredient))
+//            return false;
         if(!checkIntegerForm(quantity))
             return false;
         else

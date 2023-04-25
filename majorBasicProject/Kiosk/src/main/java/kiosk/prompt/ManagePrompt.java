@@ -36,7 +36,7 @@ public class ManagePrompt {
         }
     }
     private void showPrompt(){
-        System.out.print("Admin > ");
+        System.out.print("Admin >");
     }
 
     public void getInput(){
