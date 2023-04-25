@@ -25,6 +25,11 @@ public class MenuRepository {
     public void makeMenu(String fileName){
             try (Scanner scan = new Scanner(new File(fileName))) {
                 Boolean check = true;
+                if (!scan.hasNext()){
+                    check = false;
+                    DataFile.isMenuFileValid = false;
+                    return;
+                }
                 while (scan.hasNext() && check) {
                     String str = scan.nextLine();
                     String[] lineArr = str.split(",");
@@ -85,6 +90,11 @@ public class MenuRepository {
     public static boolean isMenuFilevalid(String fileName){
         try(Scanner scan =  new Scanner(new File(fileName))){
             Boolean check = true;
+            if (!scan.hasNext()) {
+                check = false;
+                DataFile.isMenuFileValid = false;
+                return false;
+            }
             while(scan.hasNext() && check){
                 String str = scan.nextLine();
                 String[] lineArr = str.split(",");

@@ -14,6 +14,11 @@ public class MaterialRepository {
     public void makeMaterial(String fileName) {
         try (Scanner scan = new Scanner(new File(fileName))) {
             Boolean check = true;
+            if (!scan.hasNext()) {
+                check = false;
+                DataFile.isMenuFileValid = false;
+                return;
+            }
             while (scan.hasNext()) {
                 String str = scan.nextLine();
 
@@ -49,6 +54,11 @@ public class MaterialRepository {
     public static boolean isIngredientFileValid (String fileName) {
         try (Scanner scan = new Scanner(new File(fileName))) {
             Boolean check = true;
+            if (!scan.hasNext()) {
+                check = false;
+                DataFile.isMenuFileValid = false;
+                return false;
+            }
             while (scan.hasNext()) {
                 String str = scan.nextLine();
 

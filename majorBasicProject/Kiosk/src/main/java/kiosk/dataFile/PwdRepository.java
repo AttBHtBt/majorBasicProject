@@ -30,6 +30,10 @@ public class PwdRepository {
      * "admin:admin\t" == false
      */
     public static boolean isAdminFileValid(Scanner scan) {
+        if (!scan.hasNext()) {
+            DataFile.isMenuFileValid = false;
+            return false;
+        }
         while (scan.hasNext()) {
             String str = scan.nextLine();
             if (!Pattern.matches("admin:admin", str) || scan.hasNext()) {
