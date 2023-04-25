@@ -64,7 +64,7 @@ public class MenuRepository {
                         forValidationTest.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
                 }
                 check = check && CheckMenuDu(forValidationTest) && CheckRecipeDu(forValidationTest)
-                        && CheckOption2(forValidationTest);
+                        && CheckOption(forValidationTest);
                 if (!check){
                     check = false;
                     DataFile.isMenuFileValid = false;
@@ -131,7 +131,7 @@ public class MenuRepository {
             check = check;
             */
             check = check && CheckMenuDu(forValidationTest) && CheckRecipeDu(forValidationTest)
-                    && CheckOption2(forValidationTest);
+                    && CheckOption(forValidationTest);
             //중복 메뉴있는지 찾고
 
 
@@ -237,40 +237,48 @@ public class MenuRepository {
 //        }
 //        return true;
 //    }
-    private static boolean CheckOption(ArrayList<Menu> fvt){
-        int check = 0;
-        for(int i = 0; i<fvt.size(); i++){
-            check = 0;
-            for(int j = 0; j<i; j++){// 앞에 얘들이랑 이름 비교 하면서 이미 한건지 check
-                if(fvt.get(j).getMenu().equals(fvt.get(i).getMenu()))
-                    check++;
-            }
-            if(check == 0){
-                if(fvt.get(i).getBeverageStateOption().equals("-")){
-                    for(int r = i+1; r<fvt.size(); r++){
-                        if(fvt.get(i).getMenu().equals(fvt.get(r).getMenu()))
-                            return false;
-                    }
-                }else if(fvt.get(i).getBeverageStateOption().equals("ICE")){
-                    for(int r = i+1; r<fvt.size(); r++){
-                        if(fvt.get(i).getMenu().equals(fvt.get(r).getMenu())){
-                            if(!fvt.get(r).getBeverageStateOption().equals("HOT"))
-                                return false;
-                        }
-                    }
-                }else if(fvt.get(i).getBeverageStateOption().equals("HOT")){
-                    for(int r = i+1; r<fvt.size(); r++){
-                        if(fvt.get(i).getMenu().equals(fvt.get(r).getMenu())){
-                            if(!fvt.get(r).getBeverageStateOption().equals("ICE"))
-                                return false;
-                        }
-                    }
-                }else
+private static boolean CheckOption(ArrayList<Menu> fvt) {
+        /*
+            메뉴를 이름과 메뉴 옵션을 가져오고 '-'라면 같은 메뉴가 있는지만 체크한다.
+            만약 HOT이라면 리스트를 순회하면서 같은 이름이 있는지를 체크하고 ICE인지를 확인한다.
+         */
+    String menuName;
+    String menuOption;
+    int size=fvt.size();
+    int j;
+    for(int i=0;i<size;i++){
+        j=0;
+        menuName=fvt.get(i).getMenu();
+        menuOption=fvt.get(i).getBeverageStateOption();
+        switch(menuOption){
+            case "-":
+                for (j=0; j < size; j++) {
+                    if (menuName.equals(fvt.get(j).getMenu())&&i!=j)
+                        return false;
+                }
+                break;
+            case "HOT":
+                for (j=0; j < size; j++) {
+                    if (menuName.equals(fvt.get(j).getMenu()) && fvt.get(j).getBeverageStateOption().equals("ICE"))
+                        break;
+                }
+                if(j== size)
                     return false;
-            }
+                break;
+            case "ICE":
+                for (j=0; j < size; j++) {
+                    if (menuName.equals(fvt.get(j).getMenu()) && fvt.get(j).getBeverageStateOption().equals("HOT"))
+                        break;
+                }
+                if(j== size)
+                    return false;
+                break;
+            default:
+                return false;
         }
-        return true;
     }
+    return true;
+}
 
 
     public static ArrayList<Menu> getMenu_Map(){
