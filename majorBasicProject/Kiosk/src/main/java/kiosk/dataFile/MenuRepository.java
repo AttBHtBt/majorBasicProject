@@ -21,9 +21,9 @@ public class MenuRepository {
     public MenuRepository(){
     }
     public void makeMenu(String fileName){
-        // 얘네 수정해줘야 함
-        if(isMenuFilevalid(fileName))
+        if(isMenuFilevalid(fileName)) {
             System.out.println("good");
+        }
         else
             System.out.println("bad");
         try(Scanner scan =  new Scanner(new File(fileName))){
@@ -35,7 +35,8 @@ public class MenuRepository {
                     check = false;
                     break;
                 }
-                
+                // 얘네 수정해줘야 함
+
                 //메뉴이름, 메뉴가격, 메뉴옵션, 레시피...
                 check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
                         && Admin.isMenuPriceSemanticsValid(lineArr[1].trim())
