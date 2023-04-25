@@ -40,7 +40,7 @@ public class Menu {
     public Menu(String menu, String price, String beverageStateOption, ArrayList<ArrayList<String>> dynamicArray) {
         this.menu = menu;
         this.price = Integer.parseInt(price);
-        this.beverageStateOption = beverageStateOption;
+        this.beverageStateOption = beverageStateOption.toUpperCase();
         for(int j = 0; j<dynamicArray.size(); j++){
             ingredient.add(new Ingredient(dynamicArray.get(j).get(0), Integer.parseInt(dynamicArray.get(j).get(1))));
 //            ingredient.put(dynamicArray.get(j).get(0), Integer.parseInt(dynamicArray.get(j).get(1)));
@@ -50,7 +50,7 @@ public class Menu {
     public Menu(String menu, int price, String beverageStateOption, List<String> unDividedIngredients) {
         this.menu = menu;
         this.price = price;
-        this.beverageStateOption = beverageStateOption;
+        this.beverageStateOption = beverageStateOption.toUpperCase();
         for(int j = 0; j<unDividedIngredients.size(); j++){
             String str = unDividedIngredients.get(j);
             String[] divided = str.split(":");

@@ -64,7 +64,7 @@ public class MenuRepository {
                         forValidationTest.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
                 }
                 check = check && CheckMenuDu(forValidationTest) && CheckRecipeDu(forValidationTest)
-                        && CheckOption(forValidationTest);
+                        && CheckOption2(forValidationTest);
                 if (!check){
                     check = false;
                     DataFile.isMenuFileValid = false;
@@ -131,7 +131,7 @@ public class MenuRepository {
             check = check;
             */
             check = check && CheckMenuDu(forValidationTest) && CheckRecipeDu(forValidationTest)
-                    && CheckOption(forValidationTest);
+                    && CheckOption2(forValidationTest);
             //중복 메뉴있는지 찾고
 
 
@@ -208,6 +208,35 @@ public class MenuRepository {
     //ICE/HOT이 동시에 있는지 찾기.
     // 하이픈이 있다면 ice.hot이 없어야 하고, ice나 핫이 있다면 그 반대가 있으면서 하이픈은 존재해서는 안된다.
     // 하나씩 보는데, 앞에서 이미 한 얘인지 한번 조사해줘야 한다.
+    
+//    private static boolean CheckOption2(ArrayList<Menu> fvt){
+//        Menu latter, former;
+//        boolean hasPair = false;
+//        
+//        for (int i = 0; i < fvt.size(); i++){
+//            former = fvt.get(i);
+//            hasPair = false;
+//            for (int j = 1; j < fvt.size(); j++){
+//                latter = fvt.get(j);
+//                
+//                if (former.getMenu().equals(latter.getMenu()) && former.getBeverageStateOption().equals("-") && (latter.getBeverageStateOption().equals("ICE") || latter.getBeverageStateOption().equals("HOT")))
+//                    return false;
+//                if (former.getMenu().equals(latter.getMenu()) && (former.getBeverageStateOption().equals(latter.getBeverageStateOption())))
+//                    return false;
+//                if (former.getBeverageStateOption().equals("HOT")){
+//                    if (latter.getBeverageStateOption().equals("ICE") && former.getMenu().equals(latter.getBeverageStateOption()))
+//                        hasPair = true;
+//                }
+//                if (former.getBeverageStateOption().equals("ICE")){
+//                    if (latter.getBeverageStateOption().equals("HOT") && former.getMenu().equals(latter.getBeverageStateOption()))
+//                        hasPair = true;
+//                }
+//            }
+//            if (!hasPair && !former.getMenu().equals("-"))
+//                return false;
+//        }
+//        return true;
+//    }
     private static boolean CheckOption(ArrayList<Menu> fvt){
         int check = 0;
         for(int i = 0; i<fvt.size(); i++){
@@ -228,9 +257,7 @@ public class MenuRepository {
                             if(!fvt.get(r).getBeverageStateOption().equals("HOT"))
                                 return false;
                         }
-
                     }
-                    return false;
                 }else if(fvt.get(i).getBeverageStateOption().equals("HOT")){
                     for(int r = i+1; r<fvt.size(); r++){
                         if(fvt.get(i).getMenu().equals(fvt.get(r).getMenu())){
@@ -238,7 +265,6 @@ public class MenuRepository {
                                 return false;
                         }
                     }
-                    return false;
                 }else
                     return false;
             }
