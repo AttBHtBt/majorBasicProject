@@ -167,7 +167,10 @@ public class ManagePrompt {
                 System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
                 return ;
             }
-
+            if (!tokens.getMenu().equals(tokens2.getMenu())){
+                System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                return ;
+            }
             Menu menu = new Menu(tokens.getMenu(), tokens.getPrice(),  tokens.getMenuOption(), unDividedIngredients);
             MenuRepository.addMenu(menu);
             if (tokens.getMenuOption().equals("ICE") || tokens.getMenuOption().equals("HOT")){
@@ -314,6 +317,10 @@ public class ManagePrompt {
                     if (MenuRepository.isSameNameInIngredients(tokens2.getItems())) {
                         System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
                         return;
+                    }
+                    if (!tokens.getMenu().equals(tokens2.getMenu())){
+                        System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                        return ;
                     }
 
                     Menu menu = new Menu(tokens.getMenu(), tokens.getPrice(), tokens.getMenuOption(), unDividedIngredients);
