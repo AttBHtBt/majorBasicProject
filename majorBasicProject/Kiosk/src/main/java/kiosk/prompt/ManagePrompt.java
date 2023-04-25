@@ -125,14 +125,18 @@ public class ManagePrompt {
         if (!tokens.getMenuOption().equals("-")){
             System.out.print("Admin >");
             getInput();
-            if(admin.checkCommand(input).equals("error"))
-                return;
+            if(admin.checkCommand(input).equals("error")){
+                System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                return ;
+            }
             commandLineTokens = Arrays.asList(input.trim().split("\\s+"));
             List<String> unDividedIngredients2 = commandLineTokens.subList(5, commandLineTokens.size());
             tokens2 = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),
                     commandLineTokens.get(3), commandLineTokens.get(4).toUpperCase(), unDividedIngredients2);
-            if ((tokens.getMenuOption().equals("HOT") && tokens2.getMenuOption().equals("HOT")) ||  (tokens.getMenuOption().equals("ICE") && tokens2.getMenuOption().equals("ICE")))
+            if ((tokens.getMenuOption().equals("HOT") && tokens2.getMenuOption().equals("HOT")) ||  (tokens.getMenuOption().equals("ICE") && tokens2.getMenuOption().equals("ICE"))) {
+                System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
                 return ;
+            }
             if (!addMenuSyntaxValid(tokens2)){
                 System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
                 return ;
@@ -174,7 +178,6 @@ public class ManagePrompt {
             Menu menu = new Menu(tokens.getMenu(), tokens.getPrice(),  tokens.getMenuOption(), unDividedIngredients);
             MenuRepository.addMenu(menu);
         }
-        MenuRepository.printMenuRepository();
     }
     
     private boolean addMenuSyntaxValid(ManagePromptToken tokens) {
@@ -270,12 +273,18 @@ public class ManagePrompt {
                 //HOT OR ICE
                 if (!tokens.getMenuOption().equals("-")) {
                     getInput();
+                    if(admin.checkCommand(input).equals("error")){
+                        System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+                        return ;
+                    }
                     commandLineTokens = Arrays.asList(input.trim().split("\\s+"));
                     List<String> unDividedIngredients2 = commandLineTokens.subList(5, commandLineTokens.size());
                     tokens2 = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),
                             commandLineTokens.get(3), commandLineTokens.get(4).toUpperCase(), unDividedIngredients2);
-                    if (tokens.getMenuOption().equals("HOT") && tokens2.getMenuOption().equals("ICE") || tokens.getMenuOption().equals("ICE") && tokens2.getMenuOption().equals("HOT"))
+                    if (tokens.getMenuOption().equals("HOT") && tokens2.getMenuOption().equals("ICE") || tokens.getMenuOption().equals("ICE") && tokens2.getMenuOption().equals("HOT")){
+                        System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
                         return;
+                    }
                     if (!addMenuSyntaxValid(tokens2)) {
                         System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
                         return;

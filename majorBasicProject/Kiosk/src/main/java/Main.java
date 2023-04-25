@@ -26,8 +26,6 @@ public class Main {
         
         DataFile.regenerate();
         
-        MenuRepository.printMenuRepository();
-
         OrderPrompt orderPrompt = AppConfig.orderPrompt();
 
     }
