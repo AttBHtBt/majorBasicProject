@@ -19,3 +19,9 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+bootJar{
+    archivesBaseName = '원하는이름'
+    archiveFileName = '원하는이름.jar'
+    archiveVersion = "0.0.0"
+}

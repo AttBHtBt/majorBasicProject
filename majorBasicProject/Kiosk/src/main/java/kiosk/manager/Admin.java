@@ -21,7 +21,7 @@ public class Admin {
     
     
     private static String regexPRICE = "[0-9]{1,10}";
-    private static String regexOPTION = "[a-zA-Z]{1,3}";
+    private static String regexOPTION = "[a-zA-Z-]{1,3}";
     private static String regexMENU = "[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*";
     private static String regexINGREDIENT = "[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)" + ":" + regexPRICE;
     private static String regexINGREDIENTS = String.format("[%s[ ]+]*[%s[ ]*]",regexINGREDIENT, regexINGREDIENT);
@@ -43,7 +43,8 @@ public class Admin {
     public static String checkCommand(String command){//검사완료
         if (Pattern.matches(cmdExit, command))
             return "exit";
-
+        if (Pattern.matches("[ ]*", command))
+            return "whiteSpace";
 
         boolean isAvailablePattern = (Pattern.matches(cmdExit, command) || Pattern.matches(MENUA, command) || Pattern.matches(MENUM, command) || Pattern.matches(MENUD, command) || Pattern.matches(STOCKA, command) || Pattern.matches(STOCKM, command) || Pattern.matches(STOCKD, command));
         if (!isAvailablePattern)

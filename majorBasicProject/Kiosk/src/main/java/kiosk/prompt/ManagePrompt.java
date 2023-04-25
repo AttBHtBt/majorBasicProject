@@ -49,6 +49,8 @@ public class ManagePrompt {
         MenuRepository.printMenuRepository();
         switch (cmd)
         {
+            case "whiteSpace":
+                break;
             case "menu -a":
                 addMenu();
                 break;
@@ -126,7 +128,7 @@ public class ManagePrompt {
         if (!tokens.getMenuOption().equals("-")){
             System.out.print("Admin >");
             getInput();
-            if(admin.checkCommand(input).equals("error")){
+            if(admin.checkCommand(input).equals("error") || input.trim().length() < 5){
                 System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
                 return ;
             }
@@ -363,14 +365,19 @@ public class ManagePrompt {
         if (!MenuRepository.isMenuNameinRepository(tokens.getMenu(), tokens.getMenuOption()))
             System.out.println("(오류) 메뉴가 레시피 파일에 존재하지 않습니다.");
         else{
+            //delete Menu
             MenuRepository.deleteMenu(tokens.getMenu(), tokens.getMenuOption());
             if (!tokens.getOptionCommand().equals("-")){
                 for (Menu menu: menus){
                     if (menu.getMenu().equals(tokens.getMenu())){
-                        if (tokens.getMenuOption().equals("HOT"))
+                        if (tokens.getMenuOption().equals("HOT")) {
                             MenuRepository.deleteMenu(tokens.getMenu(), "ICE");
-                        else if (tokens.getMenuOption().equals("ICE"))
+                            break;
+                        }
+                        else if (tokens.getMenuOption().equals("ICE")) {
                             MenuRepository.deleteMenu(tokens.getMenu(), "HOT");
+                            break;
+                        }
                     }
                 }
             }
