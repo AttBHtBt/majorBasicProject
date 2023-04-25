@@ -124,8 +124,12 @@ public class OrderPrompt {
             String ordline_howmany_front = "" , ordline_howmany_rear = "";
             int slash_cnt=0,ordline_checkswitch=0,available_order_amount=0;
 
-            for(int j=0;j < ord_line.length();j++){
-                if(ord_line.charAt(j)=='/')slash_cnt++;
+            for(int j=0;j < ord_line.length();j++) {
+                if (ord_line.charAt(j) == '/') slash_cnt++;
+            }
+            if(slash_cnt==0){
+                System.out.println("존재하지 않는 명령어입니다.");
+                return ;
             }
             String []splitted = ord_line.split("/");
 
@@ -165,11 +169,11 @@ public class OrderPrompt {
 
 
             if(ordline_checkswitch>1){
-                System.out.println("옳은 입력임");
+                /*System.out.println("옳은 입력임");
                 System.out.println("메뉴:"+ordline_menu);
                 System.out.println("옵션:"+ordline_state);
                 System.out.println("개수:"+ordline_howmany_front);
-                System.out.println(ordline_howmany_rear);    //입력 확인용 코드
+                System.out.println(ordline_howmany_rear);    //입력 확인용 코드*/
 
                 available_order_amount=cr.getAvailableOrderAmount(ordline_menu, ordline_state, parseInt(ordline_howmany_front));
                 if(available_order_amount >= parseInt(ordline_howmany_front)){
@@ -186,11 +190,11 @@ public class OrderPrompt {
 
             }
             else{
-                System.out.println(ordline_checkswitch);
+                /*System.out.println(ordline_checkswitch);
                 System.out.println("메뉴:"+ordline_menu);
                 System.out.println("옵션:"+ordline_state);
                 System.out.println("개수:"+ordline_howmany_front);
-                System.out.println(ordline_howmany_rear);    //입력 확인용 코드
+                System.out.println(ordline_howmany_rear);*/    //입력 확인용 코드
                 System.out.println("메뉴명, 음료 상태 옵션, 개수 순서대로 공백없이 \'/\'로 구분해 입력해주세요.");
                 System.out.println("음료 상태 옵션 선택이 없는 주문(핫초코, 요거트 스무디 등)은");
                 System.out.println("메뉴명과 개수만을 공백 없이 \'/\'로 구분해 입력해주세요.\n");
