@@ -93,7 +93,7 @@ public class OrderPrompt {
         DecimalFormat df= new DecimalFormat("###,###"); // 가격 출력 콤마 추가
         for (Menu m: menus){ // 장바구니 추가
             if(m.getOrderCount()>0)
-                System.out.println(m.getMenu()+"/"+m.getBeverageStateOption()+"/"+m.getOrderCount()+"잔/"+df.format(m.getOrderCount()*m.getPrice())+"원");
+                System.out.println(m.getMenu()+"/"+m.getBeverageStateOption()+"/"+m.getOrderCount()+"잔/");
         }
     }
     private void payCall(){                                     //pay 함수
