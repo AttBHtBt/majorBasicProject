@@ -43,6 +43,12 @@ public class Admin {
     public static String checkCommand(String command){//검사완료
         if (Pattern.matches(cmdExit, command))
             return "exit";
+
+
+        boolean isAvailablePattern = (Pattern.matches(cmdExit, command) || Pattern.matches(MENUA, command) || Pattern.matches(MENUM, command) || Pattern.matches(MENUD, command) || Pattern.matches(STOCKA, command) || Pattern.matches(STOCKM, command) || Pattern.matches(STOCKD, command));
+        if (!isAvailablePattern)
+            return "error";
+        
         String[] commandElements=command.trim().split("\\s+");
         if(!isMainCommand(commandElements[0]))
             return error;
