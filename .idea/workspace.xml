@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="DataFile검증 수정">
+    <list default="true" id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/OrderPrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/OrderPrompt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/OrderPrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/OrderPrompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/manager/Admin.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/manager/Admin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/MinusException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +71,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-18" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="Kiosk.main" />
+      <module name="org.example.Kiosk.main" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -96,6 +97,9 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
   <component name="TaskManager">
     <task id="LOCAL-00001" summary="Modified : regenerate logic">
       <created>1682154842959</created>
@@ -121,6 +125,7 @@
       <workItem from="1682419156356" duration="3430000" />
       <workItem from="1682422597886" duration="62000" />
       <workItem from="1682422731155" duration="1182000" />
+      <workItem from="1682434043022" duration="297000" />
     </task>
     <task id="LOCAL-00002" summary="MODIFIED : ManagePrompt의 메뉴/재료 * 추가/수정/삭제 기능;">
       <created>1682161682178</created>
@@ -213,7 +218,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682423577194</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="수정">
+      <created>1682433150904</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1682433150904</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,7 +242,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="origin/main" />
+                        <option value="main" />
                       </list>
                     </value>
                   </entry>
@@ -258,7 +270,8 @@
     <MESSAGE value="CheckMenuDu/CheckRecipeDu/CheckOption test 완성" />
     <MESSAGE value="주문에서 딸기쉐이크/2314274307401928309 입력시 에러 수정" />
     <MESSAGE value="DataFile검증 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="DataFile검증 수정" />
+    <MESSAGE value="수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="수정" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -284,24 +297,54 @@
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/DataFile.java</url>
-          <line>77</line>
-          <option name="timeStamp" value="51" />
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java</url>
+          <line>192</line>
+          <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/Main.java</url>
-          <line>18</line>
-          <option name="timeStamp" value="53" />
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java</url>
+          <line>193</line>
+          <option name="timeStamp" value="68" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/Main.java</url>
-          <line>26</line>
-          <option name="timeStamp" value="54" />
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java</url>
+          <line>194</line>
+          <option name="timeStamp" value="69" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java</url>
-          <line>24</line>
-          <option name="timeStamp" value="59" />
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java</url>
+          <line>195</line>
+          <option name="timeStamp" value="70" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java</url>
+          <line>198</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java</url>
+          <line>199</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java</url>
+          <line>202</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java</url>
+          <line>203</line>
+          <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java</url>
+          <line>196</line>
+          <option name="timeStamp" value="78" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java</url>
+          <line>197</line>
+          <option name="timeStamp" value="79" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

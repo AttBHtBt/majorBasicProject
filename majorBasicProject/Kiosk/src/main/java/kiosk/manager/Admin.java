@@ -181,7 +181,7 @@ public class Admin {
         } catch(NumberFormatException e){
             return false;
         }
-        return integer<=0;              //return integer>0?
+        return integer>0;              //return integer>0?
     }
     public static boolean checkPriceForm(String strPrice){//검사완료
         return checkIntegerForm(strPrice);
@@ -189,12 +189,17 @@ public class Admin {
 
 
     public static boolean checkAmountForm(String strAmount){//검사완료
-        String[] amountElements=strAmount.split(":");
-        String ingredient = amountElements[0];
-        String quantity = amountElements[1];
-
-        if(amountElements.length!=2)
+        String[] amountElements;
+        String strAmountTemp=strAmount;
+        strAmountTemp=strAmountTemp.replace("(",":");
+        strAmountTemp=strAmountTemp.replace(")","");
+        amountElements=strAmountTemp.split(":");
+        if(amountElements.length!=3)
             return false;
+        String ingredient = amountElements[0];
+        String quantity = amountElements[2];
+
+
         if (!Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", ingredient))
             return false;
         if(!checkIntegerForm(quantity))
