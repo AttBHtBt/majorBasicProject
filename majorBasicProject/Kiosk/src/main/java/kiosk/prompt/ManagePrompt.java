@@ -46,6 +46,7 @@ public class ManagePrompt {
     private void classifyCommandLine(String input){
         String cmd = Admin.checkCommand(input);
         commandLineTokens = Arrays.asList(input.trim().split("\\s+"));
+        MenuRepository.printMenuRepository();
         switch (cmd)
         {
             case "menu -a":
@@ -122,12 +123,13 @@ public class ManagePrompt {
         
         //HOT OR ICE
         if (!tokens.getMenuOption().equals("-")){
+            System.out.print("Admin > ");
             getInput();
             commandLineTokens = Arrays.asList(input.trim().split("\\s+"));
             List<String> unDividedIngredients2 = commandLineTokens.subList(5, commandLineTokens.size());
             tokens2 = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),
                     commandLineTokens.get(3), commandLineTokens.get(4).toUpperCase(), unDividedIngredients2);
-            if (tokens.getMenuOption().equals("HOT") && tokens2.getMenuOption().equals("ICE") ||  tokens.getMenuOption().equals("ICE") && tokens2.getMenuOption().equals("HOT"))
+            if ((tokens.getMenuOption().equals("HOT") && tokens2.getMenuOption().equals("HOT")) ||  (tokens.getMenuOption().equals("ICE") && tokens2.getMenuOption().equals("ICE")))
                 return ;
             if (!addMenuSyntaxValid(tokens2)){
                 System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
@@ -165,6 +167,10 @@ public class ManagePrompt {
                 Menu menu2 = new Menu(tokens2.getMenu(), tokens2.getPrice(),  tokens2.getMenuOption(), unDividedIngredients2);
                 MenuRepository.addMenu(menu2);
             }
+        }
+        else {
+            Menu menu = new Menu(tokens.getMenu(), tokens.getPrice(),  tokens.getMenuOption(), unDividedIngredients);
+            MenuRepository.addMenu(menu);
         }
         MenuRepository.printMenuRepository();
     }
@@ -304,6 +310,10 @@ public class ManagePrompt {
                         Menu menu2 = new Menu(tokens2.getMenu(), tokens2.getPrice(), tokens2.getMenuOption(), unDividedIngredients2);
                         MenuRepository.addMenu(menu2);
                     }
+                }
+                else{
+                    Menu menu = new Menu(tokens.getMenu(), tokens.getPrice(), tokens.getMenuOption(), unDividedIngredients);
+                    MenuRepository.addMenu(menu);
                 }
             }
         }

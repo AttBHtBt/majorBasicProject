@@ -44,26 +44,38 @@ public class Admin {
         if (Pattern.matches(cmdExit, command))
             return "exit";
         String[] commandElements=command.trim().split("\\s+");
-        
-        if (commandElements.length < 3)
-            return error;
         if(!isMainCommand(commandElements[0]))
             return error;
 
-        else if (Pattern.matches(MENUA, command))
-            return "menu -a";
-        else if (Pattern.matches(MENUM, command))
-            return "menu -m";
-        else if (Pattern.matches(MENUD, command))
-            return "menu -d";
-        else if (Pattern.matches(STOCKA, command))
-            return "stock -a";
-        else if (Pattern.matches(STOCKM, command))
-            return "stock -m";
-        else if (Pattern.matches(STOCKD, command))
-            return "stock -d";
-        else 
-            return "error";
+        if(commandElements.length==1 && exitCheckCommand(commandElements[0]))
+            return "exit";
+
+        String mainCommand=commandElements[0];
+        String commandOption=commandElements[1];
+        String menuOption, menuPrice;
+        String[] subCommands;
+
+        switch(mainCommand){
+            case "menu":
+                if(menuCheckDeleteCommand(commandOption)) {
+                    return commandElements.length==4 ? "menu -d" : error;       //commandElements.length==3=>4로 수정(cmd, subCmd, menu, menuOption)
+                }
+                else{
+                    menuOption=commandElements[3]; menuPrice=commandElements[4];
+                    subCommands=Arrays.copyOfRange(commandElements,5,commandElements.length);
+                    return menuCheckCommand(commandOption, menuOption, menuPrice, subCommands);
+                }
+
+            case "stock":
+                if(stockCheckDeleteCommand(commandOption)) {
+                    return commandElements.length==3 ? "stock -d" : error;
+                }
+                else {
+                    subCommands = Arrays.copyOfRange(commandElements, 2, commandElements.length);
+                    return stockCheckCommand(commandOption, subCommands);
+                }
+        }
+        return error;
     }
 
 
@@ -130,7 +142,7 @@ public class Admin {
         } catch(NumberFormatException e){
             return false;
         }
-        return integer<=0;              //return integer>0?
+        return integer>0;              //return integer>0?
     }
     public static boolean checkPriceForm(String strPrice){//검사완료
         return checkIntegerForm(strPrice);
@@ -138,14 +150,20 @@ public class Admin {
 
 
     public static boolean checkAmountForm(String strAmount){//검사완료
-        String[] amountElements=strAmount.split(":");
-        String ingredient = amountElements[0];
-        String quantity = amountElements[1];
-
-        if(amountElements.length!=2)
+        String[] amountElements;
+        String strAmountTemp=strAmount;
+        strAmountTemp=strAmountTemp.replace("(",":");
+        strAmountTemp=strAmountTemp.replace(")","");
+        amountElements=strAmountTemp.split(":");
+        if(amountElements.length!=3)
             return false;
-//        if (!Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", ingredient))
-//            return false;
+        String ingredient = amountElements[0];
+        String quantity = amountElements[2];
+        ingredient = amountElements[0] + "(" + amountElements[1] + ")";
+
+
+        if (!Pattern.matches("^[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)", ingredient))
+            return false;
         if(!checkIntegerForm(quantity))
             return false;
         else
@@ -181,6 +199,32 @@ public class Admin {
         return command.equals("exit");
     }
 
+
+//    public static String checkCommand(String command){//검사완료
+//        String[] commandElements=command.trim().split("\\s+");
+//
+//        if (commandElements.length < 3)
+//            return error;
+//        if(!isMainCommand(commandElements[0]))
+//            return error;
+//
+//        if (Pattern.matches(cmdExit, command))
+//            return "exit";
+//        else if (Pattern.matches(MENUA, command))
+//            return "menu -a";
+//        else if (Pattern.matches(MENUM, command))
+//            return "menu -m";
+//        else if (Pattern.matches(MENUD, command))
+//            return "menu -d";
+//        else if (Pattern.matches(STOCKA, command))
+//            return "stock -a";
+//        else if (Pattern.matches(STOCKM, command))
+//            return "stock -m";
+//        else if (Pattern.matches(STOCKD, command))
+//            return "stock -d";
+//        else
+//            return "error";
+//    }
 
 
 
