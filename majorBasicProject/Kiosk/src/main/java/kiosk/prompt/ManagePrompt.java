@@ -123,8 +123,10 @@ public class ManagePrompt {
         
         //HOT OR ICE
         if (!tokens.getMenuOption().equals("-")){
-            System.out.print("Admin > ");
+            System.out.print("Admin >");
             getInput();
+            if(admin.checkCommand(input).equals("error"))
+                return;
             commandLineTokens = Arrays.asList(input.trim().split("\\s+"));
             List<String> unDividedIngredients2 = commandLineTokens.subList(5, commandLineTokens.size());
             tokens2 = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), commandLineTokens.get(2),
