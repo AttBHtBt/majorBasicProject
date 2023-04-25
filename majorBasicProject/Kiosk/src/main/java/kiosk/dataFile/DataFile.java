@@ -3,12 +3,10 @@ package kiosk.dataFile;
 import kiosk.domain.Material;
 import kiosk.domain.Menu;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.time.chrono.MinguoEra;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DataFile {
 
@@ -40,7 +38,7 @@ public class DataFile {
 
 
     public static void regenerateMenuCSV() {
-        File menuFile = new File(DATAFILEDIRECTORY + menuFileName_Testing);
+        File menuFile = new File(DATAFILEDIRECTORY + menuFileName);
         try {
             FileWriter menuFileW = new FileWriter(menuFile);
             menuFileW.write("");
@@ -50,7 +48,7 @@ public class DataFile {
     }
 
     public static void regenerateIngredientCSV() {
-        File ingredientFile = new File(DATAFILEDIRECTORY + ingredientFileName_Testing);
+        File ingredientFile = new File(DATAFILEDIRECTORY + DataFile.ingredientFileName);
         try {
             FileWriter ingredientFileW = new FileWriter(ingredientFile);
             ingredientFileW.write("");
@@ -71,6 +69,12 @@ public class DataFile {
     }
     
     public static void regenerate(){
+//        MenuRepository.isMenuFilevalid(DATAFILEDIRECTORY + menuFileName);
+//        MaterialRepository.isIngredientFileValid(DATAFILEDIRECTORY + DataFile.ingredientFileName);
+//        try{
+//            PwdRepository.isAdminFileValid(new Scanner(new File(DataFile.DATAFILEDIRECTORY + DataFile.adminFileName)));
+//        } catch (FileNotFoundException e){
+//        }
         if (!isMenuFileValid)
             regenerateMenuCSV();
         if (!isIngredientFileValid)

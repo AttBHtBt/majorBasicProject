@@ -27,7 +27,6 @@ public class Main {
         DataFile.regenerate();
 
         OrderPrompt orderPrompt = AppConfig.orderPrompt();
-//       ManagePrompt managePrompt = AppConfig.managePrompt();
 
     }
 }

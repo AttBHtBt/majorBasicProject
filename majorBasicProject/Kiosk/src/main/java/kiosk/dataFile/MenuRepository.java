@@ -21,9 +21,6 @@ public class MenuRepository {
     public MenuRepository(){
     }
     public void makeMenu(String fileName){
-        if(!isMenuFilevalid(fileName)) {
-            DataFile.isMenuFileValid = false;
-        }else {
             try (Scanner scan = new Scanner(new File(fileName))) {
                 Boolean check = true;
                 while (scan.hasNext() && check) {
@@ -59,7 +56,10 @@ public class MenuRepository {
                     }
                     //2차원 arrayList에 재료이름과 재료 수량을 넣는다.
                     MENU_Map.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
+                    forValidationTest.add(new Menu(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), dynamicArray));
                 }
+                check = check && CheckMenuDu(forValidationTest) && CheckRecipeDu(forValidationTest)
+                        && CheckOption(forValidationTest);
                 if (!check)
                     DataFile.isMenuFileValid = false;
             } catch (FileNotFoundException e) {
@@ -68,8 +68,8 @@ public class MenuRepository {
             } catch (IndexOutOfBoundsException e) {
                 System.out.println("IndexOutOfBoundsException");
             }
+            forValidationTest.clear();
         }
-    }
     
     
     //중복아님.
@@ -157,6 +157,7 @@ public class MenuRepository {
         } catch (IndexOutOfBoundsException e){
             System.out.println("IndexOutOfBoundsException");
         }
+        forValidationTest.clear();
         return true;
     }
     //중복 메뉴있는지 찾고

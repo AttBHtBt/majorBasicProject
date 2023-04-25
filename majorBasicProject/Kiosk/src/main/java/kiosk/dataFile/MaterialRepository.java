@@ -25,6 +25,7 @@ public class MaterialRepository {
                 String[] lineArr = str.split(",");
                 this.addMaterial(new Material(lineArr[0].trim(), lineArr[1].trim()));
             }
+            check = check && isDuplicatedIngredientName();
             if (!check)
                 DataFile.isIngredientFileValid = false;
         }catch (FileNotFoundException e){
@@ -32,6 +33,18 @@ public class MaterialRepository {
         }
     }
     
+    public static boolean isDuplicatedIngredientName(){
+        String latter, former;
+        for (int i = 0; i<Material_Map.size(); i++) {
+            former = Material_Map.get(i).getName();
+            for (int j = i+1; j < Material_Map.size(); j++) {
+                latter = Material_Map.get(j).getName();
+                if (former.equals(latter))
+                    return false;
+            }
+        }
+        return true;
+    }
     //중복 아님.
     public static boolean isIngredientFileValid (String fileName) {
         try (Scanner scan = new Scanner(new File(fileName))) {
