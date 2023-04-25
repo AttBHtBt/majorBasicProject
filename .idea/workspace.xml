@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="Datafile error =&gt; exit and regenratie">
+    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="checkOption수정(MenurRepository)">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/DataFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/DataFile.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/MenuRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/MenuRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/manager/Admin.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -304,7 +301,8 @@
     <MESSAGE value="printRepository" />
     <MESSAGE value="파일 지우고 치명적오류 나고 메뉴 파일 제대로 ㅇ릭게 숮ㅇ" />
     <MESSAGE value="Datafile error =&gt; exit and regenratie" />
-    <option name="LAST_COMMIT_MESSAGE" value="Datafile error =&gt; exit and regenratie" />
+    <MESSAGE value="checkOption수정(MenurRepository)" />
+    <option name="LAST_COMMIT_MESSAGE" value="checkOption수정(MenurRepository)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
