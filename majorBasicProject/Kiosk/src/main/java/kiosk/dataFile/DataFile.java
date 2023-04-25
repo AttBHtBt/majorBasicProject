@@ -95,7 +95,7 @@ public class DataFile {
     //convertMenuRepositoryToCSV
     //convertMaterialRepositoryToCSV
     public static void convertMenuRepositoryToCSV() {
-        File menuFile = new File(DATAFILEDIRECTORY + menuFileName_Testing);
+        File menuFile = new File(DATAFILEDIRECTORY + menuFileName);
         try {
             FileWriter menuFileW = new FileWriter(menuFile);
             BufferedWriter writer = new BufferedWriter(menuFileW);
@@ -111,7 +111,7 @@ public class DataFile {
     }
 
     public static void convertMaterialRepositoryToCSV() {
-        File ingredientFile = new File(DATAFILEDIRECTORY + ingredientFileName_Testing);
+        File ingredientFile = new File(DATAFILEDIRECTORY + ingredientFileName);
         try {
             FileWriter ingredientFileW = new FileWriter(ingredientFile);
             BufferedWriter writer = new BufferedWriter(ingredientFileW);

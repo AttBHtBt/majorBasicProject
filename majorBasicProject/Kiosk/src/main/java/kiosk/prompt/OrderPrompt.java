@@ -104,16 +104,14 @@ public class OrderPrompt {
     }
     private void exitCall(){                                    //exit 함수
         try {
+            DataFile.convertMenuRepositoryToCSV();
+            DataFile.convertMaterialRepositoryToCSV();
+            
             boolean regenerate = MenuRepository.isMenuFilevalid(DataFile.DATAFILEDIRECTORY + DataFile.menuFileName) ||
                 MaterialRepository.isIngredientFileValid(DataFile.DATAFILEDIRECTORY + DataFile.menuFileName) ||
                 PwdRepository.isAdminFileValid(new Scanner(new File(DataFile.DATAFILEDIRECTORY + DataFile.adminFileName)));
-            
             if (regenerate)
                 DataFile.regenerate();
-            else {  //데이터 파일 모두 괜찮으니까 자료구조를 데이터파일에 옮김.
-                DataFile.convertMenuRepositoryToCSV();
-                DataFile.convertMaterialRepositoryToCSV(); 
-            }
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
