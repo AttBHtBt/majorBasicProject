@@ -23,8 +23,8 @@ public class Admin {
     private static String regexPRICE = "[0-9]{1,10}";
     private static String regexOPTION = "[a-zA-Z]{1,3}";
     private static String regexMENU = "[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*";
-    private static String regexINGREDIENTS = String.format("[%s:%s]");
     private static String regexINGREDIENT = "[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*\\([a-zA-Zㄱ-ㅎ가-힣]+\\)" + ":" + regexPRICE;
+    private static String regexINGREDIENTS = String.format("[%s[ ]+]*[%s[ ]*]",regexINGREDIENT, regexINGREDIENT);
 
     private static final String SPMORE = "[ ]+";
     private static String SP = "[ ]*";
@@ -48,9 +48,6 @@ public class Admin {
         if(!isMainCommand(commandElements[0]))
             return error;
         
-        if (Pattern.matches(MENUA, "menu -a 딸기쉐이크 ICE    3000   얼음(개):10       우유(ml):100 딸기퓨레(ml):20 "))
-            System.out.println("dsafs");
-        
         if (Pattern.matches(cmdExit, command))
             return "exit";
         else if (Pattern.matches(MENUA, command))
@@ -67,38 +64,6 @@ public class Admin {
             return "stock -d";
         else 
             return "error";
-        
-        
-//
-//        if(commandElements.length==1 && exitCheckCommand(commandElements[0]))
-//            return "exit";
-//
-//        String mainCommand=commandElements[0];
-//        String commandOption=commandElements[1];
-//        String menuOption, menuPrice;
-//        String[] subCommands;
-//
-//        switch(mainCommand){
-//            case "menu":
-//                if(menuCheckDeleteCommand(commandOption)) {
-//                    return commandElements.length==4 ? "menu -d" : error;       //commandElements.length==3=>4로 수정(cmd, subCmd, menu, menuOption)
-//                }
-//                else{
-//                    menuOption=commandElements[3]; menuPrice=commandElements[4];
-//                    subCommands=Arrays.copyOfRange(commandElements,5,commandElements.length);
-//                    return menuCheckCommand(commandOption, menuOption, menuPrice, subCommands);
-//                }
-//
-//            case "stock":
-//                if(stockCheckDeleteCommand(commandOption)) {
-//                    return commandElements.length==3 ? "stock -d" : error;
-//                }
-//                else {
-//                    subCommands = Arrays.copyOfRange(commandElements, 2, commandElements.length);
-//                    return stockCheckCommand(commandOption, subCommands);
-//                }
-//        }
-//        return error;
     }
 
 
