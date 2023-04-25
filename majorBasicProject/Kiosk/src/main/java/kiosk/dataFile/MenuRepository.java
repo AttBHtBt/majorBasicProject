@@ -30,9 +30,9 @@ public class MenuRepository {
                     String[] lineArr = str.split(",");
                     if (!(lineArr.length >= 4)) {
                         check = false;
-                        break;
+                        DataFile.isMenuFileValid = false;
+                        return;
                     }
-                    // 얘네 수정해줘야 함
 
                     //메뉴이름, 메뉴가격, 메뉴옵션, 레시피...
                     check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
@@ -43,8 +43,11 @@ public class MenuRepository {
                     for (int j = 3; j < lineArr.length; j++) {
                         check = check && Admin.isRecipieSyntaxValid(lineArr[j].trim())
                                 && Admin.isRecipieSemanticsValid(lineArr[j].trim());
-                        if (!check)
-                            break;
+                        if (!check){
+                            check = false;
+                            DataFile.isMenuFileValid = false;
+                            return;
+                        }
                     }
 
                     ArrayList<ArrayList<String>> dynamicArray = new ArrayList<>();
@@ -62,8 +65,11 @@ public class MenuRepository {
                 }
                 check = check && CheckMenuDu(forValidationTest) && CheckRecipeDu(forValidationTest)
                         && CheckOption(forValidationTest);
-                if (!check)
+                if (!check){
+                    check = false;
                     DataFile.isMenuFileValid = false;
+                    return;
+                }
             } catch (FileNotFoundException e) {
                 // TODO Auto-generated catch block
                 System.out.println("FileNotFoundException: FileName" + fileName);
@@ -84,7 +90,8 @@ public class MenuRepository {
                 String[] lineArr = str.split(",");
                 if (!(lineArr.length >=4)) {
                     check = false;
-                    break;
+                    DataFile.isMenuFileValid = false;
+                    return false;
                 }
 
                 //메뉴이름, 메뉴가격, 메뉴옵션, 레시피...
@@ -96,8 +103,11 @@ public class MenuRepository {
                 for(int j = 3; j< lineArr.length; j++){
                     check = check && Admin.isRecipieSyntaxValid(lineArr[j].trim())
                             && Admin.isRecipieSemanticsValid(lineArr[j].trim());
-                    if(!check)
-                        break;
+                    if(!check){
+                        check = false;
+                        DataFile.isMenuFileValid = false;
+                        return false;
+                    }
                 }
 
                 ArrayList<ArrayList<String>> dynamicArray = new ArrayList<>();
@@ -152,8 +162,11 @@ public class MenuRepository {
 //            }
 //                
 //            
-            if (!check)
+            if (!check){
+                check = false;
                 DataFile.isMenuFileValid = false;
+                return false;
+            }
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             System.out.println("FileNotFoundException: FileName" + fileName);
@@ -326,6 +339,11 @@ public class MenuRepository {
         for (Menu menu: MENU_Map){
             System.out.println(menu.toString());
         }
+    }
+    
+    public static void dataFileError(){
+        System.out.println("치명적오류");
+        System.exit(1);
     }
     
 }

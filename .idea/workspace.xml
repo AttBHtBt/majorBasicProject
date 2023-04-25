@@ -4,14 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="adimin수정중.">
+    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="파일 지우고 치명적오류 나고 메뉴 파일 제대로 ㅇ릭게 숮ㅇ">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/MenuRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/MenuRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/admin.txt" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/admin.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/ingredients.csv" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/ingredients.csv" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/ManagePrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/ManagePrompt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/DataFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/DataFile.java" afterDir="false" />
+>>>>>>> origin/main
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/menu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/menu.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/menu_1.csv" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/menu_1.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +81,7 @@
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-18" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="Main" />
-      <module name="org.example.Kiosk.main" />
+      <module name="Kiosk.main" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -112,7 +119,7 @@
       <updated>1682154842959</updated>
     </task>
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e3653b08-3492-4448-91eb-9105d130c7a9" name="Changes" comment="Modified : regenerate logic" />
+      <changelist id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="printRepository" />
       <created>1682156570742</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -129,6 +136,7 @@
       <workItem from="1682422597886" duration="62000" />
       <workItem from="1682422731155" duration="1182000" />
       <workItem from="1682434043022" duration="297000" />
+      <workItem from="1682445836015" duration="2259000" />
     </task>
     <task id="LOCAL-00002" summary="MODIFIED : ManagePrompt의 메뉴/재료 * 추가/수정/삭제 기능;">
       <created>1682161682178</created>
@@ -242,12 +250,21 @@
       <option name="project" value="LOCAL" />
       <updated>1682443109600</updated>
     </task>
+<<<<<<< HEAD
     <task id="LOCAL-00018" summary="adimin수정중.">
       <created>1682444233007</created>
       <option name="number" value="00018" />
       <option name="presentableId" value="LOCAL-00018" />
       <option name="project" value="LOCAL" />
       <updated>1682444233007</updated>
+=======
+    <task id="LOCAL-00018" summary="printRepository">
+      <created>1682444321628</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1682444321628</updated>
+>>>>>>> origin/main
     </task>
     <option name="localTasksCounter" value="19" />
     <servers />
@@ -296,7 +313,9 @@
     <MESSAGE value="DataFile검증 수정" />
     <MESSAGE value="수정" />
     <MESSAGE value="adimin수정중." />
-    <option name="LAST_COMMIT_MESSAGE" value="adimin수정중." />
+    <MESSAGE value="printRepository" />
+    <MESSAGE value="파일 지우고 치명적오류 나고 메뉴 파일 제대로 ㅇ릭게 숮ㅇ" />
+    <option name="LAST_COMMIT_MESSAGE" value="파일 지우고 치명적오류 나고 메뉴 파일 제대로 ㅇ릭게 숮ㅇ" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -317,6 +336,7 @@
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
+<<<<<<< HEAD
           <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java</url>
           <line>29</line>
           <option name="timeStamp" value="106" />
@@ -355,14 +375,28 @@
           <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java</url>
           <line>54</line>
           <option name="timeStamp" value="114" />
+=======
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java</url>
+          <line>176</line>
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java</url>
+          <line>131</line>
+          <option name="timeStamp" value="119" />
+>>>>>>> origin/main
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
+<<<<<<< HEAD
         <watch expression="array" />
         <watch expression="str" />
         <watch expression="str" />
+=======
+        <watch expression="DataFile.isMenuFileValid" language="JAVA" />
+>>>>>>> origin/main
       </configuration>
     </watches-manager>
   </component>

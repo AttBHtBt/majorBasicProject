@@ -79,8 +79,12 @@ public class DataFile {
             regenerateMenuCSV();
         if (!isIngredientFileValid)
             regenerateIngredientCSV();
-        if (!isIngredientFileValid)
+        if (!isAdminFileValid)
             regenerateAdminTxT();
+        if (!isMenuFileValid || !isIngredientFileValid || !isAdminFileValid){
+            System.out.println("치명적 오류");
+            System.exit(1);
+        }
     }
     
     public static void pwd(){
