@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="checkOption수정(MenurRepository)" />
+    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="CHECK COMMAND ERROR">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -249,7 +252,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682448482931</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="CHECK COMMAND ERROR">
+      <created>1682453930495</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1682453930495</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,7 +310,8 @@
     <MESSAGE value="파일 지우고 치명적오류 나고 메뉴 파일 제대로 ㅇ릭게 숮ㅇ" />
     <MESSAGE value="Datafile error =&gt; exit and regenratie" />
     <MESSAGE value="checkOption수정(MenurRepository)" />
-    <option name="LAST_COMMIT_MESSAGE" value="checkOption수정(MenurRepository)" />
+    <MESSAGE value="CHECK COMMAND ERROR" />
+    <option name="LAST_COMMIT_MESSAGE" value="CHECK COMMAND ERROR" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

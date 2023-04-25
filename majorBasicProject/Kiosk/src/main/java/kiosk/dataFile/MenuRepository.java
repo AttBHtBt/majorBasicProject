@@ -230,15 +230,15 @@ public class MenuRepository {
                         }
 
                     }
+                    return false;
                 }else if(fvt.get(i).getBeverageStateOption().equals("HOT")){
                     for(int r = i+1; r<fvt.size(); r++){
                         if(fvt.get(i).getMenu().equals(fvt.get(r).getMenu())){
                             if(!fvt.get(r).getBeverageStateOption().equals("ICE"))
                                 return false;
                         }
-
                     }
-
+                    return false;
                 }else
                     return false;
             }
