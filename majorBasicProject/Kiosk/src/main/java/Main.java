@@ -25,6 +25,8 @@ public class Main {
         PR.makePwd(DataFile.DATAFILEDIRECTORY + DataFile.adminFileName);
         
         DataFile.regenerate();
+        
+        MenuRepository.printMenuRepository();
 
         OrderPrompt orderPrompt = AppConfig.orderPrompt();
 
