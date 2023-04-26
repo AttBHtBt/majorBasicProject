@@ -46,8 +46,16 @@ public class ManagePromptToken {
         double quantity;
         for (String item: items){
             String[] tokens = item.split(":");
-            this.items.add(
-                    new Item(item, tokens[0], Integer.parseInt(tokens[1])));
+            if (tokens.length == 0){
+                this.items.add(new Item(item, "123", 0));
+            }
+            if (tokens.length == 1){
+                this.items.add(new Item(item, tokens[0], 0));
+            }
+            if (tokens.length == 2){
+                this.items.add(
+                        new Item(item, tokens[0], Integer.parseInt(tokens[1])));
+            }
         }
     }
 

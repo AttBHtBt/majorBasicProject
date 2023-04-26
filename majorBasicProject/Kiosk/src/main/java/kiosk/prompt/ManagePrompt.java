@@ -12,6 +12,7 @@ import java.util.Arrays;
 import java.io.PrintStream;
 import kiosk.domain.Menu;
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class ManagePrompt {
 
@@ -507,6 +508,10 @@ public class ManagePrompt {
     private void deleteStock(){
         //명령줄 형식에 맞는지 확인
         //의미규칙에 맞는지 확인
+        if (!Pattern.matches("[ ]*stock[ ]+[-]d[ ]+[a-zA-Zㄱ-ㅎ가-힣][0-9a-zA-Zㄱ-ㅎ가-힣]*", input)){
+            System.out.println("(오류) 명령어 문법이 잘못되었습니다.");
+            return;
+        }
         List<String> unDividedIngredients = commandLineTokens.subList(2, commandLineTokens.size());
         tokens = new ManagePromptToken(commandLineTokens.get(0), commandLineTokens.get(1), unDividedIngredients);
 
@@ -522,10 +527,7 @@ public class ManagePrompt {
     }
 
     private boolean deleteStockSyntaxValid() {
-        List<ManagePromptToken.Item> items = tokens.getItems();
-        boolean isValid = Admin.isMenuNameSynaxValid(items.get(0).getItem());
-
-        return (isValid);
+        return true;
     }
 
 }
