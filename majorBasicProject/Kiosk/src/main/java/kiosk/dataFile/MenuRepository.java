@@ -316,7 +316,7 @@ private static boolean CheckOption(ArrayList<Menu> fvt) {
     public static boolean isMenuNameinRepository(String menuName, String orderOption){
         ArrayList<Menu> menus = MenuRepository.getMenu_Map();
         for (Menu menu: menus) {
-            if (menu.getMenu().equals(menuName) && menu.getBeverageStateOption().equals(orderOption)){
+            if (menu.getMenu().equals(menuName) && menu.getBeverageStateOption().equals(orderOption.toUpperCase())){
                 return true;
             }
         }

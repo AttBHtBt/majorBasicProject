@@ -6,15 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="수정">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/.gradle/7.5.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/.gradle/7.5.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/.gradle/7.5.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/.gradle/7.5.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main/kiosk/prompt/ManagePrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main/kiosk/prompt/ManagePrompt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main/kiosk/prompt/OrderPrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main/kiosk/prompt/OrderPrompt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main/kiosk/prompt/PayPrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/build/classes/java/main/kiosk/prompt/PayPrompt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/MenuRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/MenuRepository.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/ManagePrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/ManagePrompt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MenuRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -370,7 +364,14 @@
       <option name="project" value="LOCAL" />
       <updated>1682466073258</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="수정">
+      <created>1682467124550</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1682467124550</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -455,13 +456,23 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java</url>
-          <line>375</line>
-          <option name="timeStamp" value="168" />
+          <line>90</line>
+          <option name="timeStamp" value="179" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java</url>
-          <line>90</line>
-          <option name="timeStamp" value="179" />
+          <line>219</line>
+          <option name="timeStamp" value="180" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java</url>
+          <line>290</line>
+          <option name="timeStamp" value="181" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java</url>
+          <line>406</line>
+          <option name="timeStamp" value="183" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
