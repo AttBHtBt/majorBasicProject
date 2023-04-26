@@ -46,7 +46,6 @@ public class ManagePrompt {
     private void classifyCommandLine(String input){
         String cmd = Admin.checkCommand(input);
         commandLineTokens = Arrays.asList(input.trim().split("\\s+"));
-        MenuRepository.printMenuRepository();
         switch (cmd)
         {
             case "whiteSpace":
