@@ -62,4 +62,7 @@ public class MemberPrompt {
     private void signupCall(){
 
     }
+    private void addMember(String id, String pawd) {
+
+    }
 }
