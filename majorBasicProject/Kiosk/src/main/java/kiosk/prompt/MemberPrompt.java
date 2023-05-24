@@ -15,14 +15,14 @@ public class MemberPrompt {
         MemberController();
     }
     private void MemberController() {
-        System.out.println("결제 전 회원 정보를 입력해주세요.");
-        System.out.println("회원 정보 입력 후 결제 단계로 넘어갑니다.");
-        System.out.print("Member >");
-
-        Scanner sc = new Scanner(System.in);            //사용자에게 입력을 받는다
-        String str = sc.nextLine();
-
         while(stat){
+            System.out.println("결제 전 회원 정보를 입력해주세요.");
+            System.out.println("회원 정보 입력 후 결제 단계로 넘어갑니다.");
+            System.out.print("Member >");
+
+            Scanner sc = new Scanner(System.in);            //사용자에게 입력을 받는다
+            String str = sc.nextLine();
+
             switch (str) {
                 case "guest":
                     payCall();
