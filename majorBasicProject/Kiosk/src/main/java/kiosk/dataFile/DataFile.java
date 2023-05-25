@@ -130,6 +130,10 @@ public class DataFile {
         }
     }
 
+    public static void convertMemberRepositoryToCSV() {
+
+    }
+
 
     public static String getMenuLine(Menu menu){
         String lineStr;
