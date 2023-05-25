@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="..">
+    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="convertMemberRepositoryToCSV 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -402,7 +402,21 @@
       <option name="project" value="LOCAL" />
       <updated>1684999214784</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="..">
+      <created>1685025123336</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1685025123336</updated>
+    </task>
+    <task id="LOCAL-00031" summary="convertMemberRepositoryToCSV 추가">
+      <created>1685025240882</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1685025240882</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -432,7 +446,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modified : regenerate logic" />
     <MESSAGE value="MODIFIED : ManagePrompt의 메뉴/재료 * 추가/수정/삭제 기능 + &#10;MESSAGE : 재고 빼고 재고 추가하는 함수만 검증하면 될듯합니다." />
     <MESSAGE value="MODIFIED : 종료 시 DataFile 삭제 로직 추가" />
     <MESSAGE value="HASHMAP -&gt; LIST로 구현" />
@@ -457,7 +470,8 @@
     <MESSAGE value="수정" />
     <MESSAGE value="Member&#10;getMemberNum&#10;getId&#10;getPawd&#10;getSavedCup&#10;setSavedCup&#10;makeMember&#10;addMember&#10;addMember&#10;&#10;추가함" />
     <MESSAGE value=".." />
-    <option name="LAST_COMMIT_MESSAGE" value=".." />
+    <MESSAGE value="convertMemberRepositoryToCSV 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="convertMemberRepositoryToCSV 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
