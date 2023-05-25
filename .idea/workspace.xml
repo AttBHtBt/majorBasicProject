@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="Member&#10;getMemberNum&#10;getId&#10;getPawd&#10;getSavedCup&#10;setSavedCup&#10;makeMember&#10;addMember&#10;addMember&#10;&#10;추가함">
+    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="..">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MemberRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -396,7 +395,14 @@
       <option name="project" value="LOCAL" />
       <updated>1684979607396</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="..">
+      <created>1684999214784</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1684999214784</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -450,7 +456,8 @@
     <MESSAGE value="빈 파일이면 치명적 오류" />
     <MESSAGE value="수정" />
     <MESSAGE value="Member&#10;getMemberNum&#10;getId&#10;getPawd&#10;getSavedCup&#10;setSavedCup&#10;makeMember&#10;addMember&#10;addMember&#10;&#10;추가함" />
-    <option name="LAST_COMMIT_MESSAGE" value="Member&#10;getMemberNum&#10;getId&#10;getPawd&#10;getSavedCup&#10;setSavedCup&#10;makeMember&#10;addMember&#10;addMember&#10;&#10;추가함" />
+    <MESSAGE value=".." />
+    <option name="LAST_COMMIT_MESSAGE" value=".." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
