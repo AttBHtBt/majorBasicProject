@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0a1e0129-1c04-4587-b3a1-72ee31db235f" name="Changes" comment="MODIFIED : CART_REPOSITORY에서 주문 + 주문 차감 기능" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$/Kiosk">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Kiosk" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="management" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2OaZiQvDjAgW5dUc5JzBDaDewEy" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "create.test.in.the.same.root": "true",
+    "last_opened_file_path": "D:/cms/kiosk",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.rmicompiler",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\cms\kiosk\majorBasicProject\Kiosk\src\main\java\kiosk" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="kiosk.manager" />
+      <recent name="Test" />
+      <recent name="" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Unnamed" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="corretto-18" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Kiosk.main" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0a1e0129-1c04-4587-b3a1-72ee31db235f" name="Changes" comment="" />
+      <created>1681800779595</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681800779595</updated>
+      <workItem from="1681800780648" duration="28000" />
+      <workItem from="1681800883273" duration="8010000" />
+      <workItem from="1681813845842" duration="1253000" />
+      <workItem from="1681816954409" duration="14019000" />
+      <workItem from="1682098734337" duration="1693000" />
+      <workItem from="1682151562259" duration="504000" />
+    </task>
+    <task id="LOCAL-00001" summary="Commit">
+      <created>1681801003668</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1681801003668</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Modified : JUnit, Admin.java for REGEX TESTING">
+      <created>1681807275779</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1681807275779</updated>
+    </task>
+    <task id="LOCAL-00003" summary="MODIFIED : File regeneration LOGIC ADDED">
+      <created>1681809232263</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1681809232263</updated>
+    </task>
+    <task id="LOCAL-00004" summary="MODIFIED : File regeneration LOGIC ADDED">
+      <created>1681809262380</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1681809262380</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Revert &quot;pay 처리 manage 처리 exit 처리 default 처리 프롬프트 간 전환&quot;&#10;&#10;This reverts commit 6231d47a">
+      <created>1681814475743</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1681814475743</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Revert &quot;pay 처리 manage 처리 exit 처리 default 처리 프롬프트 간 전환&quot;&#10;&#10;This reverts commit 6231d47a">
+      <created>1681814792794</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1681814792794</updated>
+    </task>
+    <task id="LOCAL-00007" summary="MODIFIED : Main.java에 Data.****() 삭제">
+      <created>1681814958908</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1681814958908</updated>
+    </task>
+    <task id="LOCAL-00008" summary="MODIFIED : CART_REPOSITORY에서 주문 + 주문 차감 기능">
+      <created>1681819985674</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1681819985674</updated>
+    </task>
+    <task id="LOCAL-00009" summary="MODIFIED : CART_REPOSITORY에서 주문 + 주문 차감 기능">
+      <created>1681830296103</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1681830296103</updated>
+    </task>
+    <task id="LOCAL-00010" summary="MODIFIED : CART_REPOSITORY에서 주문 + 주문 차감 기능">
+      <created>1681831061037</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1681831061037</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="main" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Commit" />
+    <MESSAGE value="Modified : JUnit, Admin.java for REGEX TESTING" />
+    <MESSAGE value="MODIFIED : File regeneration LOGIC ADDED" />
+    <MESSAGE value="MODIFIED : Main.java에 Data.****() 삭제" />
+    <MESSAGE value="MODIFIED : Main.java의 DataFile.regenerateNewFile(); 삭제" />
+    <MESSAGE value="MODIFIED : CART_REPOSITORY에서 주문 + 주문 차감 기능" />
+    <option name="LAST_COMMIT_MESSAGE" value="MODIFIED : CART_REPOSITORY에서 주문 + 주문 차감 기능" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
