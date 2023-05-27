@@ -19,6 +19,8 @@ public class PayPrompt {
         getTotal();
         showPrompt();
     }
+    
+    
     private void getTotal(){//장바구니에서 결제예정액 가져오는 함수
 
         for(Menu menu: Menu_Map) {
