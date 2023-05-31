@@ -1,17 +1,19 @@
 package kiosk.prompt;
 
-import kiosk.dataFile.DataFile;
-import kiosk.dataFile.MaterialRepository;
-import kiosk.dataFile.MenuRepository;
-import kiosk.dataFile.PwdRepository;
+import kiosk.dataFile.*;
+import kiosk.domain.Member;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MemberPrompt {
     private boolean stat= true;
-    public static int memberNumber=getMemberNumber();
+    public static int memberNumber;
+    
+    Member member;
+    ArrayList<Member> member_map = MemberRepository.Member_Map;
     public MemberPrompt(){
         MemberController();
     }
@@ -52,7 +54,7 @@ public class MemberPrompt {
         }
     }
     private void payCall(){
-        PayPrompt payPrompt = new PayPrompt();
+        PayPrompt payPrompt = new PayPrompt(new Member(1,"","",1));
     }
     private void exitCall(){
         OrderPrompt orderPrompt = new OrderPrompt();
@@ -77,12 +79,12 @@ public class MemberPrompt {
         8. insert()
         */
     }
-<<<<<<< HEAD
     public boolean isIdExists(String id){
         /*로그인 과정에서 회원이 입력한 아이디가 회원정보 파일에 존재하는지 검사하는 함수.
         시용자가 입력한 아이디를 입력받아서
         회원번호 파일에 입력한 아이디가 존재하면 true를, 존재하지 않으면 false를 return한다.
          */
+        return false;
     }
     public boolean checkPassword(String id, String password){
         /*사용자가 입력한 비밀번호가 사용자가 입력한 아이디에 매칭되는 비밀번호인지를 검사하는 함수.
@@ -90,12 +92,14 @@ public class MemberPrompt {
         사용자가 입력한 비밀번호에 매칭되는 비밀번호와 사용자가 입력한 비밀번호가 일치하면 true,
         일치하지 않으면 false를 return.
          */
+        return false;
     }
     public boolean checkMemberIdForm(String id){
         /*아이디가 입력규칙에 맞는지 검사하는 함수.
         사용자가 입력한 아이디를 매개변수로 받아서
         입력규칙에 맞으면 true를 맞지 않으면 false를 return.
         */
+        return false;
     }
 
     public boolean checkMemberPasswordForm(String password){
@@ -103,6 +107,7 @@ public class MemberPrompt {
         사용자가 입력한 비밀번호를 매개변수로 받아서
         입력규칙에 맞으면 true를 맞지 않으면 false를 return
         */
+        return false;
     }
     public void insert(String memberId, String memberPassword){
         /*회원정보 파일에 회원정보를 저장하는 함수.
@@ -114,6 +119,7 @@ public class MemberPrompt {
         /*신규 가입한 회원에게 할당할 회원번호를 얻는 함수.
         데이터 파일을 확인해서 마지막으로 가입한 회원의 회원번호보다 큰 번호를 return.
          */
+        return 0;
     }
 
 }

@@ -1,6 +1,7 @@
 package kiosk.dataFile;
 
 import kiosk.domain.Material;
+import kiosk.domain.Member;
 import kiosk.domain.Menu;
 
 import java.io.*;
@@ -131,6 +132,7 @@ public class DataFile {
     }
 
     public static void convertMemberRepositoryToCSV() {
+        MemberRepository.Member_Map.add(new Member(1,"","123",12));
 
     }
 

@@ -9,21 +9,26 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class MemberRepository {
+    
+    private Member member;
 
     private MemberPrompt mp= new MemberPrompt();
-    private static final ArrayList<Material> Member_Map = new ArrayList<>();
+    public static ArrayList<Member> Member_Map = new ArrayList<>();
 
     public void makeMember(String fileName) {
 
-        boolean check = mp.checkMemberIdForm() &&
-        mp.checkMemberPasswordForm() &&
-        mp.checkPassword();
-
+        boolean check = mp.checkMemberIdForm("") &&
+        mp.checkMemberPasswordForm("") &&
+        mp.checkPassword("");
+        Member_Map.add(member);
     }
+    
+    
 
     public static void addMember(Member member){
-
+        Member_Map.add(member);
     }
+    
 
 
 

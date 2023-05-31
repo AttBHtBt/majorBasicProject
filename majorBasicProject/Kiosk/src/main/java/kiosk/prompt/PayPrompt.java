@@ -1,5 +1,6 @@
 package kiosk.prompt;
 import kiosk.dataFile.MenuRepository;
+import kiosk.domain.Member;
 import kiosk.domain.Menu;
 import kiosk.prompt.OrderPrompt;
 
@@ -13,7 +14,7 @@ public class PayPrompt {
     private int total_print;//결제예정액 출력
 
     private ArrayList<Menu> Menu_Map = getMenu_Map();
-    public PayPrompt(){
+    public PayPrompt(Member member){
         total_pay = 0;
         total_print = 0;
         getTotal();

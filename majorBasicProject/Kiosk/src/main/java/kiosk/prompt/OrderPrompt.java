@@ -2,6 +2,7 @@ package kiosk.prompt;
 
 import kiosk.dataFile.*;
 import kiosk.domain.Material;
+import kiosk.domain.Member;
 import kiosk.domain.Menu;
 import kiosk.manager.Admin;
 
@@ -97,7 +98,7 @@ public class OrderPrompt {
         }
     }
     private void payCall(){                                     //pay 함수
-        PayPrompt payPrompt = new PayPrompt();                  //payPrompt 클래스를 생성한다
+        PayPrompt payPrompt = new PayPrompt(new Member(1,"","",1));                  //payPrompt 클래스를 생성한다
     }
     private void manageCall(){                                  //manage 함수
         ManagePrompt managePrompt = new ManagePrompt();         //managePrompt 클래스를 생성한다
@@ -202,4 +203,10 @@ public class OrderPrompt {
                 System.out.println("----------------------------------------------------------------");
             }
     }
+    
+    private int calculateAvailableAmountOfMenu(ArrayList<Menu> menus, ArrayList<Material> materials) {
+        int availableAmountOfMenu = 0;
+        return availableAmountOfMenu;
+    }
+    
 }

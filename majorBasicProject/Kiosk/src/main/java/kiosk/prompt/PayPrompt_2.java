@@ -64,24 +64,102 @@ public class PayPrompt_2 {
         private int availableCouponCount;
         private int usedCouponNum;
         private Member member;
+        
+        private ArrayList<Material> materials;
         String input;
 
         /**
          * 생성자
          */
-        private CouponPrompt(Member member){
+        private CouponPrompt(Member member, ArrayList<Material> materials){
             this.member = member;
+            this.materials = materials;
         }
 
         /**
          * 함수
          *
          */
-        private int getAvailableCoupon(){
-            // 
+        public int getAvailableCoupon(){
+            return 0;
+        }
+        
+        public int getAvailableAmericanoNum() {
+            return 0;
+        }
+        
+        public int getAvailableUsageOfCoupon(int couponCount, int americanoNum) {
+            return 0;
+        }
+        
+        public void getCouponInput() {
+            input = "";
+        }
+        
+        public boolean isCouponInputSyntaxValid(String input) {
+            return false;
+        }
+        
+        public boolean isCouponInputSemanticsValid(String input) {
+            return false;
+        }
+        
+        private void updateUserCouponcount (){
+            ;
+        };
+        
+        private void showCouponPropmt (){
+            ;
         }
 
 
+        public int getCouponCount() {
+            return couponCount;
+        }
+
+        public void setCouponCount(int couponCount) {
+            this.couponCount = couponCount;
+        }
+
+        public int getAvailableCouponCount() {
+            return availableCouponCount;
+        }
+
+        public void setAvailableCouponCount(int availableCouponCount) {
+            this.availableCouponCount = availableCouponCount;
+        }
+
+        public int getUsedCouponNum() {
+            return usedCouponNum;
+        }
+
+        public void setUsedCouponNum(int usedCouponNum) {
+            this.usedCouponNum = usedCouponNum;
+        }
+
+        public Member getMember() {
+            return member;
+        }
+
+        public void setMember(Member member) {
+            this.member = member;
+        }
+
+        public ArrayList<Material> getMaterials() {
+            return materials;
+        }
+
+        public void setMaterials(ArrayList<Material> materials) {
+            this.materials = materials;
+        }
+
+        public String getInput() {
+            return input;
+        }
+
+        public void setInput(String input) {
+            this.input = input;
+        }
     }
     private void getTotal(){//장바구니에서 결제예정액 가져오는 함수
 
@@ -151,5 +229,10 @@ public class PayPrompt_2 {
         }
         OrderPrompt OrderPrompt = new OrderPrompt();         //orderPrompt 클래스를 생성한다
     }
+    
+    private boolean isMemeber () {
+        return false;
+    }
 
 }
+
