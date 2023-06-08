@@ -106,6 +106,7 @@ public class OrderPrompt {
         try {
             DataFile.convertMenuRepositoryToCSV();
             DataFile.convertMaterialRepositoryToCSV();
+            DataFile.convertMemberRepositoryToCSV();
             
             boolean regenerate = MenuRepository.isMenuFilevalid(DataFile.DATAFILEDIRECTORY + DataFile.menuFileName) ||
                 MaterialRepository.isIngredientFileValid(DataFile.DATAFILEDIRECTORY + DataFile.menuFileName) ||
