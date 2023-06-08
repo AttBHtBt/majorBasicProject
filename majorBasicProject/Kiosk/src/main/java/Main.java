@@ -1,8 +1,5 @@
 import kiosk.config.AppConfig;
-import kiosk.dataFile.DataFile;
-import kiosk.dataFile.MaterialRepository;
-import kiosk.dataFile.MenuRepository;
-import kiosk.dataFile.PwdRepository;
+import kiosk.dataFile.*;
 import kiosk.prompt.ManagePrompt;
 import kiosk.prompt.OrderPrompt;
 
@@ -23,7 +20,10 @@ public class Main {
 
         PwdRepository PR = new PwdRepository();
         PR.makePwd(DataFile.DATAFILEDIRECTORY + DataFile.adminFileName);
-        
+
+        MemberRepository MBR = new MemberRepository();
+        MBR.makeMember(DataFile.DATAFILEDIRECTORY + DataFile.memberFileName);
+
         DataFile.regenerate();
         
         OrderPrompt orderPrompt = AppConfig.orderPrompt();

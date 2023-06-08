@@ -25,10 +25,12 @@ public class DataFile {
     public static String menuFileName = "menu.csv";
     public static String ingredientFileName = "ingredients.csv";
     public static String adminFileName = "admin.txt";
+    public static String memberFileName = "member.csv";
     
     public static boolean isMenuFileValid = true;
     public static boolean isIngredientFileValid = true;
     public static boolean isAdminFileValid = true;
+    public static boolean isMemberFileVaild = true;
 
     /**
      * For Regenerating Testing Only
@@ -68,6 +70,9 @@ public class DataFile {
             e.printStackTrace();
         }
     }
+
+    public static void regenerateMemberCSV(){
+    }
     
     public static void regenerate(){
 //        MenuRepository.isMenuFilevalid(DATAFILEDIRECTORY + menuFileName);
@@ -82,6 +87,8 @@ public class DataFile {
             regenerateIngredientCSV();
         if (!isAdminFileValid)
             regenerateAdminTxT();
+        if(!isMemberFileVaild)
+            regenerateMemberCSV();
         if (!isMenuFileValid || !isIngredientFileValid || !isAdminFileValid){
             System.out.println("치명적 오류");
             System.exit(1);
