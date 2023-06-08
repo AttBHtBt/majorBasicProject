@@ -96,8 +96,9 @@ public class OrderPrompt {
                 System.out.println(m.getMenu()+"/"+m.getBeverageStateOption()+"/"+m.getOrderCount()+"잔/");
         }
     }
-    private void payCall(){                                     //pay 함수
-        PayPrompt payPrompt = new PayPrompt();                  //payPrompt 클래스를 생성한다
+    private void payCall(){
+        MemberPrompt mp = new MemberPrompt();//pay 함수
+        mp.run();
     }
     private void manageCall(){                                  //manage 함수
         ManagePrompt managePrompt = new ManagePrompt();         //managePrompt 클래스를 생성한다

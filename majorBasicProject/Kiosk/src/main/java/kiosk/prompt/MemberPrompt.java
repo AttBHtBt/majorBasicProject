@@ -1,5 +1,7 @@
 package kiosk.prompt;
 
+import kiosk.dataFile.DataFile;
+
 import java.io.BufferedReader;
 import java.io.Console;
 import java.io.File;
@@ -13,7 +15,7 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class MemberPrompt {
-    private static final String DATABASE_FILE = "member.txt";
+    private static final String DATABASE_FILE = DataFile.DATAFILEDIRECTORY + "member.txt";
     private Map<Integer, Member> members;
     private Console console = System.console();
 
@@ -67,15 +69,21 @@ public class MemberPrompt {
             return;
         }
 
-        System.out.print("사용하실 비밀번호를 입력해주세요: ");
-        char[] passwordChars = console.readPassword();
-        String password = new String(passwordChars);
+        System.out.print("Member > 사용하실 비밀번호를 입력해주세요: ");
+        String password = scanner.nextLine();
+
+        //System.out.print("사용하실 비밀번호를 입력해주세요: ");
+        //char[] passwordChars = console.readPassword();
+        //String password = new String(passwordChars);
 
         System.out.print("사용하실 비밀번호를 한번 더 입력해주세요: ");
-        char[] passwordCheckChars = console.readPassword();
-        String passwordCheck = new String(passwordCheckChars);
+        System.out.print("Member >Check 사용하실 비밀번호를 입력해주세요: ");
+        String password2 = scanner.nextLine();
 
-        if (password.equals(passwordCheck)) {
+//        char[] passwordCheckChars = console.readPassword();
+//        String passwordCheck = new String(passwordCheckChars);
+
+        if (password.equals(password2)) {
             int memberNumber = generateMemberNumber();
             members.put(memberNumber, new Member(memberNumber, username, password));
             saveMembers();
