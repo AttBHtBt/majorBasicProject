@@ -2,7 +2,9 @@ package kiosk.prompt;
 import kiosk.dataFile.MaterialRepository;
 import kiosk.dataFile.MenuRepository;
 import kiosk.domain.Material;
+import kiosk.domain.Member;
 import kiosk.domain.Menu;
+import kiosk.prompt.OrderPrompt;
 import kiosk.domain.Member;
 
 import java.util.ArrayList;
@@ -21,10 +23,10 @@ public class PayPrompt {
     private ArrayList<Menu> menus = MenuRepository.getMenu_Map();
     private ArrayList<Material> Material_Map = MaterialRepository.getMaterial_Map();
     CouponPrompt couponPrompt;
-    
+
     private ArrayList<Menu> Menu_Map = getMenu_Map();
     public PayPrompt(Member member){
-        
+
         this.member = member;
         total_pay = 0;
         total_print = 0;
@@ -40,7 +42,7 @@ public class PayPrompt {
         getTotal();
         showPrompt();
     }
-    
+
     public class CouponPrompt {
         private int couponCount;
         private int availableCouponCount;
@@ -50,12 +52,11 @@ public class PayPrompt {
 
         private ArrayList<Material> materials;
         String input;
-        
+
         /**
          * 추가변수
          */
-        private  boolean loopCouponPrompt;
-
+        private boolean loopCouponPrompt;
 
         public CouponPrompt(Member member, ArrayList<Material> materials){
             this.member = member;
@@ -78,7 +79,9 @@ public class PayPrompt {
 
 
         public int getAvailableCoupon(){
-            return 0;
+
+            return member.getSavedCup()/10;
+
         }
 
         
@@ -88,11 +91,17 @@ public class PayPrompt {
         }
 
         public int getAvailableUsageOfCoupon(int couponCount, int americanoNum) {
-            return 0;
+            if(couponCount>americanoNum){
+                return americanoNum;
+            }else{
+                return couponCount;
+            }
         }
 
         public void getCouponInput() {
-            input = "";
+            Scanner sc = new Scanner(System.in);
+            System.out.print("사용하실 쿠폰 개수를 입력: ");
+            input= sc.nextLine();
         }
 
         // 1에서 10자리 숫자 출력
@@ -120,7 +129,9 @@ public class PayPrompt {
         };
 
         private void showCouponPrompt (){
-            System.out.printf("Coupon [%s] [%d(개)] [%d(개)]> ", member.getId(), getAvailableCouponCount(), getAvailableUsageOfCoupon(getAvailableCouponCount(), getAvailableAmericanoNum()));
+            System.out.printf("Coupon [%s] [%d(개)] [%d(개)]> ", member.getId() ,getCouponCount() ,getAvailableCouponCount());
+            getCouponInput();
+
         }
 
 
@@ -204,10 +215,17 @@ public class PayPrompt {
         while (true) {//무한 루프를 돌면서
             //shoppingBasketPrompt();//장바구니와 결제 예정액 출력
             System.out.println("결제 예정액:"+total_pay+"원");
-            System.out.print("Payment > ");
+            if(member.getId()!=null){//회원일 경우 프롬프트
 
+                System.out.print("Payment "+"["+member.getId()+"]"+" > ");//memberID 임시 변수로 객체에서 가져옴
+
+            }
+            else {//비회원일 경우 프롬프트
+                System.out.print("Payment > ");
+            }
             Scanner sc = new Scanner(System.in);            //사용자에게 입력을 받는다
             String str = sc.nextLine();
+
             switch (str) {                                  //입력값이
                 case "pay -t":                                 //-t인 경우에
                     totalPay();                                  //결제 예정액 총 결제
