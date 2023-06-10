@@ -244,9 +244,13 @@ public class PayPrompt {
             switch (str) {                                  //입력값이
                 case "pay -t":                                 //-t인 경우에
                     totalPay();                                  //결제 예정액 총 결제
+                    if (isMember(member))
+                        new CouponPrompt(member);
                     break;                                  //switch문 탈출
                 case "pay -s":                              //-s인 경우에
                     partPay();                           //분할결제 함수 호출
+                    if (isMember(member))
+                        new CouponPrompt(member);
                     break;                                //switch문 탈출
                 case "exit":                                //exit인 경우에
                     orderCall();//주문 프롬프트로 이동
