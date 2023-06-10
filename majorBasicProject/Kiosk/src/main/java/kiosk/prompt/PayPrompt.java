@@ -1,9 +1,9 @@
 package kiosk.prompt;
+import kiosk.domain.Member;
 import kiosk.dataFile.MenuRepository;
 import kiosk.domain.Member;
 import kiosk.domain.Menu;
 import kiosk.prompt.OrderPrompt;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -89,7 +89,9 @@ public class PayPrompt {
         };
 
         private void showCouponPropmt (){
-            ;
+            System.out.printf("Coupon [%s] [%d(개)] [%d(개)]> ", member.getId() ,getCouponCount() ,getAvailableCouponCount());
+            getCouponInput();
+
         }
 
 
