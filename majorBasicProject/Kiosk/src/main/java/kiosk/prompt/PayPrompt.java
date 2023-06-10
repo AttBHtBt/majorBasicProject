@@ -3,10 +3,11 @@ import kiosk.dataFile.MaterialRepository;
 import kiosk.dataFile.MenuRepository;
 import kiosk.domain.Material;
 import kiosk.domain.Menu;
+import kiosk.domain.Member;
 
-import java.lang.reflect.Member;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 import static kiosk.dataFile.MenuRepository.getMenu_Map;
 
@@ -46,18 +47,43 @@ public class PayPrompt {
         private int usedCouponNum;
         private Member member;
 
+
         private ArrayList<Material> materials;
         String input;
+        
+        /**
+         * 추가변수
+         */
+        private  boolean loopCouponPrompt;
+
 
         public CouponPrompt(Member member, ArrayList<Material> materials){
             this.member = member;
             this.materials = materials;
+            
+            loopCouponPrompt= true;
+            
+            while (loopCouponPrompt){
+                showCouponPrompt();
+                getInput();
+                
+                if (isCouponInputSyntaxValid(input) && isCouponInputSemanticsValid(input)){
+                    convertCouponInputToNum(input);
+                    
+                    
+                }
+            }
         }
+
+
+
         public int getAvailableCoupon(){
             return 0;
         }
 
+        
         public int getAvailableAmericanoNum() {
+            
             return 0;
         }
 
@@ -69,20 +95,32 @@ public class PayPrompt {
             input = "";
         }
 
+        // 1에서 10자리 숫자 출력
         public boolean isCouponInputSyntaxValid(String input) {
-            return false;
+            if (Pattern.matches("[0-9]{1,10}", input) || Pattern.matches("[0-9]{1,10}개", input))
+                return true;
+            else
+                return false;
         }
 
+        //정수 출력
         public boolean isCouponInputSemanticsValid(String input) {
-            return false;
+            String onlyDigit = input.replace("잔", "");
+            int pseudoInput = Integer.parseInt(onlyDigit);
+            
+            if ( 0 <= Integer.parseInt(onlyDigit) && Integer.parseInt(onlyDigit) <= Integer.MAX_VALUE)
+                return true;
+            else 
+                return false;
         }
 
-        private void updateUserCouponcount (){
-            ;
+        private void updateUserCouponCount (){
+//            member.setSavedCup(member.getSavedCup() + 멤버의 추가 컵.);
+            
         };
 
-        private void showCouponPropmt (){
-            ;
+        private void showCouponPrompt (){
+            System.out.printf("Coupon [%s] [%d(개)] [%d(개)]> ", member.getId(), getAvailableCouponCount(), getAvailableUsageOfCoupon(getAvailableCouponCount(), getAvailableAmericanoNum()));
         }
 
 
@@ -133,8 +171,23 @@ public class PayPrompt {
         public void setInput(String input) {
             this.input = input;
         }
+
+
+        /**
+         * 추가함수
+         */
+        
+        /** 입력한 잔 수에 "개" 문자열이 포함되므로 숫자로 변환 : 부가효과*/
+        private void convertCouponInputToNum(String input) {
+            String onlyDigit = input.replace("잔", "");
+            int pseudoInput = Integer.parseInt(onlyDigit);
+            
+            couponCount = pseudoInput;
+        }
+        
+        
     }
-    
+
     private void getTotal(){//장바구니에서 결제예정액 가져오는 함수
 
         for(Menu menu: Menu_Map) {
