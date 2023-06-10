@@ -1,6 +1,7 @@
 package kiosk.dataFile;
 
 import kiosk.domain.Material;
+import kiosk.domain.Member;
 import kiosk.domain.Menu;
 
 import java.io.*;
@@ -12,7 +13,7 @@ public class DataFile {
 
     private static final ArrayList<Menu> menus = MenuRepository.getMenu_Map();
     private static final ArrayList<Material> materials = MaterialRepository.getMaterial_Map();
-
+    private static final ArrayList<Member> members = MemberRepository.getMember_Map();
     public static String DATAFILEDIRECTORY = "." + File.separator +
             ".." + File.separator +
             ".." + File.separator +
@@ -24,10 +25,12 @@ public class DataFile {
     public static String menuFileName = "menu.csv";
     public static String ingredientFileName = "ingredients.csv";
     public static String adminFileName = "admin.txt";
+    public static String memberFileName = "member.csv";
     
     public static boolean isMenuFileValid = true;
     public static boolean isIngredientFileValid = true;
     public static boolean isAdminFileValid = true;
+    public static boolean isMemberFileVaild = true;
 
     /**
      * For Regenerating Testing Only
@@ -35,7 +38,6 @@ public class DataFile {
     public static String menuFileName_Testing = "menu_1.csv";
     public static String ingredientFileName_Testing = "ingredients_1.csv";
     public static String adminFileName_Testing = "admin_1.txt";
-
 
     public static void regenerateMenuCSV() {
         File menuFile = new File(DATAFILEDIRECTORY + menuFileName);
@@ -67,6 +69,16 @@ public class DataFile {
             e.printStackTrace();
         }
     }
+
+    public static void regenerateMemeberCSV(){
+        File memberFile = new File(DATAFILEDIRECTORY + DataFile.memberFileName);
+        try {
+            FileWriter memberFileW = new FileWriter(memberFile);
+            memberFileW.write("");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
     
     public static void regenerate(){
 //        MenuRepository.isMenuFilevalid(DATAFILEDIRECTORY + menuFileName);
@@ -81,7 +93,9 @@ public class DataFile {
             regenerateIngredientCSV();
         if (!isAdminFileValid)
             regenerateAdminTxT();
-        if (!isMenuFileValid || !isIngredientFileValid || !isAdminFileValid){
+        if (!isMemberFileVaild)
+            System.out.println("Member");
+        if (!isMenuFileValid || !isIngredientFileValid || !isAdminFileValid || !isMemberFileVaild){
             System.out.println("치명적 오류");
             System.exit(1);
         }
@@ -105,7 +119,8 @@ public class DataFile {
             BufferedWriter writer = new BufferedWriter(menuFileW);
             for (Menu menu: menus) {
                 writer.write(getMenuLine(menu));
-                if (!((menus.get(menus.size() -1).getMenu() + menu.getBeverageStateOption()) == (menu.getMenu() + menu.getBeverageStateOption())))
+                if (!((menus.get(menus.size() -1).getMenu() + menu.getBeverageStateOption())
+                        == (menu.getMenu() + menu.getBeverageStateOption())))
                     writer.newLine();
             }
             writer.flush();
@@ -130,6 +145,28 @@ public class DataFile {
         }
     }
 
+    public static void convertMemberRepositoryToCSV(){
+        File memberFile = new File(DATAFILEDIRECTORY + memberFileName);
+        try {
+            FileWriter memberFileW = new FileWriter(memberFile);
+            BufferedWriter writer = new BufferedWriter(memberFileW);
+            for (Member member: members) {
+                writer.write(getMemberLine(member));
+                if (!((members.get(members.size() -1).getMemberNum()
+                        == member.getMemberNum())))
+                    writer.newLine();
+            }
+            writer.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static String getMemberLine(Member member){
+        String lineStr;
+        lineStr = String.format("%s,%s,%s,%s", member.getMemberNum(), member.getId(), member.getPawd(), member.getSavedCup());
+        return lineStr;
+    }
 
     public static String getMenuLine(Menu menu){
         String lineStr;
