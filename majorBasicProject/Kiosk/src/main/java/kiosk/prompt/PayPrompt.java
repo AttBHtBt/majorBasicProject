@@ -30,6 +30,15 @@ public class PayPrompt {
         getTotal();
         showPrompt();
     }
+
+    //임시
+    public PayPrompt(){
+
+        total_pay = 0;
+        total_print = 0;
+        getTotal();
+        showPrompt();
+    }
     
     public class CouponPrompt {
         private int couponCount;
