@@ -21,7 +21,7 @@ public class PayPrompt {
     Member member;
     String couponInput;
     private ArrayList<Menu> menus = MenuRepository.getMenu_Map();
-    private ArrayList<Material> Material_Map = MaterialRepository.getMaterial_Map();
+    private static ArrayList<Material> Material_Map = MaterialRepository.getMaterial_Map();
     CouponPrompt couponPrompt;
 
     private ArrayList<Menu> Menu_Map = getMenu_Map();
@@ -50,7 +50,9 @@ public class PayPrompt {
         private Member member;
 
 
-        private ArrayList<Material> materials;
+        private ArrayList<Material> materials = MaterialRepository.getMaterial_Map();
+        
+                
         String input;
 
         /**
@@ -58,9 +60,8 @@ public class PayPrompt {
          */
         private boolean loopCouponPrompt;
 
-        public CouponPrompt(Member member, ArrayList<Material> materials){
+        public CouponPrompt(Member member){
             this.member = member;
-            this.materials = materials;
             
             loopCouponPrompt= true;
             
@@ -68,18 +69,18 @@ public class PayPrompt {
                 showCouponPrompt();
                 getInput();
                 
-                if (isCouponInputSyntaxValid(input) && isCouponInputSemanticsValid(input)){
-                    convertCouponInputToNum(input);
-                    
-                    
-                }
+                if (!(isCouponInputSyntaxValid(input) && isCouponInputSemanticsValid(input)))
+                    continue;
+                convertCouponInputToNum(input);
+                
+                updateUserCouponCount();
+                break;
             }
         }
 
 
 
         public int getAvailableCoupon(){
-
             return member.getSavedCup()/10;
 
         }
@@ -87,7 +88,32 @@ public class PayPrompt {
         
         public int getAvailableAmericanoNum() {
             
-            return 0;
+            ArrayList<Menu> menus = MenuRepository.getMenu_Map();
+            Menu americano = null;
+            ArrayList<Menu.Ingredient> ingredients;
+            int availableIngredient = Integer.MAX_VALUE;
+            
+            for (Menu menu : menus) {
+                if (menu.getMenu().equals("아메리카노") && menu.getBeverageStateOption().equals("ICE")){
+                    americano = menu;
+                    break;
+                }
+            }
+            
+            if (americano == null) 
+                return (0);
+            
+            //아메리카노의 레시피 확인
+            ingredients = americano.getIngredient();
+            for (Menu.Ingredient ingredient : ingredients) {
+                for (Material material : materials) {
+                    if (ingredient.name.equals(material.getName())) {
+                        int availableAmount = material.getAmount() / ingredient.getNum();
+                        availableIngredient = Integer.min(availableAmount, availableIngredient);
+                    }
+                }
+            }
+            return (availableIngredient);
         }
 
         public int getAvailableUsageOfCoupon(int couponCount, int americanoNum) {
@@ -124,8 +150,7 @@ public class PayPrompt {
         }
 
         private void updateUserCouponCount (){
-//            member.setSavedCup(member.getSavedCup() + 멤버의 추가 컵.);
-            
+            member.setSavedCup(member.getSavedCup() - getAvailableUsageOfCoupon(getCouponCount(), getAvailableAmericanoNum()));
         };
 
         private void showCouponPrompt (){
@@ -167,13 +192,6 @@ public class PayPrompt {
             this.member = member;
         }
 
-        public ArrayList<Material> getMaterials() {
-            return materials;
-        }
-
-        public void setMaterials(ArrayList<Material> materials) {
-            this.materials = materials;
-        }
 
         public String getInput() {
             return input;
