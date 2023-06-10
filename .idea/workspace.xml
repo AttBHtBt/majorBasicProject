@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="working on couponPrompt">
+    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="availableAmericanoNum">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/PayPrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/PayPrompt.java" afterDir="false" />
     </list>
@@ -206,7 +206,7 @@
       <workItem from="1682445836015" duration="4048000" />
       <workItem from="1685197484299" duration="1000" />
       <workItem from="1685367095925" duration="999000" />
-      <workItem from="1686372713212" duration="1831000" />
+      <workItem from="1686372713212" duration="2808000" />
     </task>
     <task id="LOCAL-00002" summary="MODIFIED : ManagePrompt의 메뉴/재료 * 추가/수정/삭제 기능;">
       <created>1682161682178</created>
@@ -397,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685195813313</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="availableAmericanoNum">
+      <created>1686374592601</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1686374592601</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -451,7 +458,8 @@
     <MESSAGE value="빈 파일이면 치명적 오류" />
     <MESSAGE value="수정" />
     <MESSAGE value="1차 제출 이전으로 reset" />
-    <option name="LAST_COMMIT_MESSAGE" value="1차 제출 이전으로 reset" />
+    <MESSAGE value="availableAmericanoNum" />
+    <option name="LAST_COMMIT_MESSAGE" value="availableAmericanoNum" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -520,11 +528,6 @@
           <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java</url>
           <line>510</line>
           <option name="timeStamp" value="193" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/PayPrompt.java</url>
-          <line>37</line>
-          <option name="timeStamp" value="196" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -82,7 +82,6 @@ public class PayPrompt {
 
         public int getAvailableCoupon(){
             return member.getSavedCup()/10;
-
         }
 
         
@@ -213,8 +212,6 @@ public class PayPrompt {
             
             couponCount = pseudoInput;
         }
-        
-        
     }
 
     private void getTotal(){//장바구니에서 결제예정액 가져오는 함수
@@ -233,7 +230,7 @@ public class PayPrompt {
         while (true) {//무한 루프를 돌면서
             //shoppingBasketPrompt();//장바구니와 결제 예정액 출력
             System.out.println("결제 예정액:"+total_pay+"원");
-            if(member.getId()!=null){//회원일 경우 프롬프트
+            if(isMember(member)){//회원일 경우 프롬프트
 
                 System.out.print("Payment "+"["+member.getId()+"]"+" > ");//memberID 임시 변수로 객체에서 가져옴
 
@@ -291,6 +288,10 @@ public class PayPrompt {
             m.setOrderCount(0);
         }
         OrderPrompt OrderPrompt = new OrderPrompt();         //orderPrompt 클래스를 생성한다
+    }
+    
+    private boolean isMember(Member member) {
+        return member == null ? false : true;
     }
 
 }
