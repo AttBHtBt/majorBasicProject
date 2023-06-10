@@ -13,6 +13,7 @@ import java.nio.file.Path;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class MemberPrompt {
     private static final String DATABASE_FILE = DataFile.DATAFILEDIRECTORY + "member.txt";
@@ -189,5 +190,35 @@ public class MemberPrompt {
         public String getPassword() {
             return password;
         }
+    }
+
+
+    public boolean checkMemberIdForm(String id){
+        /*아이디가 입력규칙에 맞는지 검사하는 함수.
+        사용자가 입력한 아이디를 매개변수로 받아서
+        입력규칙에 맞으면 true를 맞지 않으면 false를 return.
+        */
+        //공백은 허용하지 않는다.
+        if(id==null)
+            return false;
+        if(id.length()<1||id.length()>14)
+            return false;
+        if(!Pattern.matches("[A-Za-z0-9]*", id))
+            return false;
+        return true;
+    }
+
+    public boolean checkMemberPasswordForm(String password){
+        /*비밀번호가 입력규칙에 맞는지 검사하는 함수.
+        사용자가 입력한 비밀번호를 매개변수로 받아서
+        입력규칙에 맞으면 true를 맞지 않으면 false를 return
+        */
+        if(password==null)
+            return false;
+        if(password.length()<1||password.length()>14)
+            return false;
+        if(!Pattern.matches("[A-Za-z0-9!@#$%^&*()]*", password))
+            return false;
+        return true;
     }
 }
