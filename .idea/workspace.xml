@@ -4,16 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="1차 제출 이전으로 reset">
-      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MemberRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/domain/Member.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/member.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/member_1.csv" afterDir="false" />
+    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/OrderPrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/OrderPrompt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/DataFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/DataFile.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/ingredients.csv" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/ingredients.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/OrderPrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/OrderPrompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/menu.csv" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/menu.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,22 +79,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/workspace/kiosk/majorBasicProject/Kiosk/src",
-    "node.js.detected.package.eslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.excludes",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/workspace/kiosk/majorBasicProject/Kiosk/src&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.projectsettings.compiler.excludes&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\workspace\kiosk\majorBasicProject\Kiosk\src" />
@@ -433,7 +429,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modified : regenerate logic" />
     <MESSAGE value="MODIFIED : ManagePrompt의 메뉴/재료 * 추가/수정/삭제 기능 + &#10;MESSAGE : 재고 빼고 재고 추가하는 함수만 검증하면 될듯합니다." />
     <MESSAGE value="MODIFIED : 종료 시 DataFile 삭제 로직 추가" />
     <MESSAGE value="HASHMAP -&gt; LIST로 구현" />
@@ -457,7 +452,9 @@
     <MESSAGE value="빈 파일이면 치명적 오류" />
     <MESSAGE value="수정" />
     <MESSAGE value="1차 제출 이전으로 reset" />
-    <option name="LAST_COMMIT_MESSAGE" value="1차 제출 이전으로 reset" />
+    <MESSAGE value="isMember" />
+    <MESSAGE value="commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="commit" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -521,6 +518,16 @@
           <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/ManagePrompt.java</url>
           <line>510</line>
           <option name="timeStamp" value="193" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/OrderPrompt.java</url>
+          <line>207</line>
+          <option name="timeStamp" value="201" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/OrderPrompt.java</url>
+          <line>239</line>
+          <option name="timeStamp" value="202" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

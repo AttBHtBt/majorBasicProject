@@ -56,14 +56,14 @@ public class OrderPrompt {
     private void showMenuIfOption(Menu m) {
         DecimalFormat df= new DecimalFormat("###,###"); // 가격 출력 콤마 추가
         if (m.getBeverageStateOption().equals("HOT")) {
-            System.out.printf("%s %s원 (ICE/HOT)\n", m.getMenu(), df.format(m.getPrice()));
+            System.out.printf("%s %s원 (ICE/HOT) (%d잔 남음)\n", m.getMenu(), df.format(m.getPrice()), getAmountOfStockMenu_Option(m));
         }
     }
 
     private void showMenuIfNoOption(Menu m) {
         DecimalFormat df= new DecimalFormat("###,###"); // 가격 출력 콤마 추가
         if (m.getBeverageStateOption().equals("-")) {
-            System.out.printf("%s %s원\n", m.getMenu(), df.format(m.getPrice()));
+            System.out.printf("%s %s원 (%d잔 남음)\n", m.getMenu(), df.format(m.getPrice()), getAmountOfStockMenu_noOption(m));
         }
     }
 
@@ -203,4 +203,104 @@ public class OrderPrompt {
                 System.out.println("----------------------------------------------------------------");
             }
     }
+    
+    private int getAmountOfStockMenu_noOption(Menu m) {
+        ArrayList<Menu.Ingredient> ingredients = null;
+        ArrayList<Material> materials = MaterialRepository.getMaterial_Map();
+        int amount = Integer.MAX_VALUE;
+
+        ingredients = m.getIngredient();
+        
+        for (Menu.Ingredient ingredient : ingredients) {
+            boolean isExists = false;
+            for (Material material : materials) {  
+                if (ingredient.getName().equals(material.getName())){
+                    isExists = true;
+                    break;
+                }
+            }
+            if (!isExists) {
+                return (0);
+            }
+        }
+        
+        for (Menu.Ingredient ingredient : ingredients) {
+            for (Material material : materials) {
+                if (ingredient.getName().equals(material.getName())) {
+                    int count = material.getAmount() / ingredient.getNum();
+                    amount = Integer.min(amount, count);
+                    break;
+                }
+            }
+        }
+        return amount;
+    }
+    
+    private int getAmountOfStockMenu_Option(Menu m) {
+        ArrayList<Menu.Ingredient> ingredients_hot = null;
+        ArrayList<Menu.Ingredient> ingredients_ice = null;
+        ArrayList<Material> materials = MaterialRepository.getMaterial_Map();
+        String menuName = m.getMenu();
+        
+        boolean isIceExists = false;
+        boolean isHotExists = false;
+        
+        
+        int amount_ice = Integer.MAX_VALUE;
+        int amount_hot = Integer.MAX_VALUE;
+        
+        
+        //ICE or HOT?
+
+        //HOT
+        for (Menu menu : menus) {
+            if (menuName.equals(menu.getMenu()) && menu.getBeverageStateOption().equals("HOT")) {
+                isHotExists = true;
+                ingredients_hot = menu.getIngredient();
+                for (Menu.Ingredient ingredient : ingredients_hot) {
+                    boolean isIngredientExists = false;
+                    for (Material material : materials) {
+                        if (ingredient.getName().equals(material.getName())) {
+                            isIngredientExists = true;
+                            int count = material.getAmount() / ingredient.getNum();
+                            amount_hot = Integer.min(amount_hot, count);
+                            break;
+                        }
+                    }
+                    if (!isIngredientExists)
+                        return (0);
+                }
+                break;
+            }
+        }
+
+        for (Menu menu : menus) {
+            if (menuName.equals(menu.getMenu()) && menu.getBeverageStateOption().equals("ICE")) {
+                isIceExists = true;
+                ingredients_ice = menu.getIngredient();
+                for (Menu.Ingredient ingredient : ingredients_ice) {
+                    for (Material material : materials) {
+                        if (ingredient.getName().equals(material.getName())) {
+                            int count = material.getAmount() / ingredient.getNum();
+                            amount_ice = Integer.min(amount_ice, count);
+                            break;
+                        }
+                    }
+                }
+                break;
+            }
+        }
+        
+        if (isIceExists && isHotExists) {
+            return amount_hot + amount_ice;
+        }
+        else if (isIceExists && !isHotExists || !isIceExists && isHotExists) {
+            return isIceExists ? amount_ice : amount_hot;
+        }
+        else if (!(isIceExists && isHotExists))
+            return (0);
+        else    //default
+            return (0);
+    }
+    
 }
