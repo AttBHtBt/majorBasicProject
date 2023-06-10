@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="1차 제출 이전으로 reset">
+    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment=".">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/PayPrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/PayPrompt.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,14 +38,20 @@
       </state>
     </system>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -84,6 +91,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="kiosk.prompt" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="corretto-18" />
@@ -151,9 +163,9 @@
       <list>
         <item itemvalue="Gradle.Kiosk [jar]" />
         <item itemvalue="Gradle.Kiosk [build]" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Gradle.Kiosk [jar]" />
+        <item itemvalue="Gradle.Kiosk [build]" />
+        <item itemvalue="Gradle.Kiosk [jar]" />
       </list>
     </recent_temporary>
   </component>
@@ -188,8 +200,7 @@
       <workItem from="1682422731155" duration="1182000" />
       <workItem from="1682434043022" duration="297000" />
       <workItem from="1682445836015" duration="4048000" />
-      <workItem from="1685197484299" duration="1000" />
-      <workItem from="1685367095925" duration="999000" />
+      <workItem from="1685195252053" duration="7000" />
     </task>
     <task id="LOCAL-00002" summary="MODIFIED : ManagePrompt의 메뉴/재료 * 추가/수정/삭제 기능;">
       <created>1682161682178</created>
@@ -373,14 +384,42 @@
       <option name="project" value="LOCAL" />
       <updated>1682469172361</updated>
     </task>
-    <task id="LOCAL-00028" summary="1차 제출 이전으로 reset">
-      <created>1685195813313</created>
+    <task id="LOCAL-00028" summary="Member&#10;getMemberNum&#10;getId&#10;getPawd&#10;getSavedCup&#10;setSavedCup&#10;makeMember&#10;addMember&#10;addMember&#10;&#10;추가함">
+      <created>1684979607396</created>
       <option name="number" value="00028" />
       <option name="presentableId" value="LOCAL-00028" />
       <option name="project" value="LOCAL" />
-      <updated>1685195813313</updated>
+      <updated>1684979607396</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="..">
+      <created>1684999214784</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1684999214784</updated>
+    </task>
+    <task id="LOCAL-00030" summary="..">
+      <created>1685025123336</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1685025123336</updated>
+    </task>
+    <task id="LOCAL-00031" summary="convertMemberRepositoryToCSV 추가">
+      <created>1685025240882</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1685025240882</updated>
+    </task>
+    <task id="LOCAL-00032" summary="convertMemberRepositoryToCSV 추가">
+      <created>1685025502958</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1685025502958</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -397,7 +436,7 @@
                   <entry key="branch">
                     <value>
                       <list>
-                        <option value="master" />
+                        <option value="master_pay" />
                       </list>
                     </value>
                   </entry>
@@ -410,7 +449,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modified : regenerate logic" />
     <MESSAGE value="MODIFIED : ManagePrompt의 메뉴/재료 * 추가/수정/삭제 기능 + &#10;MESSAGE : 재고 빼고 재고 추가하는 함수만 검증하면 될듯합니다." />
     <MESSAGE value="MODIFIED : 종료 시 DataFile 삭제 로직 추가" />
     <MESSAGE value="HASHMAP -&gt; LIST로 구현" />
@@ -433,8 +471,10 @@
     <MESSAGE value="checkOption수정(MenurRepository)" />
     <MESSAGE value="빈 파일이면 치명적 오류" />
     <MESSAGE value="수정" />
-    <MESSAGE value="1차 제출 이전으로 reset" />
-    <option name="LAST_COMMIT_MESSAGE" value="1차 제출 이전으로 reset" />
+    <MESSAGE value="Member&#10;getMemberNum&#10;getId&#10;getPawd&#10;getSavedCup&#10;setSavedCup&#10;makeMember&#10;addMember&#10;addMember&#10;&#10;추가함" />
+    <MESSAGE value=".." />
+    <MESSAGE value="convertMemberRepositoryToCSV 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="convertMemberRepositoryToCSV 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
