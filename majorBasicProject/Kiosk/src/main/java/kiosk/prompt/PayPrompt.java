@@ -105,12 +105,17 @@ public class PayPrompt {
             //아메리카노의 레시피 확인
             ingredients = americano.getIngredient();
             for (Menu.Ingredient ingredient : ingredients) {
+                boolean isIngredientsExists = false;
                 for (Material material : materials) {
                     if (ingredient.name.equals(material.getName())) {
+                        isIngredientsExists = true;
                         int availableAmount = material.getAmount() / ingredient.getNum();
                         availableIngredient = Integer.min(availableAmount, availableIngredient);
+                        break;
                     }
                 }
+                if (!isIngredientsExists)
+                    return (0);
             }
             return (availableIngredient);
         }
