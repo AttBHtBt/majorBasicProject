@@ -52,7 +52,7 @@ public class MemberPrompt {
     }
 
     private void guestLogin() {
-        PayPrompt pp = new PayPrompt();
+        PayPrompt guestpp = new PayPrompt();
     }
 
     private void login(Scanner scanner) {
@@ -72,6 +72,7 @@ public class MemberPrompt {
             if(member.getId().equals(username)){
                 if(member.getPawd().equals(password)){
                     System.out.println("로그인 성공!");
+                    PayPrompt pp = new PayPrompt(member);
                     return;
                 }else{
                     System.out.println("비밀번호가 일치하지 않습니다.");
