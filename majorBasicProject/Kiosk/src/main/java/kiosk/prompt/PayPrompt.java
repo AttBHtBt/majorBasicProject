@@ -72,8 +72,12 @@ public class PayPrompt {
                 if (!(isCouponInputSyntaxValid(input) && isCouponInputSemanticsValid(input)))
                     continue;
                 convertCouponInputToNum(input);
+                //입력한 개수가 사용가능한 쿠폰 개수보다 많을 경우를 배제.
+                if (couponCount > getAvailableUsageOfCoupon(getAvailableCoupon(), getAvailableAmericanoNum()))
+                    continue;
                 
                 updateUserCouponCount();
+                setStockByCouponUsage();
                 break;
             }
         }
@@ -154,11 +158,13 @@ public class PayPrompt {
         }
 
         private void updateUserCouponCount (){
-            member.setSavedCup(member.getSavedCup() - getAvailableUsageOfCoupon(getCouponCount(), getAvailableAmericanoNum()));
+            
+            member.setSavedCup(member.getSavedCup() - getCouponCount() * 10);
+            usedCouponNum = getCouponCount();
         };
 
         private void showCouponPrompt (){
-            System.out.printf("Coupon [%s] [%d(개)] [%d(개)]> ", member.getId() ,getCouponCount() ,getAvailableCouponCount());
+            System.out.printf("Coupon [%s] [%d(개)] [%d(개)]> ", member.getId() , getAvailableCoupon() ,getAvailableUsageOfCoupon(getAvailableCoupon(), getAvailableAmericanoNum()));
             getCouponInput();
 
         }
@@ -217,6 +223,30 @@ public class PayPrompt {
             
             couponCount = pseudoInput;
         }
+        
+        private void setStockByCouponUsage() {
+            Menu iceAmericano = null;
+            for (Menu menu : Menu_Map) {
+                if (menu.getMenu().equals("아메리카노") && menu.getBeverageStateOption().equals("ICE")) {
+                    iceAmericano = menu;
+                    break;
+                }
+            }
+            if (iceAmericano == null)
+                return ;
+            ArrayList<Menu.Ingredient> ingredients = iceAmericano.getIngredient();
+
+            if (couponCount == 0)
+                return ;
+
+            for (Menu.Ingredient ingredient : ingredients) {
+                for (Material material : Material_Map) {
+                    if (ingredient.getName().equals(material.getName())) {
+                        material.setAmount(material.getAmount() - ingredient.getNum() * couponCount);
+                    }
+                }
+            }
+        }
     }
 
     private void getTotal(){//장바구니에서 결제예정액 가져오는 함수
@@ -249,13 +279,9 @@ public class PayPrompt {
             switch (str) {                                  //입력값이
                 case "pay -t":                                 //-t인 경우에
                     totalPay();                                  //결제 예정액 총 결제
-                    if (isMember(member))
-                        new CouponPrompt(member);
                     break;                                  //switch문 탈출
                 case "pay -s":                              //-s인 경우에
                     partPay();                           //분할결제 함수 호출
-                    if (isMember(member))
-                        new CouponPrompt(member);
                     break;                                //switch문 탈출
                 case "exit":                                //exit인 경우에
                     orderCall();//주문 프롬프트로 이동
@@ -268,6 +294,9 @@ public class PayPrompt {
     };
     private void totalPay(){//총결제 함수
         System.out.println("결제예정액:"+total_print+"원이 결제되었습니다.");
+        setTotalStock();
+        if (isMember(member))
+            couponPrompt = new CouponPrompt(member);
         orderCall();
     }
     private void partPay(){//결제 예정액을 가져와서 차감시키면서 진행(total=결제 예정액/,part=분할결제 금액)
@@ -287,6 +316,9 @@ public class PayPrompt {
             }
         }
         System.out.println(total_print+"원 결제되었습니다.");
+        setTotalStock();
+        if (isMember(member))
+            couponPrompt = new CouponPrompt(member);
         orderCall();
     }
     private void orderCall(){                                //order 프로프트로 전환
@@ -301,6 +333,36 @@ public class PayPrompt {
     
     private boolean isMember(Member member) {
         return member == null ? false : true;
+    }
+
+
+    /**
+     * 추가
+     */
+    private void setTotalStock() {
+        //Menu_Map, Material_Map
+        
+        //couponPrompt에서 사용한 쿠폰만큼 아메리카노 ICE의 개수를 증가
+        
+        for (Menu menu: Menu_Map) {
+            decrement_ingredients(menu);
+        }
+    }
+    
+    private void decrement_ingredients(Menu menu) {
+        int decrement_amount = menu.getOrderCount();
+        ArrayList<Menu.Ingredient> ingredients = menu.getIngredient();
+        
+        if (decrement_amount == 0)
+            return ;
+        
+        for (Menu.Ingredient ingredient : ingredients) {
+            for (Material material : Material_Map) {
+                if (ingredient.getName().equals(material.getName())) {
+                    material.setAmount(material.getAmount() - ingredient.getNum() * decrement_amount);
+                }
+            }
+        }
     }
 
 }

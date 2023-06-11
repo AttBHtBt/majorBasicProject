@@ -1,5 +1,6 @@
 package kiosk.prompt;
 
+import kiosk.dataFile.DataFile;
 import kiosk.dataFile.MemberRepository;
 import kiosk.domain.Member;
 
@@ -129,8 +130,9 @@ public class MemberPrompt {
         } else {
             int lastMemberNumber = 0;
             for (Member member : members) {
-                if (Integer.parseInt(member.getMemberNum()) >= lastMemberNumber) {
-                    lastMemberNumber = Integer.parseInt(member.getMemberNum());
+                int convertedMemberNum = DataFile.convertMemberNumToInteger(member.getMemberNum());
+                if (convertedMemberNum >= lastMemberNumber) {
+                    lastMemberNumber = convertedMemberNum;
                 }
             }
             return lastMemberNumber + 1;
