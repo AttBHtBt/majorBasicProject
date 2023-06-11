@@ -78,7 +78,8 @@ public class MemberPrompt {
                     System.out.println("비밀번호가 일치하지 않습니다.");
                 }
             }
-        }System.out.println("아이디가 일치하지 않습니다.");
+        }
+        System.out.println("아이디가 일치하지 않습니다.");
     }
 
     private void registerMember(Scanner scanner) {
@@ -88,25 +89,25 @@ public class MemberPrompt {
         if (isUsernameTaken(username)) {
             System.out.println("같은 아이디가 존재합니다.");
             return;
-        }else if (!checkMemberIdForm(username)){
+        } else if (!checkMemberIdForm(username)) {
             System.out.println("입력 규칙에 맞지 않습니다");
         }
 
         System.out.print("Member > 사용하실 비밀번호를 입력해주세요: ");
         String password = scanner.nextLine();
-        if (!checkMemberPasswordForm(password)){
+        if (!checkMemberPasswordForm(password)) {
             System.out.println("입력 규칙에 맞지 않습니다");
         }
 
         System.out.print("사용하실 비밀번호를 한번 더 입력해주세요: ");
         String password2 = scanner.nextLine();
-        if (!checkMemberPasswordForm(password2)){
+        if (!checkMemberPasswordForm(password2)) {
             System.out.println("입력 규칙에 맞지 않습니다");
         }
 
         if (password.equals(password2)) {
-            int memberNumber = generateMemberNumber();            
-            mr.addMember(new Member(String.valueOf(memberNumber),username,password,0));            
+            int memberNumber = generateMemberNumber();
+            mr.addMember(new Member(String.valueOf(memberNumber), username, password, 0));
             System.out.println("회원가입이 완료되었습니다!");
         } else {
             System.out.println("처음 입력하신 비밀번호와 일치하지 않습니다.");
@@ -126,17 +127,17 @@ public class MemberPrompt {
         if (members.isEmpty()) {
             return 0;
         } else {
-            int lastMemberNumber=0;
-            for (Member member : members){
-                if(Integer.parseInt(member.getMemberNum()) >= lastMemberNumber){
-                    lastMemberNumber=Integer.parseInt(member.getMemberNum());
+            int lastMemberNumber = 0;
+            for (Member member : members) {
+                if (Integer.parseInt(member.getMemberNum()) >= lastMemberNumber) {
+                    lastMemberNumber = Integer.parseInt(member.getMemberNum());
                 }
             }
             return lastMemberNumber + 1;
         }
     }
 
-    private boolean checkMemberIdForm(String id){
+    private boolean checkMemberIdForm(String id) {
         // 아이디가 입력규칙에 맞는지 검사하는 함수.
         // 사용자가 입력한 아이디를 매개변수로 받아서
         // 입력규칙에 맞으면 true를 맞지 않으면 false를 반환.
@@ -162,3 +163,4 @@ public class MemberPrompt {
             return false;
         return true;
     }
+}
