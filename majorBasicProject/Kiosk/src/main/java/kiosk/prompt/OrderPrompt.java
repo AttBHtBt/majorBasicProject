@@ -97,7 +97,8 @@ public class OrderPrompt {
         }
     }
     private void payCall(){                                     //pay 함수
-        PayPrompt payPrompt = new PayPrompt();                  //payPrompt 클래스를 생성한다
+        MemberPrompt mp = new MemberPrompt();                  //memberPrompt 클래스를 생성한다
+        mp.run();
     }
     private void manageCall(){                                  //manage 함수
         ManagePrompt managePrompt = new ManagePrompt();         //managePrompt 클래스를 생성한다
