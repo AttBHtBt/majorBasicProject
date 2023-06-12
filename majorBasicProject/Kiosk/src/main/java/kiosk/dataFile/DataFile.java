@@ -184,4 +184,21 @@ public class DataFile {
         lineStr = String.format("%s,%s", material.getName(), material.getAmount());
         return lineStr;
     }
+
+
+    /**
+     * 추가 함수
+     */
+    public static int convertMemberNumToInteger(String str) {
+        str = str.trim();
+        int digit =     1;
+        int number =    0;
+         
+        for (int i = str.length() - 1; i >= 0; i--) {
+            number += (Integer.parseInt(String.valueOf(str.charAt(i))) * digit);
+            digit *= 10;
+        }
+        return number;
+    }
+    
 }

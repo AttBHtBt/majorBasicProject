@@ -35,7 +35,7 @@ public class cartRepository {
         // 모든 재고 잔량에 맞춰서 주문가능한 개수를 반환.
         availableAmount = calculateAvailableOrderAmount(orderAmount);
         // 주문가능한 숫자에 맞춰서 재고 잔량 수정.
-        setStockAmount(availableAmount);
+//        setStockAmount(availableAmount);
         //주문 가능한 개수 반환
         return availableAmount;
     }
