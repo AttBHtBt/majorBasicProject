@@ -169,6 +169,28 @@ public class MemberPrompt {
             return false;
         return true;
     }
+
+    public boolean checkMemberNum(String num){
+
+        int number;
+
+        if(num == null)
+            return false;
+
+        number=Integer.parseInt(num);
+
+        if(number<=0)
+            return false;
+        return true;
+    }
+
+    public boolean checksavedCup(int num){
+        if(num < 0)
+            return false;
+        return true;
+
+    }
+
     private void orderCall(){                                //order 프로프트로 전환
         System.out.println("주문 프롬프토로 돌아갑니다.");
         //orderPrompt전환시 사용한거 0으로 전환
