@@ -4,10 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="conflict by ??">
+    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="MemberPrompt에서 int로 memberNum 넘겨줌">
+      <change afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/member2.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/domain/Member.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/domain/Member.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/domain/Member.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/domain/Member.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/MemberPrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/MemberPrompt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MemberRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/MemberPrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/MemberPrompt.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/member.csv" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/member.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -407,7 +410,21 @@
       <option name="project" value="LOCAL" />
       <updated>1686385336175</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="member(int) constructer 추가">
+      <created>1686547966518</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1686547966518</updated>
+    </task>
+    <task id="LOCAL-00031" summary="MemberPrompt에서 int로 memberNum 넘겨줌">
+      <created>1686548078441</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1686548078441</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -437,8 +454,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="MODIFIED : 종료 시 DataFile 삭제 로직 추가" />
-    <MESSAGE value="HASHMAP -&gt; LIST로 구현" />
     <MESSAGE value="menu.csv -&gt; UTF-BOM to UTF 인코딩 방식 맞춤." />
     <MESSAGE value="getTotal()" />
     <MESSAGE value="주문-관리 프롬프트 전환시 주문한 개수 0으로 초기화" />
@@ -462,7 +477,9 @@
     <MESSAGE value="isMember" />
     <MESSAGE value="commit" />
     <MESSAGE value="아메리카노 계산공식 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="아메리카노 계산공식 수정" />
+    <MESSAGE value="member(int) constructer 추가" />
+    <MESSAGE value="MemberPrompt에서 int로 memberNum 넘겨줌" />
+    <option name="LAST_COMMIT_MESSAGE" value="MemberPrompt에서 int로 memberNum 넘겨줌" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

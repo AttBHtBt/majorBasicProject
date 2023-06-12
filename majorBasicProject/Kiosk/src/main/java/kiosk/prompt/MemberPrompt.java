@@ -139,7 +139,7 @@ public class MemberPrompt {
         }
     }
 
-    private boolean checkMemberIdForm(String id) {
+    public boolean checkMemberIdForm(String id) {
         // 아이디가 입력규칙에 맞는지 검사하는 함수.
         // 사용자가 입력한 아이디를 매개변수로 받아서
         // 입력규칙에 맞으면 true를 맞지 않으면 false를 반환.

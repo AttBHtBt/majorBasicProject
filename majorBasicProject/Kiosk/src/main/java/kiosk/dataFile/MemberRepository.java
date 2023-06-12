@@ -35,6 +35,10 @@ public class MemberRepository {
 
                 String[] lineArr = str.split(",");
                 int cupNum = Integer.parseInt(lineArr[3].trim());
+
+                // 무결성 검사
+
+
                 this.addMember(new Member(lineArr[0].trim(), lineArr[1].trim(), lineArr[2].trim(), cupNum));
             }
             /*
@@ -44,6 +48,8 @@ public class MemberRepository {
                 DataFile.isMemberFileVaild = false;
         }catch (FileNotFoundException e){
             System.out.println("FileNotFoundException: " + fileName);
+        }catch (ArrayIndexOutOfBoundsException e){
+            System.out.println("ArrayIndexOutOfBoundsException: " + fileName);
         }
     }
 
