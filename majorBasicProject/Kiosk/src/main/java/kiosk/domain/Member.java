@@ -14,6 +14,13 @@ public class Member {
         this.savedCup = savedCup;
     }
 
+    public Member(int memberNum, String id, String pawd, int savedCup){
+        this.memberNum =String.format("%08d", memberNum);
+        this.Id = id;
+        this.pawd = pawd;
+        this.savedCup = savedCup;
+    }
+
     //getter & setter
     public String getMemberNum() {
         return memberNum;
