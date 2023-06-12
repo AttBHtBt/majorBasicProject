@@ -108,7 +108,7 @@ public class MemberPrompt {
 
         if (password.equals(password2)) {
             int memberNumber = generateMemberNumber();
-            mr.addMember(new Member(String.valueOf(memberNumber), username, Integer.parseInt(password), 0));
+            mr.addMember(new Member(memberNumber, username, password, 0));
             System.out.println("회원가입이 완료되었습니다!");
         } else {
             System.out.println("처음 입력하신 비밀번호와 일치하지 않습니다.");
