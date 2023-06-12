@@ -4,7 +4,7 @@ import kiosk.domain.Material;
 import kiosk.domain.Member;
 import kiosk.domain.Menu;
 import kiosk.manager.Admin;
-import kiosk.prompt.MemberPrompt;
+
 
 
 import javax.swing.*;
@@ -12,25 +12,24 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.regex.Pattern;
 
 public class MemberRepository {
 
-    MemberPrompt mp = new MemberPrompt();
     public static ArrayList<Member> Member_Map = new ArrayList<>();
 
     public void makeMember(String fileName) {
         try (Scanner scan = new Scanner(new File(fileName))) {
             Boolean check = true;
+
             if (!scan.hasNext()) {
                 check = false;
                 DataFile.isMemberFileVaild = false;
                 return;
             }
+
             while (scan.hasNext()) {
                 String str = scan.nextLine();
-
-
-
                 String[] lineArr = str.split(",");
                 if(lineArr.length != 4){
                     check = false;
@@ -41,8 +40,10 @@ public class MemberRepository {
                 int cupNum = Integer.parseInt(lineArr[3].trim());
 
                 // 무결성 검사
-                check = mp.checkMemberNum(lineArr[0].trim()) && mp.checkMemberIdForm(lineArr[1].trim())
-                        && mp.checkMemberPasswordForm(lineArr[2]) && mp.checksavedCup(cupNum);
+
+                check = checkMemberNum(lineArr[0].trim()) && checkMemberIdForm(lineArr[1].trim())
+                        && checkMemberPasswordForm(lineArr[2].trim()) && checksavedCup(cupNum);
+
 
                 if(!check)
                     break;
@@ -65,9 +66,49 @@ public class MemberRepository {
         Member_Map.add(member);
     }
 
-    public void insert(String MemberId, String MemberPwd){
-        String MemberNum =  String.format("%08d", Member_Map.size());
-        Member_Map.add(new Member(MemberNum, MemberId, MemberPwd, 0));
+    public boolean checkMemberIdForm(String id) {
+        // 아이디가 입력규칙에 맞는지 검사하는 함수.
+        // 사용자가 입력한 아이디를 매개변수로 받아서
+        // 입력규칙에 맞으면 true를 맞지 않으면 false를 반환.
+        // 공백은 허용하지 않는다.
+        if (id == null)
+            return false;
+        if (id.length() < 1 || id.length() > 14)
+            return false;
+        if (!Pattern.matches("[A-Za-z0-9]*", id))
+            return false;
+        return true;
+    }
+
+    public boolean checkMemberPasswordForm(String password) {
+        // 비밀번호가 입력규칙에 맞는지 검사하는 함수.
+        // 사용자가 입력한 비밀번호를 매개변수로 받아서
+        // 입력규칙에 맞으면 true를 맞지 않으면 false를 반환
+        if (password == null)
+            return false;
+        if (password.length() < 1 || password.length() > 14)
+            return false;
+        if (!Pattern.matches("[A-Za-z0-9!@#$%^&*()]*", password))
+            return false;
+        return true;
+    }
+
+    public boolean checkMemberNum(String num){
+        int number;
+        if(num == null)
+            return false;
+
+        number=Integer.parseInt(num);
+
+        if(number<0)
+            return false;
+        return true;
+    }
+
+    public boolean checksavedCup(int num){
+        if(num < 0)
+            return false;
+        return true;
     }
 
     public static ArrayList<Member> getMember_Map(){

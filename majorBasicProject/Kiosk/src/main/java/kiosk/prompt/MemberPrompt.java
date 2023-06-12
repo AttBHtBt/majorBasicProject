@@ -188,7 +188,6 @@ public class MemberPrompt {
         if(num < 0)
             return false;
         return true;
-
     }
 
     private void orderCall(){                                //order 프로프트로 전환

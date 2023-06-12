@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="MemberPrompt에 orderCall 추가">
+    <list default="true" id="13d378a2-cb05-481e-bcde-4fe09aa32ad7" name="Changes" comment="무결성 검사 추가&#10;함수는 MemberPrompt에 있고 사용은 memeberRepository에서 사용">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/cartRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/cartRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/MemberRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/dataFile/MemberRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/MemberPrompt.class" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/out/production/classes/kiosk/prompt/MemberPrompt.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MemberRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/dataFile/MemberRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/MemberPrompt.java" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/main/java/kiosk/prompt/MemberPrompt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/member.csv" beforeDir="false" afterPath="$PROJECT_DIR$/majorBasicProject/Kiosk/src/member.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,6 +73,9 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectId" id="2OmCrl8vJPXTLYf0MxKZVY3uzsB" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -435,7 +440,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686550501554</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="무결성 검사 추가&#10;함수는 MemberPrompt에 있고 사용은 memeberRepository에서 사용">
+      <created>1686578313379</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1686578313379</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -465,7 +477,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="주문-관리 프롬프트 전환시 주문한 개수 0으로 초기화" />
     <MESSAGE value="프로그램 종료 시 자료구조 DataFile에 옮기기" />
     <MESSAGE value="입출력 세부사항 수정 hch" />
     <MESSAGE value="PAY : Logic REVERTED" />
@@ -490,7 +501,8 @@
     <MESSAGE value="MemberPrompt에서 int로 memberNum 넘겨줌" />
     <MESSAGE value="ArrayIndexOutOfBoundsException 추가함" />
     <MESSAGE value="MemberPrompt에 orderCall 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="MemberPrompt에 orderCall 추가" />
+    <MESSAGE value="무결성 검사 추가&#10;함수는 MemberPrompt에 있고 사용은 memeberRepository에서 사용" />
+    <option name="LAST_COMMIT_MESSAGE" value="무결성 검사 추가&#10;함수는 MemberPrompt에 있고 사용은 memeberRepository에서 사용" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
