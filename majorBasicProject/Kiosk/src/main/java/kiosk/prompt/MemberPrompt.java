@@ -2,11 +2,15 @@ package kiosk.prompt;
 
 import kiosk.dataFile.DataFile;
 import kiosk.dataFile.MemberRepository;
+import kiosk.dataFile.MenuRepository;
 import kiosk.domain.Member;
+import kiosk.domain.Menu;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.regex.Pattern;
+
+import static kiosk.dataFile.cartRepository.Menu_Map;
 
 public class MemberPrompt {    
     private MemberRepository mr = new MemberRepository();
@@ -34,7 +38,7 @@ public class MemberPrompt {
                     login(scanner);
                     break;
                 case "exit":
-                    running = false;
+                    orderCall();
                     break;
                 case "guest":
                     System.out.println("비회원으로 로그인합니다");
@@ -164,5 +168,14 @@ public class MemberPrompt {
         if (!Pattern.matches("[A-Za-z0-9!@#$%^&*()]*", password))
             return false;
         return true;
+    }
+    private void orderCall(){                                //order 프로프트로 전환
+        System.out.println("주문 프롬프토로 돌아갑니다.");
+        //orderPrompt전환시 사용한거 0으로 전환
+        ArrayList<Menu> menu = MenuRepository.getMenu_Map();
+        for (Menu m: Menu_Map){
+            m.setOrderCount(0);
+        }
+        OrderPrompt OrderPrompt = new OrderPrompt();         //orderPrompt 클래스를 생성한다
     }
 }

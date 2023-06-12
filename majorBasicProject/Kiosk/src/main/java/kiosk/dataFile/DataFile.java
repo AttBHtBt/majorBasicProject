@@ -94,7 +94,7 @@ public class DataFile {
         if (!isAdminFileValid)
             regenerateAdminTxT();
         if (!isMemberFileVaild)
-            System.out.println("Member");
+            regenerateMemeberCSV();
         if (!isMenuFileValid || !isIngredientFileValid || !isAdminFileValid || !isMemberFileVaild){
             System.out.println("치명적 오류");
             System.exit(1);

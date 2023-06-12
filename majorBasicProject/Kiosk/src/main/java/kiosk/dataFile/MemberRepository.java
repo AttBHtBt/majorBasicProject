@@ -30,6 +30,7 @@ public class MemberRepository {
                 check = check && Admin.CSVisStockSyntaxValid(str) &&
                         Admin.CSVisStockSemanticsValid(str);
                  얘네 좀 봐야 함*/
+                //check = false;
                 if(!check)
                     break;
 

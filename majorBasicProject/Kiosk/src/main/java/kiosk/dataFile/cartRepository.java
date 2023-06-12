@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class cartRepository {
-    private static final ArrayList<Menu> Menu_Map = MenuRepository.getMenu_Map();
+    public static final ArrayList<Menu> Menu_Map = MenuRepository.getMenu_Map();
     private static final ArrayList<Material> Material_Map = MaterialRepository.getMaterial_Map();
 
     private ArrayList<String> allIngredientName = new ArrayList<>();
