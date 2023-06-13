@@ -17,6 +17,8 @@ public class OrderPrompt {
     private ArrayList<Menu> menus = MenuRepository.getMenu_Map();
     private String status = "Good";
     private cartRepository cr= new cartRepository();
+    
+    private ArrayList<Material> Material_Map_Copy = MaterialRepository.deepCopy(MaterialRepository.getMaterial_Map());
 
     public OrderPrompt(){                
         OrderController();           
@@ -24,7 +26,6 @@ public class OrderPrompt {
 
     private void OrderController(){
         while(status.equals("Good")){
-            
             showPrompt();                                   //프롬프트를 보여준다
 
             Scanner sc = new Scanner(System.in);            //사용자에게 입력을 받는다
@@ -183,6 +184,10 @@ public class OrderPrompt {
                         if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state)) {
                             System.out.println("주문이 장바구니에 추가되었습니다.\n");
                             m.setOrderCount(m.getOrderCount() + parseInt(ordline_howmany_front)); //개수 항목 ++;
+                            
+                            //INGREDIENT복사
+//                            주문한 개수에 따라 temp재고를 변경해주어야함.
+                            changeCopiedMaterialByOrderAmount(m);
                         }
                     }
                 }
@@ -207,7 +212,8 @@ public class OrderPrompt {
     
     private int getAmountOfStockMenu_noOption(Menu m) {
         ArrayList<Menu.Ingredient> ingredients = null;
-        ArrayList<Material> materials = MaterialRepository.getMaterial_Map();
+        ArrayList<Material> materials = Material_Map_Copy;
+//        ArrayList<Material> materials = MaterialRepository.getMaterial_Map();
         int amount = Integer.MAX_VALUE;
 
         ingredients = m.getIngredient();
@@ -240,7 +246,8 @@ public class OrderPrompt {
 
     private int getAmountOfStockMenu_ICE(Menu m) {
         ArrayList<Menu.Ingredient> ingredients_ice = null;
-        ArrayList<Material> materials = MaterialRepository.getMaterial_Map();
+        ArrayList<Material> materials = Material_Map_Copy;
+//        ArrayList<Material> materials = MaterialRepository.getMaterial_Map();
         String menuName = m.getMenu();
 
         boolean isIceExists = false;
@@ -277,7 +284,8 @@ public class OrderPrompt {
 
     private int getAmountOfStockMenu_HOT(Menu m) {
         ArrayList<Menu.Ingredient> ingredients_hot = null;
-        ArrayList<Material> materials = MaterialRepository.getMaterial_Map();
+        ArrayList<Material> materials = Material_Map_Copy;
+//        ArrayList<Material> materials = MaterialRepository.getMaterial_Map();
         String menuName = m.getMenu();
 
         boolean isHotExists = false;
@@ -310,6 +318,20 @@ public class OrderPrompt {
         }
         return amount_hot;
     }
+    
+    private void changeCopiedMaterialByOrderAmount(Menu m) {
+        
+        ArrayList<Menu.Ingredient> ingredients = m.getIngredient();
+        
+        for (Menu.Ingredient ingredient : ingredients) {
+            for (Material material : Material_Map_Copy) {
+                if (ingredient.getName().equals(material.getName())) {
+                    material.setAmount(material.getAmount() - ingredient.getNum() * m.getOrderCount());
+                }
+            }
+        }
+    }
+    
     
     
     

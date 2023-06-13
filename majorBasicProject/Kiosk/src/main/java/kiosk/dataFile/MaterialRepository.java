@@ -115,6 +115,16 @@ public class MaterialRepository {
         }
         return null;
     }
+    
+    public static ArrayList<Material> deepCopy(ArrayList<Material> materials) {
+        ArrayList<Material> newMaterial_Map = new ArrayList<>();
+        
+        for (Material material : materials) {
+            Material newMaterial = new Material(material.getName(), material.getAmount());
+            newMaterial_Map.add(newMaterial);
+        }
+        return newMaterial_Map;
+    }
 }
 
 
