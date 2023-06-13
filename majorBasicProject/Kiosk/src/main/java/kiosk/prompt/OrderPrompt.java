@@ -178,7 +178,7 @@ public class OrderPrompt {
                 System.out.println("개수:"+ordline_howmany_front);
                 System.out.println(ordline_howmany_rear);    //입력 확인용 코드*/
 
-                available_order_amount=cr.getAvailableOrderAmount(ordline_menu, ordline_state, parseInt(ordline_howmany_front));
+                available_order_amount=cr.getAvailableOrderAmount(ordline_menu, ordline_state, parseInt(ordline_howmany_front), Material_Map_Copy);
                 if(available_order_amount >= parseInt(ordline_howmany_front)){
                     for (Menu m: menus){
                         if(m.getMenu().equals(ordline_menu) && m.getBeverageStateOption().equals(ordline_state)) {
@@ -187,7 +187,7 @@ public class OrderPrompt {
                             
                             //INGREDIENT복사
 //                            주문한 개수에 따라 temp재고를 변경해주어야함.
-                            changeCopiedMaterialByOrderAmount(m);
+                            changeCopiedMaterialByOrderAmount(m, parseInt(ordline_howmany_front));
                         }
                     }
                 }
@@ -319,14 +319,15 @@ public class OrderPrompt {
         return amount_hot;
     }
     
-    private void changeCopiedMaterialByOrderAmount(Menu m) {
+    private void changeCopiedMaterialByOrderAmount(Menu m, int amountOfInput) {
         
         ArrayList<Menu.Ingredient> ingredients = m.getIngredient();
         
         for (Menu.Ingredient ingredient : ingredients) {
             for (Material material : Material_Map_Copy) {
                 if (ingredient.getName().equals(material.getName())) {
-                    material.setAmount(material.getAmount() - ingredient.getNum() * m.getOrderCount());
+                    material.setAmount(material.getAmount() - ingredient.getNum() * amountOfInput);
+                    break;
                 }
             }
         }

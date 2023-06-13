@@ -19,7 +19,7 @@ public class cartRepository {
     //메뉴 이름, 옵션, 주문개수로 주문 가능한지 확인
 
     //재고가 없는 경우에도 처리.
-    public int getAvailableOrderAmount(String menuName, String orderOption, int orderAmount){
+    public int getAvailableOrderAmount(String menuName, String orderOption, int orderAmount, ArrayList<Material> materials){
         //초기화
         int availableAmount = 0;
         allIngredientAmount.clear(); allIngredientName.clear(); remainingStockAmount.clear();
@@ -28,7 +28,7 @@ public class cartRepository {
         Menu menu = MenuRepository.getMenuFromNameAndOption(menuName, orderOption);
 
         //쓰기 불편해서 ingredientName=레시피 이름, ingredientAmount=레시피에 필요한 재료숫자, remainingAmount= DB재고잔량 배열로 변환.
-        initiallizationForCalc(menu);
+        initiallizationForCalc(menu, materials);
         if (remainingStockAmount.size() != allIngredientAmount.size())
             return (0);
 
@@ -40,7 +40,7 @@ public class cartRepository {
         return availableAmount;
     }
 
-    private void initiallizationForCalc(Menu menu){
+    private void initiallizationForCalc(Menu menu, ArrayList<Material> materials){
 
        ArrayList<Menu.Ingredient> ingredients = menu.getIngredient();
        
@@ -50,7 +50,7 @@ public class cartRepository {
         }
 
         for (String str : allIngredientName){
-            for (Material material: Material_Map){
+            for (Material material: materials){
                 if(material.getName().equals(str)) {
                     remainingStockAmount.add(material.getAmount());
                     break;
