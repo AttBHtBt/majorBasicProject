@@ -294,6 +294,7 @@ public class PayPrompt {
     };
     private void totalPay(){//총결제 함수
         System.out.println("결제예정액:"+total_print+"원이 결제되었습니다.");
+        updateMemberSavedCup(member, menus);
         setTotalStock();
         if (isMember(member))
             couponPrompt = new CouponPrompt(member);
@@ -316,6 +317,7 @@ public class PayPrompt {
             }
         }
         System.out.println(total_print+"원 결제되었습니다.");
+        updateMemberSavedCup(member, menus);
         setTotalStock();
         if (isMember(member))
             couponPrompt = new CouponPrompt(member);
@@ -364,5 +366,20 @@ public class PayPrompt {
             }
         }
     }
+    
+    public void updateMemberSavedCup(Member member, ArrayList<Menu> menus) {
+        if (member == null) 
+            return ;
+        int total_count = 0 ;
+        
+        for (Menu menu: menus) {
+            total_count += menu.getOrderCount();
+        }
+        
+        member.setSavedCup(member.getSavedCup() + total_count);
+    }
+        
+
+
 
 }
