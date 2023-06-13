@@ -347,6 +347,8 @@ public class Admin {
         String quantity;
 
         splittedIngredients = str.trim().split(",");
+        if (splittedIngredients.length < 2)
+            return false;
         ingredient = splittedIngredients[0];
         quantity = splittedIngredients[1];
 
@@ -363,6 +365,8 @@ public class Admin {
         String quantity;
 
         splittedIngredients = str.trim().split(",");
+        if (splittedIngredients.length < 2)
+            return false;
         ingredient = splittedIngredients[0];
         quantity = splittedIngredients[1];
 

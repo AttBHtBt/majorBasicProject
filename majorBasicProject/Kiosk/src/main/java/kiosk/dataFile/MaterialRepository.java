@@ -28,6 +28,10 @@ public class MaterialRepository {
                     break;
 
                 String[] lineArr = str.split(",");
+                if (lineArr.length == 1){
+                    DataFile.isMenuFileValid = false;
+                    return ;
+                }
                 this.addMaterial(new Material(lineArr[0].trim(), lineArr[1].trim()));
             }
             check = check && isDuplicatedIngredientName();

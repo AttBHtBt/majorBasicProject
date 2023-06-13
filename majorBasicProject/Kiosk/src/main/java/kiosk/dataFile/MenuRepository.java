@@ -42,7 +42,8 @@ public class MenuRepository {
                     //메뉴이름, 메뉴가격, 메뉴옵션, 레시피...
                     check = check && Admin.isMenuPriceSyntaxValid(lineArr[1].trim())
                             && Admin.isMenuPriceSemanticsValid(lineArr[1].trim())
-                            && Admin.isMenuOptionSyntaxValid(lineArr[2].trim());
+                            && Admin.isMenuOptionSyntaxValid(lineArr[2].trim()) &&
+                            Admin.isMenuNameSynaxValid(lineArr[0].trim());
 
 
                     for (int j = 3; j < lineArr.length; j++) {
