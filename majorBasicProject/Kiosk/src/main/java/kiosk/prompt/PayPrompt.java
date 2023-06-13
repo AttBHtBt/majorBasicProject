@@ -148,7 +148,7 @@ public class PayPrompt {
 
         //정수 출력
         public boolean isCouponInputSemanticsValid(String input) {
-            String onlyDigit = input.replace("잔", "");
+            String onlyDigit = input.replace("개", "");
             int pseudoInput = Integer.parseInt(onlyDigit);
             
             if ( 0 <= Integer.parseInt(onlyDigit) && Integer.parseInt(onlyDigit) <= Integer.MAX_VALUE)
@@ -218,7 +218,7 @@ public class PayPrompt {
         
         /** 입력한 잔 수에 "개" 문자열이 포함되므로 숫자로 변환 : 부가효과*/
         private void convertCouponInputToNum(String input) {
-            String onlyDigit = input.replace("잔", "");
+            String onlyDigit = input.replace("개", "");
             int pseudoInput = Integer.parseInt(onlyDigit);
             
             couponCount = pseudoInput;
