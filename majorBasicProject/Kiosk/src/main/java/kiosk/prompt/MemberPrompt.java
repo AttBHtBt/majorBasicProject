@@ -5,6 +5,7 @@ import kiosk.dataFile.MemberRepository;
 import kiosk.dataFile.MenuRepository;
 import kiosk.domain.Member;
 import kiosk.domain.Menu;
+import kiosk.manager.Admin;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -177,6 +178,8 @@ public class MemberPrompt {
         if(num == null)
             return false;
 
+        if (!Admin.isInRangeINTMAX(num))
+            return false;
         number=Integer.parseInt(num);
 
         if(number<=0)

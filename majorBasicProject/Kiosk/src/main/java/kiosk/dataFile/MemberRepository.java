@@ -36,7 +36,10 @@ public class MemberRepository {
                     break;
                 }
                // 4개가 다 있는 지 확인
-
+                if (!Admin.isInRangeINTMAX(lineArr[3].trim())){
+                    check=false;
+                    break;
+                }
                 int cupNum = Integer.parseInt(lineArr[3].trim());
 
                 // 무결성 검사
@@ -98,6 +101,8 @@ public class MemberRepository {
         if(num == null)
             return false;
 
+        if (!Admin.isInRangeINTMAX(num))
+            return false;
         number=Integer.parseInt(num);
 
         if(number<0)

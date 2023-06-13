@@ -4,6 +4,7 @@ import kiosk.dataFile.MenuRepository;
 import kiosk.domain.Material;
 import kiosk.domain.Member;
 import kiosk.domain.Menu;
+import kiosk.manager.Admin;
 import kiosk.prompt.OrderPrompt;
 import kiosk.domain.Member;
 
@@ -149,7 +150,12 @@ public class PayPrompt {
         //정수 출력
         public boolean isCouponInputSemanticsValid(String input) {
             String onlyDigit = input.replace("개", "");
+            if (!Admin.isInRangeINTMAX(onlyDigit)){
+                return false;
+            }
+            
             int pseudoInput = Integer.parseInt(onlyDigit);
+            
             
             if ( 0 <= Integer.parseInt(onlyDigit) && Integer.parseInt(onlyDigit) <= Integer.MAX_VALUE)
                 return true;

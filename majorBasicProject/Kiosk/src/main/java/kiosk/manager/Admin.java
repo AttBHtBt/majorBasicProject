@@ -275,6 +275,9 @@ public class Admin {
         ingredient = splittedIngredients[0];
         quantity = splittedIngredients[1];
 
+        if (!Admin.isInRangeINTMAX(quantity)){
+            return false;
+        }
         int quantityToNumber = Integer.parseInt(quantity);
         boolean isQuantityRangeValid = (1 <= quantityToNumber && quantityToNumber <= Integer.MAX_VALUE);
 
@@ -288,6 +291,8 @@ public class Admin {
 
     public static boolean isMenuPriceSemanticsValid(String strInteger)
     {
+        if (!Admin.isInRangeINTMAX(strInteger))
+            return false;
         return (Integer.parseInt(strInteger) >= 0 && Integer.parseInt(strInteger) <= Integer.MAX_VALUE);
     }
 
@@ -324,6 +329,7 @@ public class Admin {
         ingredient = splittedIngredients[0];
         quantity = splittedIngredients[1];
 
+        if (!Admin.isInRangeINTMAX(str)) return false;
         int quantityToNumber = Integer.parseInt(quantity);
         boolean isQuantityRangeValid = (0 <= quantityToNumber && quantityToNumber <= Integer.MAX_VALUE * 1.0);
 
@@ -370,10 +376,19 @@ public class Admin {
         ingredient = splittedIngredients[0];
         quantity = splittedIngredients[1];
 
+        if (!Admin.isInRangeINTMAX(quantity)) return false;
         int quantityToNumber = Integer.parseInt(quantity);
         boolean isQuantityRangeValid = (0 <= quantityToNumber && quantityToNumber <= Integer.MAX_VALUE * 1.0);
 
         return (isQuantityRangeValid);
+    }
+    
+    public static boolean isInRangeINTMAX(String str) {
+        long num = Long.parseLong(str);
+        if (num > Integer.MAX_VALUE)
+            return false;
+        else 
+            return true;
     }
 }
 
