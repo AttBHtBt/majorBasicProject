@@ -16,6 +16,8 @@ import static kiosk.dataFile.cartRepository.Menu_Map;
 public class MemberPrompt {    
     private MemberRepository mr = new MemberRepository();
     private ArrayList<Member> members = mr.getMember_Map();
+    private String Susername,Lusername;
+    private String Suserpassword,Suserpassword2,Luserpassword;
 
     public MemberPrompt() {
         System.out.println("결제 전 회원 정보를 입력해주세요.");
@@ -62,70 +64,89 @@ public class MemberPrompt {
     }
 
     private void login(Scanner scanner) {
-        System.out.print("Member > 아이디를 입력해주세요: ");
-        String username = scanner.nextLine();
-        if (!checkMemberIdForm(username)){
-            System.out.println("입력 규칙에 맞지 않습니다");
-            return ;
-        }
-
-        System.out.print("Member > 비밀번호를 입력해주세요: ");
-        String password = scanner.nextLine();
-        if (!checkMemberIdForm(password)){
-            System.out.println("입력 규칙에 맞지 않습니다");
-            return ;
-        }
-
-        for(Member member: members){
-            if(member.getId().equals(username)){
-                if(member.getPawd().equals(password)){
-                    System.out.println("로그인 성공!");
-                    PayPrompt pp = new PayPrompt(member);
-                    return;
-                }else{
-                    System.out.println("비밀번호가 일치하지 않습니다.");
-                    return ;
+        while(true){
+            System.out.print("Member > 아이디를 입력해주세요: ");
+            String username = scanner.nextLine();
+            if (!checkMemberIdForm(username)){
+                System.out.println("입력 규칙에 맞지 않습니다");
+            }
+            if (username.equals("exit")){
+                break;
+            }
+            System.out.print("Member > 비밀번호를 입력해주세요: ");
+            String password = scanner.nextLine();
+            if (!checkMemberIdForm(password)){
+                System.out.println("입력 규칙에 맞지 않습니다");
+            }
+            if (password.equals("exit")){
+                break;
+            }
+            for(Member member: members){
+                if(member.getId().equals(username)){
+                    if(member.getPawd().equals(password)){
+                        System.out.println("로그인 성공!");
+                        PayPrompt pp = new PayPrompt(member);
+                        return;
+                    }else{
+                        System.out.println("비밀번호가 일치하지 않습니다.");
+                    }
                 }
             }
+            System.out.println("아이디가 일치하지 않습니다.");
         }
-        System.out.println("아이디가 일치하지 않습니다.");
     }
 
     private void registerMember(Scanner scanner) {
-        System.out.print("Member > 사용하실 아이디를 입력해주세요: ");
-        String username = scanner.nextLine();
-
-        if (isUsernameTaken(username)) {
-            System.out.println("같은 아이디가 존재합니다.");
-            return;
-        } else if (!checkMemberIdForm(username)) {
-            System.out.println("입력 규칙에 맞지 않습니다");
-            return ;
-        }
-
-        System.out.print("Member > 사용하실 비밀번호를 입력해주세요: ");
-        String password = scanner.nextLine();
-        if (!checkMemberPasswordForm(password)) {
-            System.out.println("입력 규칙에 맞지 않습니다");
-            return ;
-        }
-
-        System.out.print("사용하실 비밀번호를 한번 더 입력해주세요: ");
-        String password2 = scanner.nextLine();
-        if (!checkMemberPasswordForm(password2)) {
-            System.out.println("입력 규칙에 맞지 않습니다");
-            return ;
-        }
-
-        if (password.equals(password2)) {
-            int memberNumber = generateMemberNumber();
-            mr.addMember(new Member(memberNumber, username, password, 0));
-            System.out.println("회원가입이 완료되었습니다!");
-        } else {
-            System.out.println("처음 입력하신 비밀번호와 일치하지 않습니다.");
-            return ;
+        while (true) {
+            while (true) {
+                System.out.print("Member > 사용하실 아이디를 입력해주세요: ");
+                String username = scanner.nextLine();
+                if (username.equals("exit")) {
+                    return;
+                } else if (isUsernameTaken(username)) {
+                    System.out.println("같은 아이디가 존재합니다.");
+                } else if (!checkMemberIdForm(username)) {
+                    System.out.println("입력 규칙에 맞지 않습니다");
+                } else {
+                    Susername = username;
+                    break;
+                }
+            }
+            while (true) {
+                System.out.print("Member > 사용하실 비밀번호를 입력해주세요: ");
+                String password = scanner.nextLine();
+                if (password.equals("exit")) {
+                    return;
+                } else if (!checkMemberPasswordForm(password)) {
+                    System.out.println("입력 규칙에 맞지 않습니다");
+                } else {
+                    Suserpassword = password;
+                    break;
+                }
+            }
+            while (true) {
+                System.out.print("사용하실 비밀번호를 한번 더 입력해주세요: ");
+                String password2 = scanner.nextLine();
+                if (password2.equals("exit")) {
+                    return;
+                } else if (!checkMemberPasswordForm(password2)) {
+                    System.out.println("입력 규칙에 맞지 않습니다");
+                } else {
+                    Suserpassword2 = password2;
+                    break;
+                }
+            }
+            if (Suserpassword.equals(Suserpassword2)) {
+                int memberNumber = generateMemberNumber();
+                mr.addMember(new Member(memberNumber, Susername, Suserpassword, 0));
+                System.out.println("회원가입이 완료되었습니다!");
+                break;
+            } else {
+                System.out.println("처음 입력하신 비밀번호와 일치하지 않습니다.");
+            }
         }
     }
+
 
     private boolean isUsernameTaken(String username) {
         for (Member member : members) {
