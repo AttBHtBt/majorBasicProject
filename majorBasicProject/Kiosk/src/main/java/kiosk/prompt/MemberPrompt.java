@@ -66,12 +66,14 @@ public class MemberPrompt {
         String username = scanner.nextLine();
         if (!checkMemberIdForm(username)){
             System.out.println("입력 규칙에 맞지 않습니다");
+            return ;
         }
 
         System.out.print("Member > 비밀번호를 입력해주세요: ");
         String password = scanner.nextLine();
         if (!checkMemberIdForm(password)){
             System.out.println("입력 규칙에 맞지 않습니다");
+            return ;
         }
 
         for(Member member: members){
@@ -82,6 +84,7 @@ public class MemberPrompt {
                     return;
                 }else{
                     System.out.println("비밀번호가 일치하지 않습니다.");
+                    return ;
                 }
             }
         }
@@ -97,18 +100,21 @@ public class MemberPrompt {
             return;
         } else if (!checkMemberIdForm(username)) {
             System.out.println("입력 규칙에 맞지 않습니다");
+            return ;
         }
 
         System.out.print("Member > 사용하실 비밀번호를 입력해주세요: ");
         String password = scanner.nextLine();
         if (!checkMemberPasswordForm(password)) {
             System.out.println("입력 규칙에 맞지 않습니다");
+            return ;
         }
 
         System.out.print("사용하실 비밀번호를 한번 더 입력해주세요: ");
         String password2 = scanner.nextLine();
         if (!checkMemberPasswordForm(password2)) {
             System.out.println("입력 규칙에 맞지 않습니다");
+            return ;
         }
 
         if (password.equals(password2)) {
@@ -117,6 +123,7 @@ public class MemberPrompt {
             System.out.println("회원가입이 완료되었습니다!");
         } else {
             System.out.println("처음 입력하신 비밀번호와 일치하지 않습니다.");
+            return ;
         }
     }
 
